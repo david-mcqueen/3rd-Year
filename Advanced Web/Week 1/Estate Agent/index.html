@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Estate Agent</title>
+    <link rel="stylesheet" type="text/css" href="resources/layout.css">
+</head>
+<body>
+<div id="search">
+    <h2>Search</h2>
+    <form action="#">
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="Location">
+        <br/>
+        <label for="price">Price:</label>
+        <select id="price">
+            <option value="0" selected>< £80,000</option>
+            <option value="80000">£80,000 - £90,000</option>
+            <option value="90000">£90,001 - £100,000</option>
+            <option value="100000">£100,001 - £120,000</option>
+            <option value="120000">£120,001 +</option>
+        </select>
+        <br/>
+        <label for="roomsMin">Min Rooms:</label>
+        <select id="roomsMin">
+            <option value="0" selected>Studio</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
+        </select>
+        <br/>
+        <label for="roomsMax">Max Rooms:</label>
+        <select id="roomsMax">
+            <option value="0" selected>Studio</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
+        </select>
+        <br/>
+        <label for="marketTime">Time on the Market:</label>
+        <select id="marketTime">
+            <option value="today" selected>Today</option>
+            <option value="1week">Past Week</option>
+            <option value="2week">Past 2 Weeks</option>
+            <option value="month">Past Month</option>
+            <option value="3months">Past 3 Months</option>
+            <option value="3months">More Than 3 Months</option>
+        </select>
+
+    </form>
+</div>
+</body>
+</html>
