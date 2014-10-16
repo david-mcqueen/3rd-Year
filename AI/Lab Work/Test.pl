@@ -33,7 +33,67 @@ deleteFirstAndLast3(L, L2):-
 	append([_,_,_], LT, L),
 	delete_last_3(LT, L2).
 
-delete(X, [X | Tail], Tail).
+delete1(X, [X | Tail], Tail).
 
-delete(X, [Y | Tail], [Y | NewTail]):-
-	delete(X, Tail, NewTail).
+delete1(X, [Y | Tail], [Y | NewTail]):-
+	delete1(X, Tail, NewTail).
+
+
+evenLength([], Length):-
+	RemainderLength is mod(Length, 2),
+	RemainderLength = 0.
+
+evenLength([Head | Tail], Length):-
+	NewLength is Length + 1,
+	evenLength(Tail, NewLength).
+
+oddLength([], Length):-
+	RemainderLength is mod(Length, 2),
+	RemainderLength = 1.
+
+oddLength([Head | Tail], Length):-
+	NewLength is Length + 1,
+	oddLength(Tail, NewLength).
+
+reverse1([], []).
+
+reverse1([Head | Tail], ReversedList):-
+	reverse1(Tail, ReversedTail),
+	append(ReversedTail, [Head], ReversedList).
+
+	% Was getting a bit confused and stuck, so had a google.
+	% http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse25
+
+
+palindrome(List):-
+	reverse1(List, List).
+
+
+insertInOrder(X, [Head | Tail], Result):-
+
+	append([Result], [Head], NewTail),
+	insertInOrder(X, Tail, NewTail);
+	print(NewTail).
+
+
+	append(Result, [X], StageResult),
+	append(StageResult, Tail, FinalResult),
+	print(FinalResult).
+
+
+insert(X, [], [X]).
+insert(X, [Y|Rest], [X,Y|Rest]) :-
+    X @< Y, !.
+insert(X, [Y|Rest0], [Y|Rest]) :-
+    insert(X, Rest0, Rest).
+
+ %http://stackoverflow.com/questions/9004265/inserting-x-in-its-correct-position-in-a-sorted-list
+
+insertionSort([], Result):-
+	print(Result).
+
+insertionSort([Head | Tail], Sorted):-
+	insert(Head, Sorted, Result),
+	insertionSort(Tail, Result).
+
+
