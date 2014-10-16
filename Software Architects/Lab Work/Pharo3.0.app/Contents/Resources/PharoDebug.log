@@ -1,0 +1,4690 @@
+THERE_BE_DRAGONS_HERE
+MessageNotUnderstood: LOCell>>self
+16 October 2014 3:48:09.569521 pm
+
+VM: Mac OS - intel - 1090 - NBCoInterpreter NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+NBCogit NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+https://github.com/pharo-project/pharo-vm.git Commit: ed4a4f59208968a21d82fd2406f75c2c4de558b2 Date: 2014-05-15 18:23:04 +0200 By: Esteban Lorenzano <estebanlm@gmail.com> Jenkins build #14826
+
+Image: Pharo3.0 [Latest update: #30858]
+
+LOCell(Object)>>doesNotUnderstand: #self
+	Receiver: a LOCell(932708352)
+	Arguments and temporary variables: 
+		aMessage: 	self
+		exception: 	MessageNotUnderstood: LOCell>>self
+		resumeValue: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(12320768)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (988545024)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(12320768)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell>>initialize
+	Receiver: a LOCell(932708352)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(12320768)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (988545024)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(12320768)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell class(Behavior)>>new
+	Receiver: LOCell
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	SimpleSwitchMorph
+		methodDict: 	a MethodDictionary(#initialize->LOCell>>#initialize )
+		format: 	168
+		layout: 	a FixedLayout
+		instanceVariables: 	#(#mouseAction)
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#LOCell
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'PBE-LightsOut'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	'LOCell new'
+		itsSelection: 	a Text for 'LOCell new'
+		itsSelectionString: 	'LOCell new'
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ LOCell new
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+		useFaultyForParsing: 	false
+
+
+SmalltalkEditor>>evaluateSelectionAndDo:
+	Receiver: a SmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result | result inspect ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		morph: 	a TextMorphForEditView(381419520)
+		selectionShowing: 	true
+		model: 	a Workspace
+		editingState: 	a SmalltalkEditingState
+
+
+[ textMorph editor evaluateSelectionAndDo: [ :result | result inspect ] ] in PluggableTextMorph>>inspectIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(372.0@535.0) corner: (812.0@702.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(372@535) corner: (812@702)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	true
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 10)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph editor evaluateSelectionAndDo: [ :result | result inspec...etc...
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(372.0@535.0) corner: (812.0@702.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(372@535) corner: (812@702)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	true
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 10)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleEdit:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		editBlock: 	[ result := editBlock value ]
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@18)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@18)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		result: 	nil
+		editBlock: 	[ textMorph editor evaluateSelectionAndDo: [ :result | result inspec...etc...
+	Receiver's instance variables: 
+		bounds: 	(372.0@535.0) corner: (812.0@702.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(372@535) corner: (812@702)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	true
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 10)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+PluggableTextMorph>>inspectIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(372.0@535.0) corner: (812.0@702.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(372@535) corner: (812@702)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	true
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 10)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+Workspace(Object)>>perform:orSendTo:
+	Receiver: a Workspace
+	Arguments and temporary variables: 
+		selector: 	#inspectIt
+		otherTarget: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		dependents: 	a DependentsArray(a SystemWindow(481034240) a PluggableTextMorph(57...etc...
+		bindings: 	nil
+		acceptDroppedMorphs: 	false
+		acceptAction: 	nil
+		mustDeclareVariables: 	false
+		fileName: 	nil
+		lineEnding: 	#cr
+		encoding: 	'utf-8'
+		stylingActive: 	true
+		contents: 	''
+
+
+[ 
+| selArgCount |
+"show cursor in case item opens a new MVC window"
+(selArgCount := selector numArgs) = 0
+	ifTrue: [ target perform: selector ]
+	ifFalse: [ 
+		selArgCount = arguments size
+			ifTrue: [ target perform: selector withArguments: arguments ]
+			ifFalse: [ target perform: selector withArguments: (arguments copyWith: evt) ] ].
+self changed ] in ToggleMenuItemMorph(MenuItemMorph)>>invokeWithEvent:
+	Receiver: a ToggleMenuItemMorph(162267136)'Inspect it'
+	Arguments and temporary variables: 
+		evt: 	[(474@435) mouseUp 866334 nil]
+		w: 	a WorldMorph(511705088) [world]
+		selArgCount: 	2
+	Receiver's instance variables: 
+		bounds: 	(403.0@427.0) corner: (546.0@445.0)
+		owner: 	a MenuMorph(1049362432)
+		submorphs: 	#()
+		fullBounds: 	(403.0@427.0) corner: (546.0@445.0)
+		color: 	Color black
+		extension: 	a MorphExtension (185597952)
+		font: 	a StrikeFont(Bitmap DejaVu Sans 9 14)
+		emphasis: 	0
+		contents: 	'Inspect it'
+		hasFocus: 	false
+		isEnabled: 	true
+		subMenu: 	nil
+		isSelected: 	false
+		target: 	a Workspace
+		selector: 	#perform:orSendTo:
+		arguments: 	an Array(#inspectIt a PluggableTextMorph(570949632))
+		icon: 	ColorForm(16x16x4)
+		getStateSelector: 	nil
+		enablementSelector: 	nil
+		keyText: 	'i'
+
+
+BlockClosure>>ensure:
+	Receiver: [ 
+| selArgCount |
+"show cursor in case item opens a new MVC window"
+(selArgCount := selec...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ oldcursor show ]
+		complete: 	nil
+		returnValue: 	nil
+	Receiver's instance variables: 
+		outerContext: 	ToggleMenuItemMorph(MenuItemMorph)>>invokeWithEvent:
+		startpc: 	134
+		numArgs: 	0
+
+
+CursorWithMask(Cursor)>>showWhile:
+	Receiver: ((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0
+		2r100000000000000000000...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ 
+| selArgCount |
+"show cursor in case item opens a new MVC window"
+(s...etc...
+		oldcursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0
+		2...etc...
+	Receiver's instance variables: 
+		bits: 	a Bitmap of length 16
+		width: 	16
+		height: 	16
+		depth: 	1
+		offset: 	(-1@ -1)
+		maskForm: 	Form(16x16x1)
+
+
+ToggleMenuItemMorph(MenuItemMorph)>>invokeWithEvent:
+	Receiver: a ToggleMenuItemMorph(162267136)'Inspect it'
+	Arguments and temporary variables: 
+		evt: 	[(474@435) mouseUp 866334 nil]
+		w: 	a WorldMorph(511705088) [world]
+	Receiver's instance variables: 
+		bounds: 	(403.0@427.0) corner: (546.0@445.0)
+		owner: 	a MenuMorph(1049362432)
+		submorphs: 	#()
+		fullBounds: 	(403.0@427.0) corner: (546.0@445.0)
+		color: 	Color black
+		extension: 	a MorphExtension (185597952)
+		font: 	a StrikeFont(Bitmap DejaVu Sans 9 14)
+		emphasis: 	0
+		contents: 	'Inspect it'
+		hasFocus: 	false
+		isEnabled: 	true
+		subMenu: 	nil
+		isSelected: 	false
+		target: 	a Workspace
+		selector: 	#perform:orSendTo:
+		arguments: 	an Array(#inspectIt a PluggableTextMorph(570949632))
+		icon: 	ColorForm(16x16x4)
+		getStateSelector: 	nil
+		enablementSelector: 	nil
+		keyText: 	'i'
+
+
+ToggleMenuItemMorph(MenuItemMorph)>>mouseUp:
+	Receiver: a ToggleMenuItemMorph(162267136)'Inspect it'
+	Arguments and temporary variables: 
+		evt: 	[(474@435) mouseUp 866334 nil]
+	Receiver's instance variables: 
+		bounds: 	(403.0@427.0) corner: (546.0@445.0)
+		owner: 	a MenuMorph(1049362432)
+		submorphs: 	#()
+		fullBounds: 	(403.0@427.0) corner: (546.0@445.0)
+		color: 	Color black
+		extension: 	a MorphExtension (185597952)
+		font: 	a StrikeFont(Bitmap DejaVu Sans 9 14)
+		emphasis: 	0
+		contents: 	'Inspect it'
+		hasFocus: 	false
+		isEnabled: 	true
+		subMenu: 	nil
+		isSelected: 	false
+		target: 	a Workspace
+		selector: 	#perform:orSendTo:
+		arguments: 	an Array(#inspectIt a PluggableTextMorph(570949632))
+		icon: 	ColorForm(16x16x4)
+		getStateSelector: 	nil
+		enablementSelector: 	nil
+		keyText: 	'i'
+
+
+ToggleMenuItemMorph(MenuItemMorph)>>handleMouseUp:
+	Receiver: a ToggleMenuItemMorph(162267136)'Inspect it'
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+	Receiver's instance variables: 
+		bounds: 	(403.0@427.0) corner: (546.0@445.0)
+		owner: 	a MenuMorph(1049362432)
+		submorphs: 	#()
+		fullBounds: 	(403.0@427.0) corner: (546.0@445.0)
+		color: 	Color black
+		extension: 	a MorphExtension (185597952)
+		font: 	a StrikeFont(Bitmap DejaVu Sans 9 14)
+		emphasis: 	0
+		contents: 	'Inspect it'
+		hasFocus: 	false
+		isEnabled: 	true
+		subMenu: 	nil
+		isSelected: 	false
+		target: 	a Workspace
+		selector: 	#perform:orSendTo:
+		arguments: 	an Array(#inspectIt a PluggableTextMorph(570949632))
+		icon: 	ColorForm(16x16x4)
+		getStateSelector: 	nil
+		enablementSelector: 	nil
+		keyText: 	'i'
+
+
+MouseButtonEvent>>sentTo:
+	Receiver: [(474@435) mouseUp 866334 nil]
+	Arguments and temporary variables: 
+		anObject: 	a ToggleMenuItemMorph(162267136)'Inspect it'
+	Receiver's instance variables: 
+		timeStamp: 	866334
+		source: 	a HandMorph(760479744)
+		windowIndex: 	nil
+		type: 	#mouseUp
+		buttons: 	0
+		position: 	(474@435)
+		handler: 	nil
+		wasHandled: 	true
+		whichButton: 	4
+
+
+ToggleMenuItemMorph(Morph)>>handleEvent:
+	Receiver: a ToggleMenuItemMorph(162267136)'Inspect it'
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+	Receiver's instance variables: 
+		bounds: 	(403.0@427.0) corner: (546.0@445.0)
+		owner: 	a MenuMorph(1049362432)
+		submorphs: 	#()
+		fullBounds: 	(403.0@427.0) corner: (546.0@445.0)
+		color: 	Color black
+		extension: 	a MorphExtension (185597952)
+		font: 	a StrikeFont(Bitmap DejaVu Sans 9 14)
+		emphasis: 	0
+		contents: 	'Inspect it'
+		hasFocus: 	false
+		isEnabled: 	true
+		subMenu: 	nil
+		isSelected: 	false
+		target: 	a Workspace
+		selector: 	#perform:orSendTo:
+		arguments: 	an Array(#inspectIt a PluggableTextMorph(570949632))
+		icon: 	ColorForm(16x16x4)
+		getStateSelector: 	nil
+		enablementSelector: 	nil
+		keyText: 	'i'
+
+
+MorphicEventDispatcher>>dispatchDefault:with:
+	Receiver: a MorphicEventDispatcher
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		aMorph: 	a ToggleMenuItemMorph(162267136)'Inspect it'
+		localEvt: 	nil
+		index: 	1
+		child: 	nil
+		morphs: 	#()
+		inside: 	true
+	Receiver's instance variables: 
+		lastType: 	#mouseUp
+		lastDispatch: 	#dispatchDefault:with:
+
+
+MorphicEventDispatcher>>dispatchEvent:with:
+	Receiver: a MorphicEventDispatcher
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		aMorph: 	a ToggleMenuItemMorph(162267136)'Inspect it'
+	Receiver's instance variables: 
+		lastType: 	#mouseUp
+		lastDispatch: 	#dispatchDefault:with:
+
+
+ToggleMenuItemMorph(Morph)>>processEvent:using:
+	Receiver: a ToggleMenuItemMorph(162267136)'Inspect it'
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		defaultDispatcher: 	a MorphicEventDispatcher
+	Receiver's instance variables: 
+		bounds: 	(403.0@427.0) corner: (546.0@445.0)
+		owner: 	a MenuMorph(1049362432)
+		submorphs: 	#()
+		fullBounds: 	(403.0@427.0) corner: (546.0@445.0)
+		color: 	Color black
+		extension: 	a MorphExtension (185597952)
+		font: 	a StrikeFont(Bitmap DejaVu Sans 9 14)
+		emphasis: 	0
+		contents: 	'Inspect it'
+		hasFocus: 	false
+		isEnabled: 	true
+		subMenu: 	nil
+		isSelected: 	false
+		target: 	a Workspace
+		selector: 	#perform:orSendTo:
+		arguments: 	an Array(#inspectIt a PluggableTextMorph(570949632))
+		icon: 	ColorForm(16x16x4)
+		getStateSelector: 	nil
+		enablementSelector: 	nil
+		keyText: 	'i'
+
+
+MorphicEventDispatcher>>dispatchDefault:with:
+	Receiver: a MorphicEventDispatcher
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		aMorph: 	a MenuMorph(1049362432)
+		localEvt: 	[(474@435) mouseUp 866334 nil]
+		index: 	3
+		child: 	a ToggleMenuItemMorph(162267136)'Inspect it'
+		morphs: 	an Array(a ToggleMenuItemMorph(1021313024)'Do it' a ToggleMenuItemMorph...etc...
+		inside: 	false
+	Receiver's instance variables: 
+		lastType: 	#mouseUp
+		lastDispatch: 	#dispatchDefault:with:
+
+
+MorphicEventDispatcher>>dispatchEvent:with:
+	Receiver: a MorphicEventDispatcher
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		aMorph: 	a MenuMorph(1049362432)
+	Receiver's instance variables: 
+		lastType: 	#mouseUp
+		lastDispatch: 	#dispatchDefault:with:
+
+
+MenuMorph(Morph)>>processEvent:using:
+	Receiver: a MenuMorph(1049362432)
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		defaultDispatcher: 	a MorphicEventDispatcher
+	Receiver's instance variables: 
+		bounds: 	(398.0@384.0) corner: (551.0@724.0)
+		owner: 	nil
+		submorphs: 	an Array(a ToggleMenuItemMorph(1021313024)'Do it' a ToggleMenuItemMo...etc...
+		fullBounds: 	(398.0@384.0) corner: (551.0@724.0)
+		color: 	(Color r: 0.894 g: 0.894 b: 0.894 alpha: 1.0)
+		extension: 	a MorphExtension (11010048) [other:  (basicColor -> (Color r: 0.8230...etc...
+		borderWidth: 	2
+		borderColor: 	(Color r: 0.674 g: 0.674 b: 0.674 alpha: 1.0)
+		defaultTarget: 	a Workspace
+		selectedItem: 	a ToggleMenuItemMorph(162267136)'Inspect it'
+		stayUp: 	false
+		popUpOwner: 	nil
+		activeSubMenu: 	nil
+		activatorDockingBar: 	nil
+		embeddable: 	nil
+		menuItems: 	an OrderedCollection(a ToggleMenuItemMorph(1021313024)'Do it' a Togg...etc...
+
+
+MenuMorph(Morph)>>processEvent:
+	Receiver: a MenuMorph(1049362432)
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+	Receiver's instance variables: 
+		bounds: 	(398.0@384.0) corner: (551.0@724.0)
+		owner: 	nil
+		submorphs: 	an Array(a ToggleMenuItemMorph(1021313024)'Do it' a ToggleMenuItemMo...etc...
+		fullBounds: 	(398.0@384.0) corner: (551.0@724.0)
+		color: 	(Color r: 0.894 g: 0.894 b: 0.894 alpha: 1.0)
+		extension: 	a MorphExtension (11010048) [other:  (basicColor -> (Color r: 0.8230...etc...
+		borderWidth: 	2
+		borderColor: 	(Color r: 0.674 g: 0.674 b: 0.674 alpha: 1.0)
+		defaultTarget: 	a Workspace
+		selectedItem: 	a ToggleMenuItemMorph(162267136)'Inspect it'
+		stayUp: 	false
+		popUpOwner: 	nil
+		activeSubMenu: 	nil
+		activatorDockingBar: 	nil
+		embeddable: 	nil
+		menuItems: 	an OrderedCollection(a ToggleMenuItemMorph(1021313024)'Do it' a Togg...etc...
+
+
+MenuMorph>>handleFocusEvent:
+	Receiver: a MenuMorph(1049362432)
+	Arguments and temporary variables: 
+		evt: 	[(474@435) mouseUp 866334 nil]
+	Receiver's instance variables: 
+		bounds: 	(398.0@384.0) corner: (551.0@724.0)
+		owner: 	nil
+		submorphs: 	an Array(a ToggleMenuItemMorph(1021313024)'Do it' a ToggleMenuItemMo...etc...
+		fullBounds: 	(398.0@384.0) corner: (551.0@724.0)
+		color: 	(Color r: 0.894 g: 0.894 b: 0.894 alpha: 1.0)
+		extension: 	a MorphExtension (11010048) [other:  (basicColor -> (Color r: 0.8230...etc...
+		borderWidth: 	2
+		borderColor: 	(Color r: 0.674 g: 0.674 b: 0.674 alpha: 1.0)
+		defaultTarget: 	a Workspace
+		selectedItem: 	a ToggleMenuItemMorph(162267136)'Inspect it'
+		stayUp: 	false
+		popUpOwner: 	nil
+		activeSubMenu: 	nil
+		activatorDockingBar: 	nil
+		embeddable: 	nil
+		menuItems: 	an OrderedCollection(a ToggleMenuItemMorph(1021313024)'Do it' a Togg...etc...
+
+
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+	Receiver: a HandMorph(760479744)
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		focusHolder: 	a MenuMorph(1049362432)
+		aBlock: 	[ self mouseFocus: nil ]
+		w: 	a WorldMorph(511705088) [world]
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(474@435) corner: (490@451)
+		owner: 	a WorldMorph(511705088) [world]
+		submorphs: 	#()
+		fullBounds: 	(474@435) corner: (490@451)
+		color: 	Color blue
+		extension: 	a MorphExtension (114556928)
+		mouseFocus: 	nil
+		keyboardFocus: 	nil
+		eventListeners: 	nil
+		mouseListeners: 	nil
+		keyboardListeners: 	nil
+		mouseClickState: 	nil
+		mouseOverHandler: 	a MouseOverHandler
+		lastMouseEvent: 	[(474@435) mouseUp 866334 nil]
+		targetOffset: 	(71.0@8.0)
+		damageRecorder: 	a DamageRecorder
+		cacheCanvas: 	nil
+		cachedCanvasHasHoles: 	false
+		temporaryCursor: 	nil
+		temporaryCursorOffset: 	nil
+		hardwareCursor: 	nil
+		hasChanged: 	true
+		savedPatch: 	nil
+		lastEventBuffer: 	#(1 866334 474 435 0 0 0 1)
+		lastKeyScanCode: 	51
+		combinedChar: 	nil
+		eventSource: 	nil
+		lastSystemEvent: 	nil
+		captureBlock: 	nil
+		recentModifiers: 	0
+
+
+BlockClosure>>on:do:
+	Receiver: [ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (an...etc...
+	Arguments and temporary variables: 
+		exception: 	Error
+		handlerAction: 	[ :ex | 
+ActiveWorld := priorWorld.
+ActiveEvent := priorEvent.
+A...etc...
+		handlerActive: 	false
+	Receiver's instance variables: 
+		outerContext: 	HandMorph>>sendFocusEvent:to:clear:
+		startpc: 	67
+		numArgs: 	0
+
+
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+	Receiver: a WorldMorph(511705088) [world]
+	Arguments and temporary variables: 
+		aBlock: 	[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder ha...etc...
+		priorWorld: 	a WorldMorph(511705088) [world]
+		priorHand: 	a HandMorph(760479744)
+		priorEvent: 	[(474@435) mouseOver red nil nil]
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1064@742)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(984088576) a SystemWindow(481034240) a Nauti...etc...
+		fullBounds: 	nil
+		color: 	(Color r: 0.937 g: 0.937 b: 0.937 alpha: 1.0)
+		extension: 	a MorphExtension (552861696) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.861 g: 1.0 b: 0.722 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+
+
+HandMorph>>sendFocusEvent:to:clear:
+	Receiver: a HandMorph(760479744)
+	Arguments and temporary variables: 
+		result: 	nil
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		focusHolder: 	a MenuMorph(1049362432)
+		aBlock: 	[ self mouseFocus: nil ]
+		w: 	a WorldMorph(511705088) [world]
+	Receiver's instance variables: 
+		bounds: 	(474@435) corner: (490@451)
+		owner: 	a WorldMorph(511705088) [world]
+		submorphs: 	#()
+		fullBounds: 	(474@435) corner: (490@451)
+		color: 	Color blue
+		extension: 	a MorphExtension (114556928)
+		mouseFocus: 	nil
+		keyboardFocus: 	nil
+		eventListeners: 	nil
+		mouseListeners: 	nil
+		keyboardListeners: 	nil
+		mouseClickState: 	nil
+		mouseOverHandler: 	a MouseOverHandler
+		lastMouseEvent: 	[(474@435) mouseUp 866334 nil]
+		targetOffset: 	(71.0@8.0)
+		damageRecorder: 	a DamageRecorder
+		cacheCanvas: 	nil
+		cachedCanvasHasHoles: 	false
+		temporaryCursor: 	nil
+		temporaryCursorOffset: 	nil
+		hardwareCursor: 	nil
+		hasChanged: 	true
+		savedPatch: 	nil
+		lastEventBuffer: 	#(1 866334 474 435 0 0 0 1)
+		lastKeyScanCode: 	51
+		combinedChar: 	nil
+		eventSource: 	nil
+		lastSystemEvent: 	nil
+		captureBlock: 	nil
+		recentModifiers: 	0
+
+
+HandMorph>>sendEvent:focus:clear:
+	Receiver: a HandMorph(760479744)
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		focusHolder: 	a MenuMorph(1049362432)
+		aBlock: 	[ self mouseFocus: nil ]
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(474@435) corner: (490@451)
+		owner: 	a WorldMorph(511705088) [world]
+		submorphs: 	#()
+		fullBounds: 	(474@435) corner: (490@451)
+		color: 	Color blue
+		extension: 	a MorphExtension (114556928)
+		mouseFocus: 	nil
+		keyboardFocus: 	nil
+		eventListeners: 	nil
+		mouseListeners: 	nil
+		keyboardListeners: 	nil
+		mouseClickState: 	nil
+		mouseOverHandler: 	a MouseOverHandler
+		lastMouseEvent: 	[(474@435) mouseUp 866334 nil]
+		targetOffset: 	(71.0@8.0)
+		damageRecorder: 	a DamageRecorder
+		cacheCanvas: 	nil
+		cachedCanvasHasHoles: 	false
+		temporaryCursor: 	nil
+		temporaryCursorOffset: 	nil
+		hardwareCursor: 	nil
+		hasChanged: 	true
+		savedPatch: 	nil
+		lastEventBuffer: 	#(1 866334 474 435 0 0 0 1)
+		lastKeyScanCode: 	51
+		combinedChar: 	nil
+		eventSource: 	nil
+		lastSystemEvent: 	nil
+		captureBlock: 	nil
+		recentModifiers: 	0
+
+
+HandMorph>>sendMouseEvent:
+	Receiver: a HandMorph(760479744)
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+	Receiver's instance variables: 
+		bounds: 	(474@435) corner: (490@451)
+		owner: 	a WorldMorph(511705088) [world]
+		submorphs: 	#()
+		fullBounds: 	(474@435) corner: (490@451)
+		color: 	Color blue
+		extension: 	a MorphExtension (114556928)
+		mouseFocus: 	nil
+		keyboardFocus: 	nil
+		eventListeners: 	nil
+		mouseListeners: 	nil
+		keyboardListeners: 	nil
+		mouseClickState: 	nil
+		mouseOverHandler: 	a MouseOverHandler
+		lastMouseEvent: 	[(474@435) mouseUp 866334 nil]
+		targetOffset: 	(71.0@8.0)
+		damageRecorder: 	a DamageRecorder
+		cacheCanvas: 	nil
+		cachedCanvasHasHoles: 	false
+		temporaryCursor: 	nil
+		temporaryCursorOffset: 	nil
+		hardwareCursor: 	nil
+		hasChanged: 	true
+		savedPatch: 	nil
+		lastEventBuffer: 	#(1 866334 474 435 0 0 0 1)
+		lastKeyScanCode: 	51
+		combinedChar: 	nil
+		eventSource: 	nil
+		lastSystemEvent: 	nil
+		captureBlock: 	nil
+		recentModifiers: 	0
+
+
+HandMorph>>handleEvent:
+	Receiver: a HandMorph(760479744)
+	Arguments and temporary variables: 
+		anEvent: 	[(474@435) mouseUp 866334 nil]
+		evt: 	[(474@435) mouseUp 866334 nil]
+	Receiver's instance variables: 
+		bounds: 	(474@435) corner: (490@451)
+		owner: 	a WorldMorph(511705088) [world]
+		submorphs: 	#()
+		fullBounds: 	nil
+		color: 	Color blue
+		extension: 	a MorphExtension (114556928)
+		mouseFocus: 	nil
+		keyboardFocus: 	nil
+		eventListeners: 	nil
+		mouseListeners: 	nil
+		keyboardListeners: 	nil
+		mouseClickState: 	nil
+		mouseOverHandler: 	a MouseOverHandler
+		lastMouseEvent: 	[(474@435) mouseOver nil nil]
+		targetOffset: 	(71.0@8.0)
+		damageRecorder: 	a DamageRecorder
+		cacheCanvas: 	nil
+		cachedCanvasHasHoles: 	false
+		temporaryCursor: 	nil
+		temporaryCursorOffset: 	nil
+		hardwareCursor: 	nil
+		hasChanged: 	true
+		savedPatch: 	nil
+		lastEventBuffer: 	#(1 866334 474 435 0 0 0 1)
+		lastKeyScanCode: 	51
+		combinedChar: 	nil
+		eventSource: 	nil
+		lastSystemEvent: 	nil
+		captureBlock: 	nil
+		recentModifiers: 	0
+
+
+HandMorph>>processEvents
+	Receiver: a HandMorph(760479744)
+	Arguments and temporary variables: 
+		evt: 	[(474@435) mouseUp 866334 nil]
+		evtBuf: 	#(1 866334 474 435 0 0 0 1)
+		type: 	1
+		hadAny: 	false
+	Receiver's instance variables: 
+		bounds: 	(474@449) corner: (490@465)
+		owner: 	a WorldMorph(511705088) [world]
+		submorphs: 	#()
+		fullBounds: 	(474@449) corner: (490@465)
+		color: 	Color blue
+		extension: 	a MorphExtension (114556928)
+		mouseFocus: 	nil
+		keyboardFocus: 	nil
+		eventListeners: 	nil
+		mouseListeners: 	nil
+		keyboardListeners: 	nil
+		mouseClickState: 	nil
+		mouseOverHandler: 	a MouseOverHandler
+		lastMouseEvent: 	[(474@449) mouseOver nil nil]
+		targetOffset: 	(71.0@8.0)
+		damageRecorder: 	a DamageRecorder
+		cacheCanvas: 	nil
+		cachedCanvasHasHoles: 	false
+		temporaryCursor: 	nil
+		temporaryCursorOffset: 	nil
+		hardwareCursor: 	nil
+		hasChanged: 	true
+		savedPatch: 	nil
+		lastEventBuffer: 	#(1 866554 474 449 0 0 0 1)
+		lastKeyScanCode: 	51
+		combinedChar: 	nil
+		eventSource: 	nil
+		lastSystemEvent: 	nil
+		captureBlock: 	nil
+		recentModifiers: 	0
+
+
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(511705088) [world]
+		h: 	a HandMorph(760479744)
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(760479744))
+		viewBox: 	(0@0) corner: (1064@742)
+		canvas: 	a FormCanvas on: DisplayScreen(1064x742x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a SearchMorph(612892672))(a SearchMorp...etc...
+		lastStepTime: 	866554
+		lastStepMessage: 	nil
+		lastCycleTime: 	866554
+		alarms: 	a Heap()
+		lastAlarmTime: 	866554
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(a HandMorph(760479744))
+	Arguments and temporary variables: 
+		aBlock: 	[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ]
+		index: 	1
+	Receiver's instance variables: 
+an Array(a HandMorph(760479744))
+
+WorldState>>handsDo:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aBlock: 	[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(760479744))
+		viewBox: 	(0@0) corner: (1064@742)
+		canvas: 	a FormCanvas on: DisplayScreen(1064x742x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a SearchMorph(612892672))(a SearchMorp...etc...
+		lastStepTime: 	866554
+		lastStepMessage: 	nil
+		lastCycleTime: 	866554
+		alarms: 	a Heap()
+		lastAlarmTime: 	866554
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+
+
+
+--- The full stack ---
+LOCell(Object)>>doesNotUnderstand: #self
+LOCell>>initialize
+LOCell class(Behavior)>>new
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+SmalltalkEditor>>evaluateSelectionAndDo:
+[ textMorph editor evaluateSelectionAndDo: [ :result | result inspect ] ] in PluggableTextMorph>>inspectIt
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+TextMorphForEditView(TextMorph)>>handleEdit:
+PluggableTextMorph>>handleEdit:
+PluggableTextMorph>>inspectIt
+Workspace(Object)>>perform:orSendTo:
+[ 
+| selArgCount |
+"show cursor in case item opens a new MVC window"
+(selArgCount := selector numArgs) = 0
+	ifTrue: [ target perform: selector ]
+	ifFalse: [ 
+		selArgCount = arguments size
+			ifTrue: [ target perform: selector withArguments: arguments ]
+			ifFalse: [ target perform: selector withArguments: (arguments copyWith: evt) ] ].
+self changed ] in ToggleMenuItemMorph(MenuItemMorph)>>invokeWithEvent:
+BlockClosure>>ensure:
+CursorWithMask(Cursor)>>showWhile:
+ToggleMenuItemMorph(MenuItemMorph)>>invokeWithEvent:
+ToggleMenuItemMorph(MenuItemMorph)>>mouseUp:
+ToggleMenuItemMorph(MenuItemMorph)>>handleMouseUp:
+MouseButtonEvent>>sentTo:
+ToggleMenuItemMorph(Morph)>>handleEvent:
+MorphicEventDispatcher>>dispatchDefault:with:
+MorphicEventDispatcher>>dispatchEvent:with:
+ToggleMenuItemMorph(Morph)>>processEvent:using:
+MorphicEventDispatcher>>dispatchDefault:with:
+MorphicEventDispatcher>>dispatchEvent:with:
+MenuMorph(Morph)>>processEvent:using:
+MenuMorph(Morph)>>processEvent:
+MenuMorph>>handleFocusEvent:
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+BlockClosure>>on:do:
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+HandMorph>>sendFocusEvent:to:clear:
+HandMorph>>sendEvent:focus:clear:
+HandMorph>>sendMouseEvent:
+HandMorph>>handleEvent:
+HandMorph>>processEvents
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+Array(SequenceableCollection)>>do:
+WorldState>>handsDo:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldState>>doOneSubCycleFor:
+WorldMorph>>doOneSubCycle
+MenuMorph>>invokeModalAt:in:allowKeyboard:
+MenuMorph>>invokeModal:
+MenuMorph>>invokeModal
+PluggableTextMorph>>yellowButtonActivity:
+SmalltalkEditor(TextEditor)>>mouseUp:
+[ editor mouseUp: evt ] in TextMorphForEditView(TextMorph)>>mouseUp:
+TextMorphForEditView(TextMorph)>>handleInteraction:
+TextMorphForEditView>>handleInteraction:
+TextMorphForEditView(TextMorph)>>mouseUp:
+TextMorphForEditView>>mouseUp:
+TextMorphForEditView(Morph)>>handleMouseUp:
+MouseButtonEvent>>sentTo:
+TextMorphForEditView(Morph)>>handleEvent:
+TextMorphForEditView(Morph)>>handleFocusEvent:
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+BlockClosure>>on:do:
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+HandMorph>>sendFocusEvent:to:clear:
+HandMorph>>sendEvent:focus:clear:
+HandMorph>>sendMouseEvent:
+HandMorph>>handleEvent:
+HandMorph>>processEvents
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+Array(SequenceableCollection)>>do:
+WorldState>>handsDo:
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+[ 
+World doOneCycle.
+Processor yield.
+false ] in MorphicUIManager>>spawnNewProcess
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+MessageNotUnderstood: LOCell>>self
+16 October 2014 3:49:34.881765 pm
+
+VM: Mac OS - intel - 1090 - NBCoInterpreter NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+NBCogit NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+https://github.com/pharo-project/pharo-vm.git Commit: ed4a4f59208968a21d82fd2406f75c2c4de558b2 Date: 2014-05-15 18:23:04 +0200 By: Esteban Lorenzano <estebanlm@gmail.com> Jenkins build #14826
+
+Image: Pharo3.0 [Latest update: #30858]
+
+LOCell(Object)>>doesNotUnderstand: #self
+	Receiver: a LOCell(803733504)
+	Arguments and temporary variables: 
+		aMessage: 	self
+		exception: 	MessageNotUnderstood: LOCell>>self
+		resumeValue: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(963117056)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (865599488)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(963117056)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell>>initialize
+	Receiver: a LOCell(803733504)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(963117056)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (865599488)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(963117056)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell class(Behavior)>>new
+	Receiver: LOCell
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	SimpleSwitchMorph
+		methodDict: 	a MethodDictionary(#initialize->LOCell>>#initialize )
+		format: 	168
+		layout: 	a FixedLayout
+		instanceVariables: 	#(#mouseAction)
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#LOCell
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'PBE-LightsOut'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	'LOCell new
+'
+		itsSelection: 	a Text for 'LOCell new
+'
+		itsSelectionString: 	'LOCell new
+'
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ LOCell new
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+		useFaultyForParsing: 	false
+
+
+SmalltalkEditor>>evaluateSelectionAndDo:
+	Receiver: a SmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result | result inspect ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		morph: 	a TextMorphForEditView(381419520)
+		selectionShowing: 	true
+		model: 	a Workspace
+		editingState: 	a SmalltalkEditingState
+
+
+[ textMorph editor evaluateSelectionAndDo: [ :result | result inspect ] ] in PluggableTextMorph>>inspectIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(372.0@535.0) corner: (812.0@702.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(372@535) corner: (812@702)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph editor evaluateSelectionAndDo: [ :result | result inspec...etc...
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(372.0@535.0) corner: (812.0@702.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(372@535) corner: (812@702)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleEdit:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		editBlock: 	[ result := editBlock value ]
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		result: 	nil
+		editBlock: 	[ textMorph editor evaluateSelectionAndDo: [ :result | result inspec...etc...
+	Receiver's instance variables: 
+		bounds: 	(372.0@535.0) corner: (812.0@702.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(372@535) corner: (812@702)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+PluggableTextMorph>>inspectIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(372.0@535.0) corner: (812.0@702.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(372@535) corner: (812@702)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ :morph | morph inspectIt ] in SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+	Receiver: SmalltalkEditor
+	Arguments and temporary variables: 
+		aBuilder: 	a PragmaMenuAndShortcutRegistration
+		morph: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		superclass: 	TextEditor
+		methodDict: 	a MethodDictionary(#argAdvance:->SmalltalkEditor>>#argAdvance: #bro...etc...
+		format: 	138
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#SmalltalkEditor
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Text-Edition'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		cmdActions: 	#(#noop: #cursorHome: #noop: #noop: #cursorEnd: #noop: #noop: #noop...etc...
+		shiftCmdActions: 	#(#noop: #argAdvance: #noop: #compareToClipboard: #debugIt: #m...etc...
+
+
+BlockClosure>>cull:
+	Receiver: [ :morph | morph inspectIt ]
+	Arguments and temporary variables: 
+		anArg: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	182
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:
+	Receiver: [ :morph | morph inspectIt ]
+	Arguments and temporary variables: 
+		firstArg: 	a PluggableTextMorph(570949632)
+		secondArg: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	182
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:cull:
+	Receiver: [ :morph | morph inspectIt ]
+	Arguments and temporary variables: 
+		firstArg: 	a PluggableTextMorph(570949632)
+		secondArg: 	a PluggableTextMorph(570949632)
+		thirdArg: 	[keystroke '<Cmd-i>']
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	182
+		numArgs: 	1
+
+
+KMCategoryBinding>>completeMatch:buffer:
+	Receiver: aKMCategoryTarget(#SmalltalkEditor)
+	Arguments and temporary variables: 
+		aKeymap: 	#inspectIt on Cmd + I do [ :morph | morph inspectIt ]
+
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+	Receiver's instance variables: 
+		target: 	a PluggableTextMorph(570949632)
+		category: 	a KMCategory
+		morph: 	a PluggableTextMorph(570949632)
+
+
+[ :l | l completeMatch: self buffer: aBuffer ] in KMKeymap>>notifyCompleteMatchTo:buffer:
+	Receiver: #inspectIt on Cmd + I do [ :morph | morph inspectIt ]
+
+	Arguments and temporary variables: 
+		aListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+		listeners: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		l: 	aKMCategoryTarget(#SmalltalkEditor)
+	Receiver's instance variables: 
+		action: 	[ :morph | morph inspectIt ]
+		name: 	#inspectIt
+		shortcut: 	Cmd + I
+		defaultShortcut: 	Cmd + I
+		description: 	''
+
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+	Arguments and temporary variables: 
+		aBlock: 	[ :l | l completeMatch: self buffer: aBuffer ]
+		index: 	1
+	Receiver's instance variables: 
+an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+
+KMKeymap>>notifyCompleteMatchTo:buffer:
+	Receiver: #inspectIt on Cmd + I do [ :morph | morph inspectIt ]
+
+	Arguments and temporary variables: 
+		aListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+		listeners: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+	Receiver's instance variables: 
+		action: 	[ :morph | morph inspectIt ]
+		name: 	#inspectIt
+		shortcut: 	Cmd + I
+		defaultShortcut: 	Cmd + I
+		description: 	''
+
+
+KMKeymap>>onMatchWith:notify:andDo:
+	Receiver: #inspectIt on Cmd + I do [ :morph | morph inspectIt ]
+
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		anAction: 	[ ^ self ]
+	Receiver's instance variables: 
+		action: 	[ :morph | morph inspectIt ]
+		name: 	#inspectIt
+		shortcut: 	Cmd + I
+		defaultShortcut: 	Cmd + I
+		description: 	''
+
+
+[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andDo: aBlock ] in KMCategory>>onMatchWith:notify:andDo:
+	Receiver: a KMCategory
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBlock: 	[ ^ self ]
+		entry: 	#inspectIt on Cmd + I do [ :morph | morph inspectIt ]
+
+	Receiver's instance variables: 
+		name: 	#SmalltalkEditor
+		platforms: 	a Dictionary(#MacOSX->a KMStorage #Unix->a KMStorage #Windows->a KMS...etc...
+
+
+Set>>do:
+	Receiver: a Set(#printIt on Cmd + P do [ :morph | morph printIt ]
+ #previousSelection on Cmd + Shift...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andD...etc...
+		index: 	13
+		each: 	#inspectIt on Cmd + I do [ :morph | morph inspectIt ]
+
+	Receiver's instance variables: 
+		tally: 	14
+		array: 	an Array(#printIt on Cmd + P do [ :morph | morph printIt ]
+ #previousSel...etc...
+
+
+KMCategory>>onMatchWith:notify:andDo:
+	Receiver: a KMCategory
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBlock: 	[ ^ self ]
+	Receiver's instance variables: 
+		name: 	#SmalltalkEditor
+		platforms: 	a Dictionary(#MacOSX->a KMStorage #Unix->a KMStorage #Windows->a KMS...etc...
+
+
+KMCategoryBinding>>verifyMatchWith:notifying:thenDoing:
+	Receiver: aKMCategoryTarget(#SmalltalkEditor)
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+		aListener: 	a KMDispatcher
+		anAction: 	[ ^ self ]
+	Receiver's instance variables: 
+		target: 	a PluggableTextMorph(570949632)
+		category: 	a KMCategory
+		morph: 	a PluggableTextMorph(570949632)
+
+
+[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyMatchWith: anEventBuffer notifying: self thenDoing: [ ^ self ] ] in KMDispatcher>>dispatch:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+		association: 	nil
+		match: 	nil
+		aTarget: 	aKMCategoryTarget(#SmalltalkEditor)
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#SmalltalkEditor) aKMCategoryTarget(#TextMorph...etc...
+		morph: 	a PluggableTextMorph(570949632)
+		directKeymaps: 	a KMCategory
+
+
+OrderedCollection>>do:
+	Receiver: an OrderedCollection(aKMCategoryTarget(nil) aKMCategoryTarget(#SmalltalkEditor) aKMCategor...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyM...etc...
+		index: 	2
+	Receiver's instance variables: 
+		array: 	an Array(aKMCategoryTarget(nil) aKMCategoryTarget(#SmalltalkEditor) aKMC...etc...
+		firstIndex: 	1
+		lastIndex: 	7
+
+
+KMDispatcher>>dispatch:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+		association: 	nil
+		match: 	nil
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#SmalltalkEditor) aKMCategoryTarget(#TextMorph...etc...
+		morph: 	a PluggableTextMorph(570949632)
+		directKeymaps: 	a KMCategory
+
+
+KMTarget>>dispatch:
+	Receiver: a KMTarget
+	Arguments and temporary variables: 
+		buffer: 	an OrderedCollection([keystroke '<Cmd-i>'])
+	Receiver's instance variables: 
+		realTarget: 	nil
+		morph: 	a PluggableTextMorph(570949632)
+		targetSelector: 	#yourself
+		directKeymaps: 	nil
+		perInstanceCategories: 	nil
+
+
+[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstance buffer copy.
+aKeyboardEvent wasHandled
+	ifTrue: [ ^ self ] ] in KMDispatchChain>>dispatch:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aKeyboardEvent: 	[keystroke '<Cmd-i>']
+		targetToDispatch: 	a KMTarget
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatchChain>>do:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aBlock: 	[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstan...etc...
+		currentTarget: 	a KMTarget
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatchChain>>dispatch:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aKeyboardEvent: 	[keystroke '<Cmd-i>']
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatcher>>dispatchKeystroke:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		aKeyEvent: 	[keystroke '<Cmd-i>']
+		chain: 	a KMDispatchChain
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#TextMorph) aKMCategoryTarget(#MorphFocusCtrlN...etc...
+		morph: 	a TextMorphForEditView(381419520)
+		directKeymaps: 	a KMCategory
+
+
+TextMorphForEditView(Morph)>>dispatchKeystrokeForEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		evt: 	[keystroke '<Cmd-i>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleKeystroke:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-i>']
+		pasteUp: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+KeyboardEvent>>sentTo:
+	Receiver: [keystroke '<Cmd-i>']
+	Arguments and temporary variables: 
+		anObject: 	a TextMorphForEditView(381419520)
+	Receiver's instance variables: 
+		timeStamp: 	951666
+		source: 	a HandMorph(760479744)
+		windowIndex: 	nil
+		type: 	#keystroke
+		buttons: 	64
+		position: 	(136@22.0)
+		handler: 	nil
+		wasHandled: 	true
+		keyValue: 	105
+		charCode: 	105
+		scanCode: 	34
+
+
+TextMorphForEditView(Morph)>>handleEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-i>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+TextMorphForEditView(Morph)>>handleFocusEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-i>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+	Receiver: a HandMorph(760479744)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-i>']
+		focusHolder: 	a TextMorphForEditView(381419520)
+		aBlock: 	[ self keyboardFocus: nil ]
+		w: 	a WorldMorph(511705088) [world]
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(504@549) corner: (520@565)
+		owner: 	a WorldMorph(511705088) [world]
+		submorphs: 	#()
+		fullBounds: 	(504@549) corner: (520@565)
+		color: 	Color blue
+		extension: 	a MorphExtension (114556928)
+		mouseFocus: 	nil
+		keyboardFocus: 	a TextMorphForEditView(381419520)
+		eventListeners: 	nil
+		mouseListeners: 	nil
+		keyboardListeners: 	nil
+		mouseClickState: 	nil
+		mouseOverHandler: 	a MouseOverHandler
+		lastMouseEvent: 	[(512@558) mouseOver nil nil]
+		targetOffset: 	(136@22.0)
+		damageRecorder: 	a DamageRecorder
+		cacheCanvas: 	nil
+		cachedCanvasHasHoles: 	false
+		temporaryCursor: 	Form(16x16x8)
+		temporaryCursorOffset: 	(-8@ -9)
+		hardwareCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r...etc...
+		hasChanged: 	true
+		savedPatch: 	nil
+		lastEventBuffer: 	#(1 936192 512 558 0 0 0 1)
+		lastKeyScanCode: 	34
+		combinedChar: 	nil
+		eventSource: 	nil
+		lastSystemEvent: 	nil
+		captureBlock: 	nil
+		recentModifiers: 	8
+
+
+BlockClosure>>on:do:
+	Receiver: [ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (an...etc...
+	Arguments and temporary variables: 
+		exception: 	Error
+		handlerAction: 	[ :ex | 
+ActiveWorld := priorWorld.
+ActiveEvent := priorEvent.
+A...etc...
+		handlerActive: 	false
+	Receiver's instance variables: 
+		outerContext: 	HandMorph>>sendFocusEvent:to:clear:
+		startpc: 	67
+		numArgs: 	0
+
+
+
+--- The full stack ---
+LOCell(Object)>>doesNotUnderstand: #self
+LOCell>>initialize
+LOCell class(Behavior)>>new
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+SmalltalkEditor>>evaluateSelectionAndDo:
+[ textMorph editor evaluateSelectionAndDo: [ :result | result inspect ] ] in PluggableTextMorph>>inspectIt
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+TextMorphForEditView(TextMorph)>>handleEdit:
+PluggableTextMorph>>handleEdit:
+PluggableTextMorph>>inspectIt
+[ :morph | morph inspectIt ] in SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+BlockClosure>>cull:
+BlockClosure>>cull:cull:
+BlockClosure>>cull:cull:cull:
+KMCategoryBinding>>completeMatch:buffer:
+[ :l | l completeMatch: self buffer: aBuffer ] in KMKeymap>>notifyCompleteMatchTo:buffer:
+Array(SequenceableCollection)>>do:
+KMKeymap>>notifyCompleteMatchTo:buffer:
+KMKeymap>>onMatchWith:notify:andDo:
+[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andDo: aBlock ] in KMCategory>>onMatchWith:notify:andDo:
+Set>>do:
+KMCategory>>onMatchWith:notify:andDo:
+KMCategoryBinding>>verifyMatchWith:notifying:thenDoing:
+[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyMatchWith: anEventBuffer notifying: self thenDoing: [ ^ self ] ] in KMDispatcher>>dispatch:
+OrderedCollection>>do:
+KMDispatcher>>dispatch:
+KMTarget>>dispatch:
+[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstance buffer copy.
+aKeyboardEvent wasHandled
+	ifTrue: [ ^ self ] ] in KMDispatchChain>>dispatch:
+KMDispatchChain>>do:
+KMDispatchChain>>dispatch:
+KMDispatcher>>dispatchKeystroke:
+TextMorphForEditView(Morph)>>dispatchKeystrokeForEvent:
+TextMorphForEditView(TextMorph)>>handleKeystroke:
+KeyboardEvent>>sentTo:
+TextMorphForEditView(Morph)>>handleEvent:
+TextMorphForEditView(Morph)>>handleFocusEvent:
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+BlockClosure>>on:do:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+HandMorph>>sendFocusEvent:to:clear:
+HandMorph>>sendEvent:focus:clear:
+HandMorph>>sendKeyboardEvent:
+HandMorph>>handleEvent:
+HandMorph>>processEvents
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+Array(SequenceableCollection)>>do:
+WorldState>>handsDo:
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+[ 
+World doOneCycle.
+Processor yield.
+false ] in MorphicUIManager>>spawnNewProcess
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+MessageNotUnderstood: LOCell>>self
+16 October 2014 3:51:18.319505 pm
+
+VM: Mac OS - intel - 1090 - NBCoInterpreter NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+NBCogit NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+https://github.com/pharo-project/pharo-vm.git Commit: ed4a4f59208968a21d82fd2406f75c2c4de558b2 Date: 2014-05-15 18:23:04 +0200 By: Esteban Lorenzano <estebanlm@gmail.com> Jenkins build #14826
+
+Image: Pharo3.0 [Latest update: #30858]
+
+LOCell(Object)>>doesNotUnderstand: #self
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+		aMessage: 	self
+		exception: 	MessageNotUnderstood: LOCell>>self
+		resumeValue: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell>>initialize
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell class(Behavior)>>new
+	Receiver: LOCell
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	SimpleSwitchMorph
+		methodDict: 	a MethodDictionary(#initialize->LOCell>>#initialize )
+		format: 	168
+		layout: 	a FixedLayout
+		instanceVariables: 	#(#mouseAction)
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#LOCell
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'PBE-LightsOut'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	'LOCell new
+'
+		itsSelection: 	a Text for 'LOCell new
+'
+		itsSelectionString: 	'LOCell new
+'
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ LOCell new
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+		useFaultyForParsing: 	false
+
+
+SmalltalkEditor>>evaluateSelectionAndDo:
+	Receiver: a SmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result | result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		morph: 	a TextMorphForEditView(381419520)
+		selectionShowing: 	true
+		model: 	a Workspace
+		editingState: 	a SmalltalkEditingState
+
+
+SmalltalkEditor>>evaluateSelection
+	Receiver: a SmalltalkEditor
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		morph: 	a TextMorphForEditView(381419520)
+		selectionShowing: 	true
+		model: 	a Workspace
+		editingState: 	a SmalltalkEditingState
+
+
+[ textMorph editor evaluateSelection ] in PluggableTextMorph>>doIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph editor evaluateSelection ]
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleEdit:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		editBlock: 	[ result := editBlock value ]
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		result: 	nil
+		editBlock: 	[ textMorph editor evaluateSelection ]
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+PluggableTextMorph>>doIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ :morph | morph doIt ] in SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+	Receiver: SmalltalkEditor
+	Arguments and temporary variables: 
+		aBuilder: 	a PragmaMenuAndShortcutRegistration
+		morph: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		superclass: 	TextEditor
+		methodDict: 	a MethodDictionary(#argAdvance:->SmalltalkEditor>>#argAdvance: #bro...etc...
+		format: 	138
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#SmalltalkEditor
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Text-Edition'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		cmdActions: 	#(#noop: #cursorHome: #noop: #noop: #cursorEnd: #noop: #noop: #noop...etc...
+		shiftCmdActions: 	#(#noop: #argAdvance: #noop: #compareToClipboard: #debugIt: #m...etc...
+
+
+BlockClosure>>cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		anArg: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		firstArg: 	a PluggableTextMorph(570949632)
+		secondArg: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		firstArg: 	a PluggableTextMorph(570949632)
+		secondArg: 	a PluggableTextMorph(570949632)
+		thirdArg: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+KMCategoryBinding>>completeMatch:buffer:
+	Receiver: aKMCategoryTarget(#SmalltalkEditor)
+	Arguments and temporary variables: 
+		aKeymap: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+	Receiver's instance variables: 
+		target: 	a PluggableTextMorph(570949632)
+		category: 	a KMCategory
+		morph: 	a PluggableTextMorph(570949632)
+
+
+[ :l | l completeMatch: self buffer: aBuffer ] in KMKeymap>>notifyCompleteMatchTo:buffer:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		aListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		listeners: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		l: 	aKMCategoryTarget(#SmalltalkEditor)
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+	Arguments and temporary variables: 
+		aBlock: 	[ :l | l completeMatch: self buffer: aBuffer ]
+		index: 	1
+	Receiver's instance variables: 
+an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+
+KMKeymap>>notifyCompleteMatchTo:buffer:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		aListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		listeners: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+KMKeymap>>onMatchWith:notify:andDo:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		anAction: 	[ ^ self ]
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andDo: aBlock ] in KMCategory>>onMatchWith:notify:andDo:
+	Receiver: a KMCategory
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBlock: 	[ ^ self ]
+		entry: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Receiver's instance variables: 
+		name: 	#SmalltalkEditor
+		platforms: 	a Dictionary(#MacOSX->a KMStorage #Unix->a KMStorage #Windows->a KMS...etc...
+
+
+Set>>do:
+	Receiver: a Set(#printIt on Cmd + P do [ :morph | morph printIt ]
+ #previousSelection on Cmd + Shift...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andD...etc...
+		index: 	9
+		each: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Receiver's instance variables: 
+		tally: 	14
+		array: 	an Array(#printIt on Cmd + P do [ :morph | morph printIt ]
+ #previousSel...etc...
+
+
+KMCategory>>onMatchWith:notify:andDo:
+	Receiver: a KMCategory
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBlock: 	[ ^ self ]
+	Receiver's instance variables: 
+		name: 	#SmalltalkEditor
+		platforms: 	a Dictionary(#MacOSX->a KMStorage #Unix->a KMStorage #Windows->a KMS...etc...
+
+
+KMCategoryBinding>>verifyMatchWith:notifying:thenDoing:
+	Receiver: aKMCategoryTarget(#SmalltalkEditor)
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aListener: 	a KMDispatcher
+		anAction: 	[ ^ self ]
+	Receiver's instance variables: 
+		target: 	a PluggableTextMorph(570949632)
+		category: 	a KMCategory
+		morph: 	a PluggableTextMorph(570949632)
+
+
+[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyMatchWith: anEventBuffer notifying: self thenDoing: [ ^ self ] ] in KMDispatcher>>dispatch:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		association: 	nil
+		match: 	nil
+		aTarget: 	aKMCategoryTarget(#SmalltalkEditor)
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#SmalltalkEditor) aKMCategoryTarget(#TextMorph...etc...
+		morph: 	a PluggableTextMorph(570949632)
+		directKeymaps: 	a KMCategory
+
+
+OrderedCollection>>do:
+	Receiver: an OrderedCollection(aKMCategoryTarget(nil) aKMCategoryTarget(#SmalltalkEditor) aKMCategor...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyM...etc...
+		index: 	2
+	Receiver's instance variables: 
+		array: 	an Array(aKMCategoryTarget(nil) aKMCategoryTarget(#SmalltalkEditor) aKMC...etc...
+		firstIndex: 	1
+		lastIndex: 	7
+
+
+KMDispatcher>>dispatch:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		association: 	nil
+		match: 	nil
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#SmalltalkEditor) aKMCategoryTarget(#TextMorph...etc...
+		morph: 	a PluggableTextMorph(570949632)
+		directKeymaps: 	a KMCategory
+
+
+KMTarget>>dispatch:
+	Receiver: a KMTarget
+	Arguments and temporary variables: 
+		buffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+	Receiver's instance variables: 
+		realTarget: 	nil
+		morph: 	a PluggableTextMorph(570949632)
+		targetSelector: 	#yourself
+		directKeymaps: 	nil
+		perInstanceCategories: 	nil
+
+
+[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstance buffer copy.
+aKeyboardEvent wasHandled
+	ifTrue: [ ^ self ] ] in KMDispatchChain>>dispatch:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aKeyboardEvent: 	[keystroke '<Cmd-d>']
+		targetToDispatch: 	a KMTarget
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatchChain>>do:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aBlock: 	[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstan...etc...
+		currentTarget: 	a KMTarget
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatchChain>>dispatch:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aKeyboardEvent: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatcher>>dispatchKeystroke:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		aKeyEvent: 	[keystroke '<Cmd-d>']
+		chain: 	a KMDispatchChain
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#TextMorph) aKMCategoryTarget(#MorphFocusCtrlN...etc...
+		morph: 	a TextMorphForEditView(381419520)
+		directKeymaps: 	a KMCategory
+
+
+TextMorphForEditView(Morph)>>dispatchKeystrokeForEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		evt: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleKeystroke:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-d>']
+		pasteUp: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+KeyboardEvent>>sentTo:
+	Receiver: [keystroke '<Cmd-d>']
+	Arguments and temporary variables: 
+		anObject: 	a TextMorphForEditView(381419520)
+	Receiver's instance variables: 
+		timeStamp: 	1055131
+		source: 	a HandMorph(760479744)
+		windowIndex: 	nil
+		type: 	#keystroke
+		buttons: 	64
+		position: 	(195.0@82.0)
+		handler: 	nil
+		wasHandled: 	true
+		keyValue: 	100
+		charCode: 	100
+		scanCode: 	2
+
+
+TextMorphForEditView(Morph)>>handleEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+TextMorphForEditView(Morph)>>handleFocusEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+	Receiver: a HandMorph(760479744)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-d>']
+		focusHolder: 	a TextMorphForEditView(381419520)
+		aBlock: 	[ self keyboardFocus: nil ]
+		w: 	a WorldMorph(511705088) [world]
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(687@606) corner: (703@622)
+		owner: 	a WorldMorph(511705088) [world]
+		submorphs: 	#()
+		fullBounds: 	(687@606) corner: (703@622)
+		color: 	Color blue
+		extension: 	a MorphExtension (114556928)
+		mouseFocus: 	nil
+		keyboardFocus: 	a TextMorphForEditView(381419520)
+		eventListeners: 	nil
+		mouseListeners: 	nil
+		keyboardListeners: 	nil
+		mouseClickState: 	nil
+		mouseOverHandler: 	a MouseOverHandler
+		lastMouseEvent: 	[(687@606) mouseOver nil nil]
+		targetOffset: 	(127.0@152.0)
+		damageRecorder: 	a DamageRecorder
+		cacheCanvas: 	nil
+		cachedCanvasHasHoles: 	false
+		temporaryCursor: 	nil
+		temporaryCursorOffset: 	nil
+		hardwareCursor: 	nil
+		hasChanged: 	true
+		savedPatch: 	nil
+		lastEventBuffer: 	#(1 1053340 687 606 0 0 0 1)
+		lastKeyScanCode: 	2
+		combinedChar: 	nil
+		eventSource: 	nil
+		lastSystemEvent: 	nil
+		captureBlock: 	nil
+		recentModifiers: 	8
+
+
+
+--- The full stack ---
+LOCell(Object)>>doesNotUnderstand: #self
+LOCell>>initialize
+LOCell class(Behavior)>>new
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+SmalltalkEditor>>evaluateSelectionAndDo:
+SmalltalkEditor>>evaluateSelection
+[ textMorph editor evaluateSelection ] in PluggableTextMorph>>doIt
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+TextMorphForEditView(TextMorph)>>handleEdit:
+PluggableTextMorph>>handleEdit:
+PluggableTextMorph>>doIt
+[ :morph | morph doIt ] in SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+BlockClosure>>cull:
+BlockClosure>>cull:cull:
+BlockClosure>>cull:cull:cull:
+KMCategoryBinding>>completeMatch:buffer:
+[ :l | l completeMatch: self buffer: aBuffer ] in KMKeymap>>notifyCompleteMatchTo:buffer:
+Array(SequenceableCollection)>>do:
+KMKeymap>>notifyCompleteMatchTo:buffer:
+KMKeymap>>onMatchWith:notify:andDo:
+[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andDo: aBlock ] in KMCategory>>onMatchWith:notify:andDo:
+Set>>do:
+KMCategory>>onMatchWith:notify:andDo:
+KMCategoryBinding>>verifyMatchWith:notifying:thenDoing:
+[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyMatchWith: anEventBuffer notifying: self thenDoing: [ ^ self ] ] in KMDispatcher>>dispatch:
+OrderedCollection>>do:
+KMDispatcher>>dispatch:
+KMTarget>>dispatch:
+[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstance buffer copy.
+aKeyboardEvent wasHandled
+	ifTrue: [ ^ self ] ] in KMDispatchChain>>dispatch:
+KMDispatchChain>>do:
+KMDispatchChain>>dispatch:
+KMDispatcher>>dispatchKeystroke:
+TextMorphForEditView(Morph)>>dispatchKeystrokeForEvent:
+TextMorphForEditView(TextMorph)>>handleKeystroke:
+KeyboardEvent>>sentTo:
+TextMorphForEditView(Morph)>>handleEvent:
+TextMorphForEditView(Morph)>>handleFocusEvent:
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
+BlockClosure>>on:do:
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+HandMorph>>sendFocusEvent:to:clear:
+HandMorph>>sendEvent:focus:clear:
+HandMorph>>sendKeyboardEvent:
+HandMorph>>handleEvent:
+HandMorph>>processEvents
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+Array(SequenceableCollection)>>do:
+WorldState>>handsDo:
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+[ 
+World doOneCycle.
+Processor yield.
+false ] in MorphicUIManager>>spawnNewProcess
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+MessageNotUnderstood: LOCell>>self
+16 October 2014 3:51:29.38744 pm
+
+VM: Mac OS - intel - 1090 - NBCoInterpreter NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+NBCogit NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+https://github.com/pharo-project/pharo-vm.git Commit: ed4a4f59208968a21d82fd2406f75c2c4de558b2 Date: 2014-05-15 18:23:04 +0200 By: Esteban Lorenzano <estebanlm@gmail.com> Jenkins build #14826
+
+Image: Pharo3.0 [Latest update: #30858]
+
+LOCell(Object)>>doesNotUnderstand: #self
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+		aMessage: 	self
+		exception: 	MessageNotUnderstood: LOCell>>self
+		resumeValue: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+Message>>sentTo:
+	Receiver: self
+	Arguments and temporary variables: 
+		receiver: 	a LOCell(272367616)
+	Receiver's instance variables: 
+		selector: 	#self
+		args: 	#()
+		lookupClass: 	LOCell
+
+
+LOCell(Object)>>doesNotUnderstand: #self
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+		aMessage: 	self
+		exception: 	MessageNotUnderstood: LOCell>>self
+		resumeValue: 	MessageNotUnderstood: LOCell>>self
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell>>initialize
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell class(Behavior)>>new
+	Receiver: LOCell
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	SimpleSwitchMorph
+		methodDict: 	a MethodDictionary(#initialize->LOCell>>#initialize )
+		format: 	168
+		layout: 	a FixedLayout
+		instanceVariables: 	#(#mouseAction)
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#LOCell
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'PBE-LightsOut'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	'LOCell new
+'
+		itsSelection: 	a Text for 'LOCell new
+'
+		itsSelectionString: 	'LOCell new
+'
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ LOCell new
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+		useFaultyForParsing: 	false
+
+
+SmalltalkEditor>>evaluateSelectionAndDo:
+	Receiver: a SmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result | result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		morph: 	a TextMorphForEditView(381419520)
+		selectionShowing: 	true
+		model: 	a Workspace
+		editingState: 	a SmalltalkEditingState
+
+
+SmalltalkEditor>>evaluateSelection
+	Receiver: a SmalltalkEditor
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		morph: 	a TextMorphForEditView(381419520)
+		selectionShowing: 	true
+		model: 	a Workspace
+		editingState: 	a SmalltalkEditingState
+
+
+[ textMorph editor evaluateSelection ] in PluggableTextMorph>>doIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [locked]  [other:  (kmDispatcher -> a K...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph editor evaluateSelection ]
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [locked]  [other:  (kmDispatcher -> a K...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleEdit:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		editBlock: 	[ result := editBlock value ]
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		result: 	nil
+		editBlock: 	[ textMorph editor evaluateSelection ]
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [locked]  [other:  (kmDispatcher -> a K...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+PluggableTextMorph>>doIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [locked]  [other:  (kmDispatcher -> a K...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ :morph | morph doIt ] in SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+	Receiver: SmalltalkEditor
+	Arguments and temporary variables: 
+		aBuilder: 	a PragmaMenuAndShortcutRegistration
+		morph: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		superclass: 	TextEditor
+		methodDict: 	a MethodDictionary(#argAdvance:->SmalltalkEditor>>#argAdvance: #bro...etc...
+		format: 	138
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#SmalltalkEditor
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Text-Edition'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		cmdActions: 	#(#noop: #cursorHome: #noop: #noop: #cursorEnd: #noop: #noop: #noop...etc...
+		shiftCmdActions: 	#(#noop: #argAdvance: #noop: #compareToClipboard: #debugIt: #m...etc...
+
+
+BlockClosure>>cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		anArg: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		firstArg: 	a PluggableTextMorph(570949632)
+		secondArg: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		firstArg: 	a PluggableTextMorph(570949632)
+		secondArg: 	a PluggableTextMorph(570949632)
+		thirdArg: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+KMCategoryBinding>>completeMatch:buffer:
+	Receiver: aKMCategoryTarget(#SmalltalkEditor)
+	Arguments and temporary variables: 
+		aKeymap: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+	Receiver's instance variables: 
+		target: 	a PluggableTextMorph(570949632)
+		category: 	a KMCategory
+		morph: 	a PluggableTextMorph(570949632)
+
+
+[ :l | l completeMatch: self buffer: aBuffer ] in KMKeymap>>notifyCompleteMatchTo:buffer:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		aListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		listeners: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		l: 	aKMCategoryTarget(#SmalltalkEditor)
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+	Arguments and temporary variables: 
+		aBlock: 	[ :l | l completeMatch: self buffer: aBuffer ]
+		index: 	1
+	Receiver's instance variables: 
+an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+
+KMKeymap>>notifyCompleteMatchTo:buffer:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		aListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		listeners: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+KMKeymap>>onMatchWith:notify:andDo:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		anAction: 	[ ^ self ]
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andDo: aBlock ] in KMCategory>>onMatchWith:notify:andDo:
+	Receiver: a KMCategory
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBlock: 	[ ^ self ]
+		entry: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Receiver's instance variables: 
+		name: 	#SmalltalkEditor
+		platforms: 	a Dictionary(#MacOSX->a KMStorage #Unix->a KMStorage #Windows->a KMS...etc...
+
+
+Set>>do:
+	Receiver: a Set(#printIt on Cmd + P do [ :morph | morph printIt ]
+ #previousSelection on Cmd + Shift...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andD...etc...
+		index: 	9
+		each: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Receiver's instance variables: 
+		tally: 	14
+		array: 	an Array(#printIt on Cmd + P do [ :morph | morph printIt ]
+ #previousSel...etc...
+
+
+KMCategory>>onMatchWith:notify:andDo:
+	Receiver: a KMCategory
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBlock: 	[ ^ self ]
+	Receiver's instance variables: 
+		name: 	#SmalltalkEditor
+		platforms: 	a Dictionary(#MacOSX->a KMStorage #Unix->a KMStorage #Windows->a KMS...etc...
+
+
+KMCategoryBinding>>verifyMatchWith:notifying:thenDoing:
+	Receiver: aKMCategoryTarget(#SmalltalkEditor)
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aListener: 	a KMDispatcher
+		anAction: 	[ ^ self ]
+	Receiver's instance variables: 
+		target: 	a PluggableTextMorph(570949632)
+		category: 	a KMCategory
+		morph: 	a PluggableTextMorph(570949632)
+
+
+[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyMatchWith: anEventBuffer notifying: self thenDoing: [ ^ self ] ] in KMDispatcher>>dispatch:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		association: 	nil
+		match: 	nil
+		aTarget: 	aKMCategoryTarget(#SmalltalkEditor)
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#SmalltalkEditor) aKMCategoryTarget(#TextMorph...etc...
+		morph: 	a PluggableTextMorph(570949632)
+		directKeymaps: 	a KMCategory
+
+
+OrderedCollection>>do:
+	Receiver: an OrderedCollection(aKMCategoryTarget(nil) aKMCategoryTarget(#SmalltalkEditor) aKMCategor...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyM...etc...
+		index: 	2
+	Receiver's instance variables: 
+		array: 	an Array(aKMCategoryTarget(nil) aKMCategoryTarget(#SmalltalkEditor) aKMC...etc...
+		firstIndex: 	1
+		lastIndex: 	7
+
+
+KMDispatcher>>dispatch:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		association: 	nil
+		match: 	nil
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#SmalltalkEditor) aKMCategoryTarget(#TextMorph...etc...
+		morph: 	a PluggableTextMorph(570949632)
+		directKeymaps: 	a KMCategory
+
+
+KMTarget>>dispatch:
+	Receiver: a KMTarget
+	Arguments and temporary variables: 
+		buffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+	Receiver's instance variables: 
+		realTarget: 	nil
+		morph: 	a PluggableTextMorph(570949632)
+		targetSelector: 	#yourself
+		directKeymaps: 	nil
+		perInstanceCategories: 	nil
+
+
+[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstance buffer copy.
+aKeyboardEvent wasHandled
+	ifTrue: [ ^ self ] ] in KMDispatchChain>>dispatch:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aKeyboardEvent: 	[keystroke '<Cmd-d>']
+		targetToDispatch: 	a KMTarget
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatchChain>>do:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aBlock: 	[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstan...etc...
+		currentTarget: 	a KMTarget
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatchChain>>dispatch:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aKeyboardEvent: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatcher>>dispatchKeystroke:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		aKeyEvent: 	[keystroke '<Cmd-d>']
+		chain: 	a KMDispatchChain
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#TextMorph) aKMCategoryTarget(#MorphFocusCtrlN...etc...
+		morph: 	a TextMorphForEditView(381419520)
+		directKeymaps: 	a KMCategory
+
+
+TextMorphForEditView(Morph)>>dispatchKeystrokeForEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		evt: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleKeystroke:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-d>']
+		pasteUp: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+KeyboardEvent>>sentTo:
+	Receiver: [keystroke '<Cmd-d>']
+	Arguments and temporary variables: 
+		anObject: 	a TextMorphForEditView(381419520)
+	Receiver's instance variables: 
+		timeStamp: 	1055131
+		source: 	a HandMorph(760479744)
+		windowIndex: 	nil
+		type: 	#keystroke
+		buttons: 	64
+		position: 	(195.0@82.0)
+		handler: 	nil
+		wasHandled: 	true
+		keyValue: 	100
+		charCode: 	100
+		scanCode: 	2
+
+
+TextMorphForEditView(Morph)>>handleEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+
+--- The full stack ---
+LOCell(Object)>>doesNotUnderstand: #self
+Message>>sentTo:
+LOCell(Object)>>doesNotUnderstand: #self
+LOCell>>initialize
+LOCell class(Behavior)>>new
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+SmalltalkEditor>>evaluateSelectionAndDo:
+SmalltalkEditor>>evaluateSelection
+[ textMorph editor evaluateSelection ] in PluggableTextMorph>>doIt
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+TextMorphForEditView(TextMorph)>>handleEdit:
+PluggableTextMorph>>handleEdit:
+PluggableTextMorph>>doIt
+[ :morph | morph doIt ] in SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+BlockClosure>>cull:
+BlockClosure>>cull:cull:
+BlockClosure>>cull:cull:cull:
+KMCategoryBinding>>completeMatch:buffer:
+[ :l | l completeMatch: self buffer: aBuffer ] in KMKeymap>>notifyCompleteMatchTo:buffer:
+Array(SequenceableCollection)>>do:
+KMKeymap>>notifyCompleteMatchTo:buffer:
+KMKeymap>>onMatchWith:notify:andDo:
+[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andDo: aBlock ] in KMCategory>>onMatchWith:notify:andDo:
+Set>>do:
+KMCategory>>onMatchWith:notify:andDo:
+KMCategoryBinding>>verifyMatchWith:notifying:thenDoing:
+[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyMatchWith: anEventBuffer notifying: self thenDoing: [ ^ self ] ] in KMDispatcher>>dispatch:
+OrderedCollection>>do:
+KMDispatcher>>dispatch:
+KMTarget>>dispatch:
+[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstance buffer copy.
+aKeyboardEvent wasHandled
+	ifTrue: [ ^ self ] ] in KMDispatchChain>>dispatch:
+KMDispatchChain>>do:
+KMDispatchChain>>dispatch:
+KMDispatcher>>dispatchKeystroke:
+TextMorphForEditView(Morph)>>dispatchKeystrokeForEvent:
+TextMorphForEditView(TextMorph)>>handleKeystroke:
+KeyboardEvent>>sentTo:
+TextMorphForEditView(Morph)>>handleEvent:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
+TextMorphForEditView(Morph)>>handleFocusEvent:
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+BlockClosure>>on:do:
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+HandMorph>>sendFocusEvent:to:clear:
+HandMorph>>sendEvent:focus:clear:
+HandMorph>>sendKeyboardEvent:
+HandMorph>>handleEvent:
+HandMorph>>processEvents
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+Array(SequenceableCollection)>>do:
+WorldState>>handsDo:
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+[ 
+World doOneCycle.
+Processor yield.
+false ] in MorphicUIManager>>spawnNewProcess
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+MessageNotUnderstood: LOCell>>self
+16 October 2014 3:51:33.033844 pm
+
+VM: Mac OS - intel - 1090 - NBCoInterpreter NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+NBCogit NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+https://github.com/pharo-project/pharo-vm.git Commit: ed4a4f59208968a21d82fd2406f75c2c4de558b2 Date: 2014-05-15 18:23:04 +0200 By: Esteban Lorenzano <estebanlm@gmail.com> Jenkins build #14826
+
+Image: Pharo3.0 [Latest update: #30858]
+
+LOCell(Object)>>doesNotUnderstand: #self
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+		aMessage: 	self
+		exception: 	MessageNotUnderstood: LOCell>>self
+		resumeValue: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+Message>>sentTo:
+	Receiver: self
+	Arguments and temporary variables: 
+		receiver: 	a LOCell(272367616)
+	Receiver's instance variables: 
+		selector: 	#self
+		args: 	#()
+		lookupClass: 	LOCell
+
+
+LOCell(Object)>>doesNotUnderstand: #self
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+		aMessage: 	self
+		exception: 	MessageNotUnderstood: LOCell>>self
+		resumeValue: 	MessageNotUnderstood: LOCell>>self
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+Message>>sentTo:
+	Receiver: self
+	Arguments and temporary variables: 
+		receiver: 	a LOCell(272367616)
+	Receiver's instance variables: 
+		selector: 	#self
+		args: 	#()
+		lookupClass: 	LOCell
+
+
+LOCell(Object)>>doesNotUnderstand: #self
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+		aMessage: 	self
+		exception: 	MessageNotUnderstood: LOCell>>self
+		resumeValue: 	MessageNotUnderstood: LOCell>>self
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell>>initialize
+	Receiver: a LOCell(272367616)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (38@22)
+		owner: 	nil
+		submorphs: 	an Array(a StringMorph(425721856)'Flash')
+		fullBounds: 	nil
+		color: 	Color lightGray
+		extension: 	a MorphExtension (328204288)
+		borderWidth: 	3
+		borderColor: 	Color gray
+		target: 	nil
+		actionSelector: 	#flash
+		arguments: 	#()
+		actWhen: 	#buttonUp
+		oldColor: 	nil
+		mouseDownTime: 	nil
+		label: 	a StringMorph(425721856)'Flash'
+		helpText: 	nil
+		onColor: 	(Color r: 1.0 g: 0.6 b: 0.6 alpha: 1.0)
+		offColor: 	Color lightGray
+		mouseAction: 	nil
+
+
+LOCell class(Behavior)>>new
+	Receiver: LOCell
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	SimpleSwitchMorph
+		methodDict: 	a MethodDictionary(#initialize->LOCell>>#initialize )
+		format: 	168
+		layout: 	a FixedLayout
+		instanceVariables: 	#(#mouseAction)
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#LOCell
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'PBE-LightsOut'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	'LOCell new
+'
+		itsSelection: 	a Text for 'LOCell new
+'
+		itsSelectionString: 	'LOCell new
+'
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ LOCell new
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+		useFaultyForParsing: 	false
+
+
+SmalltalkEditor>>evaluateSelectionAndDo:
+	Receiver: a SmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result | result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		morph: 	a TextMorphForEditView(381419520)
+		selectionShowing: 	true
+		model: 	a Workspace
+		editingState: 	a SmalltalkEditingState
+
+
+SmalltalkEditor>>evaluateSelection
+	Receiver: a SmalltalkEditor
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		morph: 	a TextMorphForEditView(381419520)
+		selectionShowing: 	true
+		model: 	a Workspace
+		editingState: 	a SmalltalkEditingState
+
+
+[ textMorph editor evaluateSelection ] in PluggableTextMorph>>doIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [locked]  [other:  (kmDispatcher -> a K...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph editor evaluateSelection ]
+		result: 	nil
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [locked]  [other:  (kmDispatcher -> a K...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleEdit:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		editBlock: 	[ result := editBlock value ]
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+PluggableTextMorph>>handleEdit:
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+		result: 	nil
+		editBlock: 	[ textMorph editor evaluateSelection ]
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [locked]  [other:  (kmDispatcher -> a K...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+PluggableTextMorph>>doIt
+	Receiver: a PluggableTextMorph(570949632)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(488.0@523.0) corner: (928.0@690.0)
+		owner: 	a SystemWindow(481034240)
+		submorphs: 	an Array(a TransformMorph(508559360))
+		fullBounds: 	(488@523) corner: (928@690)
+		color: 	Color white
+		extension: 	a MorphExtension (360185856) [locked]  [other:  (kmDispatcher -> a K...etc...
+		borderWidth: 	1
+		borderColor: 	(Color r: 0.784 g: 0.784 b: 0.784 alpha: 1.0)
+		model: 	a Workspace
+		open: 	false
+		accessor: 	nil
+		scrollBar: 	a ScrollBar(610795520)
+		scroller: 	a TransformMorph(508559360)
+		getMenuSelector: 	#codePaneMenu:shifted:
+		getMenuTitleSelector: 	nil
+		hasFocus: 	false
+		hScrollBar: 	a ScrollBar(526123008)
+		textMorph: 	a TextMorphForEditView(381419520)
+		getTextSelector: 	#contents
+		setTextSelector: 	#acceptContents:
+		getSelectionSelector: 	nil
+		hasUnacceptedEdits: 	true
+		askBeforeDiscardingEdits: 	true
+		selectionInterval: 	(1 to: 11)
+		hasEditingConflicts: 	false
+		acceptAction: 	nil
+		getColorSelector: 	nil
+		unstyledAcceptText: 	nil
+		styler: 	a SHTextStylerST80
+		autoAccept: 	nil
+		enabled: 	true
+		getEnabledSelector: 	nil
+		highlights: 	an OrderedCollection()
+		acceptOnFocusChange: 	nil
+		selectionColor: 	nil
+		alwaysAccept: 	nil
+		changedAction: 	nil
+		doubleClickSelector: 	nil
+		setSelectionSelector: 	nil
+
+
+[ :morph | morph doIt ] in SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+	Receiver: SmalltalkEditor
+	Arguments and temporary variables: 
+		aBuilder: 	a PragmaMenuAndShortcutRegistration
+		morph: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		superclass: 	TextEditor
+		methodDict: 	a MethodDictionary(#argAdvance:->SmalltalkEditor>>#argAdvance: #bro...etc...
+		format: 	138
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#SmalltalkEditor
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Text-Edition'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		cmdActions: 	#(#noop: #cursorHome: #noop: #noop: #cursorEnd: #noop: #noop: #noop...etc...
+		shiftCmdActions: 	#(#noop: #argAdvance: #noop: #compareToClipboard: #debugIt: #m...etc...
+
+
+BlockClosure>>cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		anArg: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		firstArg: 	a PluggableTextMorph(570949632)
+		secondArg: 	a PluggableTextMorph(570949632)
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+BlockClosure>>cull:cull:cull:
+	Receiver: [ :morph | morph doIt ]
+	Arguments and temporary variables: 
+		firstArg: 	a PluggableTextMorph(570949632)
+		secondArg: 	a PluggableTextMorph(570949632)
+		thirdArg: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		outerContext: 	SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+		startpc: 	157
+		numArgs: 	1
+
+
+KMCategoryBinding>>completeMatch:buffer:
+	Receiver: aKMCategoryTarget(#SmalltalkEditor)
+	Arguments and temporary variables: 
+		aKeymap: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+	Receiver's instance variables: 
+		target: 	a PluggableTextMorph(570949632)
+		category: 	a KMCategory
+		morph: 	a PluggableTextMorph(570949632)
+
+
+[ :l | l completeMatch: self buffer: aBuffer ] in KMKeymap>>notifyCompleteMatchTo:buffer:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		aListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		listeners: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		l: 	aKMCategoryTarget(#SmalltalkEditor)
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+	Arguments and temporary variables: 
+		aBlock: 	[ :l | l completeMatch: self buffer: aBuffer ]
+		index: 	1
+	Receiver's instance variables: 
+an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+
+KMKeymap>>notifyCompleteMatchTo:buffer:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		aListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		listeners: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+KMKeymap>>onMatchWith:notify:andDo:
+	Receiver: #doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		anAction: 	[ ^ self ]
+	Receiver's instance variables: 
+		action: 	[ :morph | morph doIt ]
+		name: 	#doIt
+		shortcut: 	Cmd + D
+		defaultShortcut: 	Cmd + D
+		description: 	''
+
+
+[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andDo: aBlock ] in KMCategory>>onMatchWith:notify:andDo:
+	Receiver: a KMCategory
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBlock: 	[ ^ self ]
+		entry: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Receiver's instance variables: 
+		name: 	#SmalltalkEditor
+		platforms: 	a Dictionary(#MacOSX->a KMStorage #Unix->a KMStorage #Windows->a KMS...etc...
+
+
+Set>>do:
+	Receiver: a Set(#printIt on Cmd + P do [ :morph | morph printIt ]
+ #previousSelection on Cmd + Shift...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andD...etc...
+		index: 	9
+		each: 	#doIt on Cmd + D do [ :morph | morph doIt ]
+
+	Receiver's instance variables: 
+		tally: 	14
+		array: 	an Array(#printIt on Cmd + P do [ :morph | morph printIt ]
+ #previousSel...etc...
+
+
+KMCategory>>onMatchWith:notify:andDo:
+	Receiver: a KMCategory
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aMatchListener: 	an Array(aKMCategoryTarget(#SmalltalkEditor) a KMDispatcher)
+		aBlock: 	[ ^ self ]
+	Receiver's instance variables: 
+		name: 	#SmalltalkEditor
+		platforms: 	a Dictionary(#MacOSX->a KMStorage #Unix->a KMStorage #Windows->a KMS...etc...
+
+
+KMCategoryBinding>>verifyMatchWith:notifying:thenDoing:
+	Receiver: aKMCategoryTarget(#SmalltalkEditor)
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		aListener: 	a KMDispatcher
+		anAction: 	[ ^ self ]
+	Receiver's instance variables: 
+		target: 	a PluggableTextMorph(570949632)
+		category: 	a KMCategory
+		morph: 	a PluggableTextMorph(570949632)
+
+
+[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyMatchWith: anEventBuffer notifying: self thenDoing: [ ^ self ] ] in KMDispatcher>>dispatch:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		association: 	nil
+		match: 	nil
+		aTarget: 	aKMCategoryTarget(#SmalltalkEditor)
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#SmalltalkEditor) aKMCategoryTarget(#TextMorph...etc...
+		morph: 	a PluggableTextMorph(570949632)
+		directKeymaps: 	a KMCategory
+
+
+OrderedCollection>>do:
+	Receiver: an OrderedCollection(aKMCategoryTarget(nil) aKMCategoryTarget(#SmalltalkEditor) aKMCategor...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyM...etc...
+		index: 	2
+	Receiver's instance variables: 
+		array: 	an Array(aKMCategoryTarget(nil) aKMCategoryTarget(#SmalltalkEditor) aKMC...etc...
+		firstIndex: 	1
+		lastIndex: 	7
+
+
+KMDispatcher>>dispatch:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		anEventBuffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+		association: 	nil
+		match: 	nil
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#SmalltalkEditor) aKMCategoryTarget(#TextMorph...etc...
+		morph: 	a PluggableTextMorph(570949632)
+		directKeymaps: 	a KMCategory
+
+
+KMTarget>>dispatch:
+	Receiver: a KMTarget
+	Arguments and temporary variables: 
+		buffer: 	an OrderedCollection([keystroke '<Cmd-d>'])
+	Receiver's instance variables: 
+		realTarget: 	nil
+		morph: 	a PluggableTextMorph(570949632)
+		targetSelector: 	#yourself
+		directKeymaps: 	nil
+		perInstanceCategories: 	nil
+
+
+[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstance buffer copy.
+aKeyboardEvent wasHandled
+	ifTrue: [ ^ self ] ] in KMDispatchChain>>dispatch:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aKeyboardEvent: 	[keystroke '<Cmd-d>']
+		targetToDispatch: 	a KMTarget
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatchChain>>do:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aBlock: 	[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstan...etc...
+		currentTarget: 	a KMTarget
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatchChain>>dispatch:
+	Receiver: a KMDispatchChain
+	Arguments and temporary variables: 
+		aKeyboardEvent: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		dispatcher: 	a KMDispatcher
+		initialTarget: 	a KmGlobalDispatcher
+
+
+KMDispatcher>>dispatchKeystroke:
+	Receiver: a KMDispatcher
+	Arguments and temporary variables: 
+		aKeyEvent: 	[keystroke '<Cmd-d>']
+		chain: 	a KMDispatchChain
+	Receiver's instance variables: 
+		target: 	a KMTarget
+		currentEvent: 	nil
+		targets: 	a Set(aKMCategoryTarget(#TextMorph) aKMCategoryTarget(#MorphFocusCtrlN...etc...
+		morph: 	a TextMorphForEditView(381419520)
+		directKeymaps: 	a KMCategory
+
+
+TextMorphForEditView(Morph)>>dispatchKeystrokeForEvent:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		evt: 	[keystroke '<Cmd-d>']
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+TextMorphForEditView(TextMorph)>>handleKeystroke:
+	Receiver: a TextMorphForEditView(381419520)
+	Arguments and temporary variables: 
+		anEvent: 	[keystroke '<Cmd-d>']
+		pasteUp: 	nil
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (432@34)
+		owner: 	a TransformMorph(508559360)
+		submorphs: 	#()
+		fullBounds: 	(0@0) corner: (432@34)
+		color: 	Color black
+		extension: 	a MorphExtension (436207616) [other:  (kmDispatcher -> a KMDispatche...etc...
+		borderWidth: 	0
+		borderColor: 	Color black
+		textStyle: 	a TextStyle Bitmap DejaVu Sans 9
+		text: 	a Text for 'LOCell new
+'
+		wrapFlag: 	true
+		paragraph: 	a Paragraph
+		editor: 	a SmalltalkEditor
+		container: 	nil
+		predecessor: 	nil
+		successor: 	nil
+		backgroundColor: 	nil
+		margins: 	(0@0) corner: (0@0)
+		defaultColor: 	Color black
+		editView: 	a PluggableTextMorph(570949632)
+		acceptOnCR: 	false
+		autoAccept: 	false
+		acceptOnFocusChange: 	false
+		selectionColor: 	nil
+
+
+
+--- The full stack ---
+LOCell(Object)>>doesNotUnderstand: #self
+Message>>sentTo:
+LOCell(Object)>>doesNotUnderstand: #self
+Message>>sentTo:
+LOCell(Object)>>doesNotUnderstand: #self
+LOCell>>initialize
+LOCell class(Behavior)>>new
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+SmalltalkEditor>>evaluateSelectionAndDo:
+SmalltalkEditor>>evaluateSelection
+[ textMorph editor evaluateSelection ] in PluggableTextMorph>>doIt
+[ result := editBlock value ] in PluggableTextMorph>>handleEdit:
+TextMorphForEditView(TextMorph)>>handleEdit:
+PluggableTextMorph>>handleEdit:
+PluggableTextMorph>>doIt
+[ :morph | morph doIt ] in SmalltalkEditor class>>buildSmalltalkEditorKeymappingsOn:
+BlockClosure>>cull:
+BlockClosure>>cull:cull:
+BlockClosure>>cull:cull:cull:
+KMCategoryBinding>>completeMatch:buffer:
+[ :l | l completeMatch: self buffer: aBuffer ] in KMKeymap>>notifyCompleteMatchTo:buffer:
+Array(SequenceableCollection)>>do:
+KMKeymap>>notifyCompleteMatchTo:buffer:
+KMKeymap>>onMatchWith:notify:andDo:
+[ :entry | entry onMatchWith: anEventBuffer notify: aMatchListener andDo: aBlock ] in KMCategory>>onMatchWith:notify:andDo:
+Set>>do:
+KMCategory>>onMatchWith:notify:andDo:
+KMCategoryBinding>>verifyMatchWith:notifying:thenDoing:
+[ :aTarget | 
+"nice hack to stop in the first listener"
+aTarget verifyMatchWith: anEventBuffer notifying: self thenDoing: [ ^ self ] ] in KMDispatcher>>dispatch:
+OrderedCollection>>do:
+KMDispatcher>>dispatch:
+KMTarget>>dispatch:
+[ :targetToDispatch | 
+targetToDispatch dispatch: KMBuffer uniqueInstance buffer copy.
+aKeyboardEvent wasHandled
+	ifTrue: [ ^ self ] ] in KMDispatchChain>>dispatch:
+KMDispatchChain>>do:
+KMDispatchChain>>dispatch:
+KMDispatcher>>dispatchKeystroke:
+TextMorphForEditView(Morph)>>dispatchKeystrokeForEvent:
+TextMorphForEditView(TextMorph)>>handleKeystroke:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
+KeyboardEvent>>sentTo:
+TextMorphForEditView(Morph)>>handleEvent:
+TextMorphForEditView(Morph)>>handleFocusEvent:
+[ 
+ActiveHand := self.
+ActiveEvent := anEvent.
+result := focusHolder handleFocusEvent: (anEvent transformedBy: (focusHolder transformedFrom: self)) ] in HandMorph>>sendFocusEvent:to:clear:
+BlockClosure>>on:do:
+WorldMorph(PasteUpMorph)>>becomeActiveDuring:
+HandMorph>>sendFocusEvent:to:clear:
+HandMorph>>sendEvent:focus:clear:
+HandMorph>>sendKeyboardEvent:
+HandMorph>>handleEvent:
+HandMorph>>processEvents
+[ :h | 
+ActiveHand := h.
+h processEvents.
+ActiveHand := nil ] in WorldState>>doOneCycleNowFor:
+Array(SequenceableCollection)>>do:
+WorldState>>handsDo:
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+[ 
+World doOneCycle.
+Processor yield.
+false ] in MorphicUIManager>>spawnNewProcess
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
