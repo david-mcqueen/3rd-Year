@@ -1,0 +1,12 @@
+parent(fred,sally).
+parent(fred,peter).
+parent(janet,peter).
+parent(janet,sally).
+parent(pervis,adil).
+parent(sandra,adil).
+parent(sally,barry).
+parent(adil,barry).
+parent(barry,gena).
+parent(barry,bill).
+parent(agatha,bill).
+parent(agatha,gena).
