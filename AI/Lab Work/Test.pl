@@ -73,7 +73,7 @@ insertInOrder(X, [Head | Tail], Result):-
 
 	append([Result], [Head], NewTail),
 	insertInOrder(X, Tail, NewTail);
-	print(NewTail).
+	print(NewTail),
 
 
 	append(Result, [X], StageResult),
@@ -82,12 +82,15 @@ insertInOrder(X, [Head | Tail], Result):-
 
 
 insert(X, [], [X]).
+
 insert(X, [Y|Rest], [X,Y|Rest]) :-
     X @< Y, !.
+
 insert(X, [Y|Rest0], [Y|Rest]) :-
     insert(X, Rest0, Rest).
-
  %http://stackoverflow.com/questions/9004265/inserting-x-in-its-correct-position-in-a-sorted-list
+
+
 
 insertionSort([], Result):-
 	print(Result).
@@ -96,4 +99,28 @@ insertionSort([Head | Tail], Sorted):-
 	insert(Head, Sorted, Result),
 	insertionSort(Tail, Result).
 
+
+
+means(0, zero).
+means(1, one).
+means(2, two).
+means(3, three).
+means(4, four).
+means(5, five).
+means(6, six).
+means(7, seven).
+means(8, eight).
+means(9, nine).
+
+
+translate([],[]).
+
+translate([], List):-
+	print(List).
+
+translate([Head | Tail], List2):-
+	means(Head, Name),
+	append(List2, [Name], Result),
+	translate(Tail, Result).
+	
 
