@@ -55,7 +55,7 @@ BEGIN
 			u.levelID,
 			u.staffID
 	FROM	user_table AS u
-			INNER JOIN level_table AS l
+			INNER JOIN level_table AS l ON l.levelID = u.levelID
 	WHERE	u.userID = id;
 END //
 DELIMITER ;
@@ -64,14 +64,14 @@ DROP PROCEDURE IF EXISTS user_getAll;
 DELIMITER //
 CREATE PROCEDURE user_getAll()
 BEGIN
-	SELECT 	u.userID,
-			u.surname,
-			u.forename,
-			l.levelName,
-			u.levelID,
-			u.staffID
+	SELECT DISTINCT u.userID,
+					u.surname,
+					u.forename,
+					l.levelName,
+					u.levelID,
+					u.staffID
 	FROM	user_table AS u
-			INNER JOIN level_table AS l;
+			INNER JOIN level_table AS l ON l.levelID = u.levelID;
 END //
 DELIMITER ;
 
