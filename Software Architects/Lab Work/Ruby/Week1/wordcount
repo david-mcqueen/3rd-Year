@@ -1,0 +1,75 @@
+File.open("lyrics.txt",	"r")	do	|infile|
+
+  count = 0
+  words = Array.new
+  wordcount = Array.new(19) {|x| x = 0}
+  words.push("never")
+  words.push("gonna")
+  words.push("give")
+  words.push("you")
+  words.push("up")
+  words.push("let")
+  words.push("down")
+  words.push("run")
+  words.push("around")
+  words.push("and")
+  words.push("desert")
+  words.push("make")
+  words.push("cry")
+  words.push("say")
+  words.push("goodbye")
+  words.push("tell")
+  words.push("a")
+  words.push("lie")
+  words.push("hurt")
+
+  while	(line	=	infile.gets)
+    wordArray = line.split
+    wordArray.each do |word|
+        case word.chomp.downcase
+          when words[0]
+            wordcount[0] += 1
+          when words[1]
+            wordcount[1] += 1
+          when words[2]
+            wordcount[2] += 1
+          when words[3]
+            wordcount[3] += 1
+          when words[4]
+            wordcount[4] += 1
+          when words[5]
+            wordcount[5] += 1
+          when words[6]
+            wordcount[6] += 1
+          when words[7]
+            wordcount[7] += 1
+          when words[8]
+            wordcount[8] += 1
+          when words[9]
+            wordcount[9] += 1
+          when words[10]
+            wordcount[10] += 1
+          when words[11]
+            wordcount[11] += 1
+          when words[12]
+            wordcount[12] += 1
+          when words[13]
+            wordcount[13] += 1
+          when words[14]
+            wordcount[14] += 1
+          when words[15]
+            wordcount[15] += 1
+          when words[16]
+            wordcount[16] += 1
+          when words[17]
+            wordcount[17] += 1
+          when words[18]
+            wordcount[18] += 1
+        end
+      end
+  end
+  words.each do |word|
+    puts "#{word} occured " + wordcount[count].to_s + " times"
+    count += 1
+  end
+end

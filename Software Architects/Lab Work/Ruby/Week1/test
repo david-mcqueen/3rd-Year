@@ -16,6 +16,7 @@ File.open("lyrics.txt",	"r")	do	|infile|
     array.reverse.each do |word|
       result.push("#{word}")
     end
-    puts result.join(" ").to_s
+    puts count.to_s + ": " + result.join(" ").to_s
+    count += 1
   end
 end
