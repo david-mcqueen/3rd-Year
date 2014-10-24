@@ -1,0 +1,8 @@
+File.open("lyrics.txt",	"r")	do	|infile|
+  count = 1
+  while	(line	=	infile.gets)
+
+    puts	count.to_s + ": #{line}"
+    count += 1
+  end
+end
