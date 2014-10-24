@@ -2,7 +2,7 @@ File.open("lyrics.txt",	"r")	do	|infile|
   count = 1
   while	(line	=	infile.gets)
 
-    puts	count.to_s + ": #{line}"
+    puts	count.to_s + ": #{line.reverse}"
     count += 1
   end
 end
