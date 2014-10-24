@@ -1,8 +1,21 @@
 File.open("lyrics.txt",	"r")	do	|infile|
   count = 1
   while	(line	=	infile.gets)
-
     puts	count.to_s + ": #{line.reverse}"
     count += 1
+  end
+end
+
+puts "\nExercise 3\n\n"
+
+File.open("lyrics.txt",	"r")	do	|infile|
+  count = 1
+  while	(line	=	infile.gets)
+    array = line.split
+    result = Array.new
+    array.reverse.each do |word|
+      result.push("#{word}")
+    end
+    puts result.join(" ").to_s
   end
 end
