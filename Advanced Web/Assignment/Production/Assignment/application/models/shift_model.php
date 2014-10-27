@@ -21,6 +21,6 @@ class shift_model extends CI_Model{
         }
 
         $query = $this->db->get_where('shifts', array('userID' => $userID));
-        return $query->row_array();
+        return $query->result_array();
     }
 } 

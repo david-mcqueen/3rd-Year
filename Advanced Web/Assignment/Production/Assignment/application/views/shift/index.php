@@ -2,6 +2,7 @@
     /*
      * This is the main index page for the shifts
      */
+echo '<h1>All Shifts for all users</h1>';
     foreach ($shift as $shift_data):
 ?>
 
