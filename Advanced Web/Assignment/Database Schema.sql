@@ -1,12 +1,12 @@
 
 -- Drop the tables if they are already in the DB
-DROP TABLE IF EXISTS shift_table;
-DROP TABLE IF EXISTS user_table;
-DROP TABLE IF EXISTS level_table;
+DROP TABLE IF EXISTS shifts;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS levels;
 
 
 -- Create the new tables
-CREATE TABLE IF NOT EXISTS level_table (
+CREATE TABLE IF NOT EXISTS levels (
 	levelID int NOT NULL AUTO_INCREMENT,
 	levelName varchar(100) COLLATE utf8_unicode_ci NOT NULL,
 	PRIMARY KEY (levelID),
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS level_table (
 );
 
 
-CREATE TABLE IF NOT EXISTS user_table (
+CREATE TABLE IF NOT EXISTS users (
 	userID int NOT NULL AUTO_INCREMENT,
 	surname varchar(200) COLLATE utf8_unicode_ci NOT NULL,
 	forename varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -23,17 +23,17 @@ CREATE TABLE IF NOT EXISTS user_table (
 	staffID int NOT NULL,
 	PRIMARY KEY (userID),
 	INDEX (userID),
-	FOREIGN KEY (levelID) REFERENCES level_table (levelID)
+	FOREIGN KEY (levelID) REFERENCES levels (levelID)
 );
 
 
-CREATE TABLE IF NOT EXISTS shift_table (
+CREATE TABLE IF NOT EXISTS shifts (
 	shiftID bigint NOT NULL AUTO_INCREMENT,
 	userID int NOT NULL,
 	shiftDate date NOT NULL,
 	PRIMARY KEY (shiftID),
 	INDEX (shiftID),
-	FOREIGN KEY (userID) REFERENCES user_table (userID)
+	FOREIGN KEY (userID) REFERENCES users (userID)
 );
 
 
@@ -54,8 +54,8 @@ BEGIN
 			l.levelName,
 			u.levelID,
 			u.staffID
-	FROM	user_table AS u
-			INNER JOIN level_table AS l ON l.levelID = u.levelID
+	FROM	users AS u
+			INNER JOIN levels AS l ON l.levelID = u.levelID
 	WHERE	u.userID = id;
 END //
 DELIMITER ;
@@ -70,8 +70,8 @@ BEGIN
 					l.levelName,
 					u.levelID,
 					u.staffID
-	FROM	user_table AS u
-			INNER JOIN level_table AS l ON l.levelID = u.levelID;
+	FROM	users AS u
+			INNER JOIN levels AS l ON l.levelID = u.levelID;
 END //
 DELIMITER ;
 
@@ -87,7 +87,7 @@ CREATE PROCEDURE user_add
 	IN staffIDIN int
 )
 BEGIN
-	INSERT INTO user_table (
+	INSERT INTO users (
 				surname,
 				forename,
 				password,
@@ -112,7 +112,7 @@ CREATE PROCEDURE user_delete
 	IN ID int
 )
 BEGIN
-	DELETE FROM user_table
+	DELETE FROM users
 	WHERE	userID = id;
 END //
 DELIMITER ;
@@ -130,7 +130,7 @@ CREATE PROCEDURE user_edit
 	IN staffIDIN int
 )
 BEGIN
-	UPDATE user_table
+	UPDATE users
 	SET 	surname = surnameIN,
 			forname = forenameIN,
 			password = passwordIN,
@@ -148,7 +148,7 @@ CREATE PROCEDURE level_add
 	levelNameIN varchar(100)
 )
 BEGIN
-	INSERT INTO level_table(
+	INSERT INTO levels(
 			levelName
 		)
 	VALUES (
@@ -165,7 +165,7 @@ CREATE PROCEDURE level_edit
 	IN levelNameIN varchar(100)
 )
 BEGIN
-	UPDATE 	level_table
+	UPDATE 	levels
 	SET 	levelName = levelNameIN
 	WHERE	levelID = levelIDIN;
 END //
@@ -178,7 +178,7 @@ CREATE PROCEDURE level_delete
 	IN levelIDIN int
 )
 BEGIN
-	DELETE FROM level_table
+	DELETE FROM levels
 	WHERE	levelID = levelIDIN;
 END //
 DELIMITER ;
@@ -191,7 +191,7 @@ CREATE PROCEDURE level_get
 )
 BEGIN
 	SELECT 	levelName
-	FROM	level_table
+	FROM	levels
 	WHERE	levelID = levelIDIN;
 END
 DELIMITER ;
@@ -202,7 +202,7 @@ CREATE PROCEDURE level_getAll()
 BEGIN
 	SELECT 	levelID,
 			levelName
-	FROM	level_table;
+	FROM	levels;
 END //
 DELIMITER ;
 
@@ -215,7 +215,7 @@ CREATE PROCEDURE shift_add
 	IN shiftDateIN date
 )
 BEGIN
-	INSERT INTO shift_table (
+	INSERT INTO shifts (
 				userID,
 				shiftDate
 		)
@@ -233,7 +233,7 @@ CREATE PROCEDURE shift_delete
 	IN shiftIDIN int
 )
 BEGIN
-	DELETE FROM shift_table
+	DELETE FROM shifts
 	WHERE	shiftID = shiftIDIN;
 END //
 DELIMITER ;
@@ -247,7 +247,7 @@ CREATE PROCEDURE shift_edit
 	IN shiftDateIN int
 )
 BEGIN
-	UPDATE 	shift_table
+	UPDATE 	shifts
 	SET 	userID = userIDIN,
 			shiftDate = shiftDateIN
 	WHERE	shiftID = shiftIDIN;
@@ -270,5 +270,15 @@ call user_add ('Fur', 'Frank', '45frAnk67', 3, 8543);
 call user_add ('Goat', 'Graham', 'deDede1', 3, 7832);
 call user_add ('timetabler', 'admin', 'organ1sed', 1, 6189);
 
-
+call shift_add ('1', '20141027');
+call shift_add ('2', '20141027');
+call shift_add ('3', '20141027');
+call shift_add ('4', '20141027');
+call shift_add ('5', '20141027');
+call shift_add ('6', '20141027');
+call shift_add ('7', '20141027');
+call shift_add ('1', '20141028');
+call shift_add ('2', '20141028');
+call shift_add ('3', '20141028');
+call shift_add ('4', '20141028');
 
