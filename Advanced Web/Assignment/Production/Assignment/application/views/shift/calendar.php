@@ -13,8 +13,12 @@ echo '<h1>All shifts displayed on a calendar</h1>';
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.min.js'></script>
 <script>
 
+
+
         $(document).ready(function() {
 
+            var maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() + 90);
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev,next today',
@@ -25,17 +29,33 @@ echo '<h1>All shifts displayed on a calendar</h1>';
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
                 events: {
-                    url: 'http://localhost/fullcalendar-2.1.1/demos/php/get-events.php?',
+                    url: 'http://localhost/php/get-events.php?',
+                    //url: 'http://localhost/fullcalendar-2.1.1/demos/php/get-events.php?',
                     error: function(textStatus, errorThrown) {
                         $('#script-warning').show();
                         alert(errorThrown.responseText);
                         alert(textStatus);
                     }
                 },
+                fixedWeekCount: false,
                 loading: function(bool) {
                     $('#loading').toggle(bool);
+                },
+                viewRender: function(view){
+                    //Stops the user going more than 3 months in the future.
+                    if (view.start > maxDate){
+                        $('#calendar').fullCalendar('gotoDate', maxDate);
+                        alert("Only 3 months forecast is available");
+                    }
+                },
+                dayRender: function(date, cell){
+                    //Disables cells that are out of range
+                    if (date > maxDate){
+                        $(cell).addClass('disabled');
+                    }
                 }
             });
+
 
         });
 
@@ -66,6 +86,12 @@ echo '<h1>All shifts displayed on a calendar</h1>';
         font-size: 12px;
         color: red;
     }
+    .disabled {
+        background-color: #999999;
+        color: #FFFFFF;
+        cursor: default;
+    }
+
 
 </style>
 <body>
