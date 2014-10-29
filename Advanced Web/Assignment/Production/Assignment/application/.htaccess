@@ -1,4 +1,4 @@
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond $1 !^(index\.php|public|images|robots\.txt|css|third_party)
+RewriteCond $1 !^(index\.php|public|images|robots\.txt|css|third_party|views)
 RewriteRule ^(.*)$ main.php/$1 [L]

@@ -2,7 +2,7 @@
 /*
  *
  */
-echo '<h1>All Shifts for date</h1>';
+echo '<h1>All shifts displayed on a calendar</h1>';
 ?>
 
 <meta charset='utf-8' />
@@ -13,77 +13,32 @@ echo '<h1>All Shifts for date</h1>';
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.min.js'></script>
 <script>
 
-    $(document).ready(function() {
+        $(document).ready(function() {
 
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek'
-            },
-            defaultDate: Date().getday,
-            editable: false,
-            eventLimit: true, // allow "more" link when too many events
-            firstDay: 1,
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: '2014-09-01'
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
                 },
-                {
-                    title: 'Long Event',
-                    start: '2014-09-07',
-                    end: '2014-09-10'
+                defaultDate: '2014-09-12',
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                events: {
+                    url: 'http://localhost/fullcalendar-2.1.1/demos/php/get-events.php?',
+                    error: function(textStatus, errorThrown) {
+                        $('#script-warning').show();
+                        alert(errorThrown.responseText);
+                        alert(textStatus);
+                    }
                 },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2014-09-09T16:00:00'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2014-09-16T16:00:00'
-                },
-                {
-                    title: 'Conference',
-                    start: '2014-09-11',
-                    end: '2014-09-13'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2014-09-12T10:30:00',
-                    end: '2014-09-12T12:30:00'
-                },
-                {
-                    title: 'Lunch',
-                    start: '2014-09-12T12:00:00'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2014-09-12T14:30:00'
-                },
-                {
-                    title: 'Happy Hour',
-                    start: '2014-09-12T17:30:00'
-                },
-                {
-                    title: 'Dinner',
-                    start: '2014-09-12T20:00:00'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: '2014-09-13T07:00:00'
-                },
-                {
-                    title: 'Click for Google',
-                    url: 'http://google.com/',
-                    start: '2014-09-28'
+                loading: function(bool) {
+                    $('#loading').toggle(bool);
                 }
-            ]
+            });
+
         });
 
-    });
 
 </script>
 <style>
@@ -100,8 +55,23 @@ echo '<h1>All Shifts for date</h1>';
         margin: 0 auto;
     }
 
+    #script-warning {
+        display: none;
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        padding: 0 10px;
+        line-height: 40px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+        color: red;
+    }
+
 </style>
 <body>
 
+<div id='script-warning'>
+    <code>php/get-events.php</code> must be running.
+</div>
 <div id='calendar'></div>
 </body>
