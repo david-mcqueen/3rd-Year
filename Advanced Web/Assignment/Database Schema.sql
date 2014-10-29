@@ -49,7 +49,8 @@ CREATE PROCEDURE user_get
 	IN id int
 )
 BEGIN
-	SELECT 	u.surname,
+	SELECT 	u.userID,
+			u.surname,
 			u.forename,
 			l.levelName,
 			u.levelID,
@@ -254,6 +255,27 @@ BEGIN
 END //
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS shift_getDate;
+DELIMITER //
+CREATE PROCEDURE shift_getDate
+(
+	IN shiftDateIN int
+)
+BEGIN
+	SELECT	COUNT(*) AS shiftNumbers,
+			l.levelID,
+			l.levelName,
+			s.shiftDate
+	FROM	shifts AS s
+	INNER JOIN users AS u on u.userID = s.userID
+	INNER JOIN levels AS l on l.levelID = u.levelID
+	WHERE	s.shiftDate > shiftDateIN
+	GROUP BY 	l.levelID,
+				s.shiftDate Asc
+    ORDER BY 	s.shiftDate,
+    			l.levelID;
+END //
+DELIMITER ;
 
 
 -- Add some data
@@ -270,15 +292,17 @@ call user_add ('Fur', 'Frank', '45frAnk67', 3, 8543);
 call user_add ('Goat', 'Graham', 'deDede1', 3, 7832);
 call user_add ('timetabler', 'admin', 'organ1sed', 1, 6189);
 
-call shift_add ('1', '20141027');
 call shift_add ('2', '20141027');
+call shift_add ('1', '20141027');
 call shift_add ('3', '20141027');
 call shift_add ('4', '20141027');
-call shift_add ('5', '20141027');
-call shift_add ('6', '20141027');
 call shift_add ('7', '20141027');
-call shift_add ('1', '20141028');
+call shift_add ('6', '20141027');
+call shift_add ('5', '20141027');
+
+
+call shift_add ('7', '20141028');
+call shift_add ('6', '20141028');
 call shift_add ('2', '20141028');
-call shift_add ('3', '20141028');
-call shift_add ('4', '20141028');
+call shift_add ('1', '20141028');
 

@@ -44,7 +44,8 @@ $route['news'] = 'news';
 $route['user'] = 'user';
 $route['user/(:any)'] = 'user/view/$1';
 $route['shift'] = 'shift';
-$route['shift/(:any)'] = 'shift/view/$1';
+$route['shift/view/(:any)'] = 'shift/view/$1';
+$route['shift/calendar/(:any)'] = 'shift/calendar/$1';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 

@@ -40,4 +40,14 @@ class shift extends CI_Controller{
         $this->load->view('templates/footer');
     }
 
+    public function calendar($date){
+        $data['shift'] = $this->shift_model->get_calendar();
+
+        $data['title'] = 'Shift Calendar';
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('shift/calendar', $data);
+        $this->load->view('templates/footer');
+    }
+
 } 

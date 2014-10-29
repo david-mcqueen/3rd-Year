@@ -23,4 +23,10 @@ class shift_model extends CI_Model{
         $query = $this->db->get_where('shifts', array('userID' => $userID));
         return $query->result_array();
     }
+
+    public function get_calendar(){
+        $date = date('Y-m-j');
+        $query = $this->db->query('call shift_getDate('. $date .')');
+        return $query->result_array();
+    }
 } 
