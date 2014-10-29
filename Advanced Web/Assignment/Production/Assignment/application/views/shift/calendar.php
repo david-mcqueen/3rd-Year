@@ -29,8 +29,9 @@ echo '<h1>All shifts displayed on a calendar</h1>';
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
                 events: {
-                    url: 'http://localhost/php/get-events.php?',
+                    //url: 'http://localhost/php/get-events.php?',
                     //url: 'http://localhost/fullcalendar-2.1.1/demos/php/get-events.php?',
+                    url: '<?php echo base_url(); ?>application/views/shift/functions/get-events.php?',
                     error: function(textStatus, errorThrown) {
                         $('#script-warning').show();
                         alert(errorThrown.responseText);
