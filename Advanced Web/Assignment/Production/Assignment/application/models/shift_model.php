@@ -26,14 +26,13 @@ class shift_model extends CI_Model{
 
     public function get_calendar(){
         $date = date('Y-m-j');
-        $query = $this->db->query('call shift_getDate('. $date .')');
+        $query = $this->db->query('call shift_getDate('. $date .');');
         return $query->result_array();
     }
 
     public function get_Data($start, $end){
-        $query = $this->db->query('call shift_add (\'2\', \'20141127\');');
-        $result = $query->result();
-        $query = $this->db->query('call shift_getDate(' . $start .', ' . '2033-10-10' . ')');
+       // $query = $this->db->query('call shift_getDate(\'' . $start .'\', \'' . $end . '\');');
+        $query = $this->db->query('call shift_getDate(\''.$end.'\', \'2015-01-01\');');
         $events = $query->result_array();
 
         $jsonevents = array();
@@ -48,6 +47,22 @@ class shift_model extends CI_Model{
         }
         return json_encode($jsonevents);
 
+    }
+
+    public function add_shift($start){
+        $qry = ('call shift_add(2, \'' . $start .'\');');
+        $result = $this->db->query($qry);
+
+        $jsonevents = array();
+
+
+            $jsonevents[] = array(
+                'id' => '123',
+                'title' =>  'New Shift',
+                'start' => $start,
+                'editable' => false
+            );
+        return json_encode($jsonevents);
     }
 
 

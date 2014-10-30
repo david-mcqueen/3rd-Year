@@ -31,7 +31,7 @@ class Pages extends CI_Controller {
         $result = $this->page_model->checkLogin();
         $data['title'] = 'Welcome';
 
-        if(!$result){
+        if($result){
             //Login was successful
             $this->load->view('templates/header', $data);
             $this->load->view('shift/calendar', $data);

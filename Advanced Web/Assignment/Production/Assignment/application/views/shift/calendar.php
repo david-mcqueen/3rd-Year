@@ -29,9 +29,6 @@ echo '<h1>Welcome, *User Name*</h1>';
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
                 events: {
-                    //url: 'http://localhost/php/get-events.php?',
-                    //url: 'http://localhost/fullcalendar-2.1.1/demos/php/get-events.php?',
-                    //url: '<?php echo base_url(); ?>application/views/shift/functions/getCalendar.php?',
                     url: '<?php echo base_url(); ?>index.php/shift/getCalendar',
                     error: function(textStatus, errorThrown) {
                         $('#script-warning').show();
@@ -55,6 +52,40 @@ echo '<h1>Welcome, *User Name*</h1>';
                     if (date > maxDate){
                         $(cell).addClass('disabled');
                     }
+                },
+                eventClick: function(calEvent, jsEvent, view) {
+                //Will be used to remove shifts
+                    alert('Event: ' + calEvent.title);
+                    alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+                    alert('View: ' + view.name);
+
+                    // change the border color just for fun
+                    $(this).css('border-color', 'red');
+
+                },
+                dayClick: function(date, jsEvent, view) {
+                    //Will be used to add shifts
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>index.php/shift/addShift",
+                        dataType: 'json',
+                        data: {
+                            title: '',
+                            start: date.format()
+                        },
+                        success: function (result) {
+                            console.log(result[0].title);
+                            $('#calendar').fullCalendar('renderEvent',
+                                {
+                                    title: result[0].title,
+                                    start: date
+                                }, true);
+                        },
+                        error: function () {
+                            alert("Oops! Something didn't work");
+                        }
+                    });
+
+
                 }
             });
 
