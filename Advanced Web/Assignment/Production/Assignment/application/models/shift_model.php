@@ -31,31 +31,34 @@ class shift_model extends CI_Model{
     }
 
     public function get_Data(){
+        $date = date('Y-m-j');
+        $query = $this->db->query('call shift_getDate(' . $date .', '. $date .')');
+        $events = $query->result_array();
 
-        $events =  array(
-            array(
-                "id"=> "876",
-                "title"=> "All Day Event",
-                "start"=> "2014-09-01"
-            ),array(
-                "id"=> "987",
-                "title"=> "Long Event",
-                "start"=> "2014-09-07",
-                "end"=> "2014-09-10"
-            ),array(
-                "id"=> "999",
-                "title"=> "Repeating Event",
-                "start"=> "2014-09-09T16:00:00-05:00"
-            )
-        );
+//        $events =  array(
+//            array(
+//                "id"=> "876",
+//                "title"=> "All Day Event",
+//                "start"=> "2014-09-01"
+//            ),array(
+//                "id"=> "987",
+//                "title"=> "Long Event",
+//                "start"=> "2014-09-07",
+//                "end"=> "2014-09-10"
+//            ),array(
+//                "id"=> "999",
+//                "title"=> "Repeating Event",
+//                "start"=> "2014-09-09T16:00:00-05:00"
+//            )
+//        );
 
         $jsonevents = array();
         foreach ($events as $entry)
         {
             $jsonevents[] = array(
-                'id' => $entry['id'],
+                'id' => $entry['levelID'],
                 'title' => $entry['title'],
-                'start' => $entry['start']
+                'start' => $entry['shiftDate']
             );
         }
         return json_encode($jsonevents);
