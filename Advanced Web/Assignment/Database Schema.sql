@@ -259,19 +259,19 @@ DROP PROCEDURE IF EXISTS shift_getDate;
 DELIMITER //
 CREATE PROCEDURE shift_getDate
 (
-	IN shiftStartDate date,
-	IN shiftEndDate date
+	IN shiftDateIN date,
+	IN shiftEndDateIN date
 )
 BEGIN
 	SELECT	COUNT(*) AS shiftNumbers,
 			l.levelID,
-			l.levelName AS 'title',
+			shiftEndDateIN AS levelName,
 			s.shiftDate
 	FROM	shifts AS s
 	INNER JOIN users AS u on u.userID = s.userID
 	INNER JOIN levels AS l on l.levelID = u.levelID
-	WHERE	s.shiftDate > shiftStartDate
-	AND		s.shiftDate <= shiftEndDate
+	WHERE	s.shiftDate > shiftDateIN
+	AND		s.shiftDate <= '2015-11-26'
 	GROUP BY 	l.levelID,
 				s.shiftDate Asc
     ORDER BY 	s.shiftDate,
@@ -293,6 +293,18 @@ call user_add ('Emu', 'Ernie', 'tyuIo124', 2, 2456);
 call user_add ('Fur', 'Frank', '45frAnk67', 3, 8543);
 call user_add ('Goat', 'Graham', 'deDede1', 3, 7832);
 call user_add ('timetabler', 'admin', 'organ1sed', 1, 6189);
+
+call shift_add ('2', '20140927');
+call shift_add ('1', '20140927');
+call shift_add ('3', '20140927');
+call shift_add ('4', '20140927');
+call shift_add ('7', '20140927');
+call shift_add ('6', '20140927');
+call shift_add ('5', '20140927');
+call shift_add ('7', '20140928');
+call shift_add ('6', '20140928');
+call shift_add ('2', '20140928');
+call shift_add ('1', '20140928');
 
 call shift_add ('2', '20141027');
 call shift_add ('1', '20141027');

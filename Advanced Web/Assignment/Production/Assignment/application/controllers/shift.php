@@ -42,7 +42,7 @@ class shift extends CI_Controller{
 
     public function calendar($date){
 
-        $data['events'] = $this->shift_model->get_Data();
+        $data['events'] = $this->shift_model->get_Data($date, $date);
         $data['title'] = 'Calendar';
 
         $this->load->view('templates/header', $data);
@@ -51,8 +51,11 @@ class shift extends CI_Controller{
     }
 
     public function ajaxCalendar(){
+        $start = $this->input->get('start', FALSE);
+        $end = $this->input->get('end', FALSE);
+
         header("Content-Type: application/json");
-        echo $this->shift_model->get_Data();
+        echo $this->shift_model->get_Data($start, '2014-10-10');
     }
 
 } 
