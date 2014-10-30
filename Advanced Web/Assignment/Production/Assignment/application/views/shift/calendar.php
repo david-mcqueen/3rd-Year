@@ -25,13 +25,14 @@ echo '<h1>All shifts displayed on a calendar</h1>';
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
-                defaultDate: '2014-09-12',
+                defaultDate: Date(),
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
                 events: {
                     //url: 'http://localhost/php/get-events.php?',
                     //url: 'http://localhost/fullcalendar-2.1.1/demos/php/get-events.php?',
-                    url: '<?php echo base_url(); ?>application/views/shift/functions/get-events.php?',
+                    //url: '<?php echo base_url(); ?>application/views/shift/functions/getCalendar.php?',
+                    url: '<?php echo base_url(); ?>index.php/shift/getCalendar',
                     error: function(textStatus, errorThrown) {
                         $('#script-warning').show();
                         alert(errorThrown.responseText);

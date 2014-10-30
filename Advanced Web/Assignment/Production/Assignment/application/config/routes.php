@@ -45,10 +45,11 @@ $route['user'] = 'user';
 $route['user/(:any)'] = 'user/view/$1';
 $route['shift'] = 'shift';
 $route['shift/view/(:any)'] = 'shift/view/$1';
+$route['shift/calendar/functions'] = 'shift/getCalendar';
 $route['shift/calendar/(:any)'] = 'shift/calendar/$1';
+$route['shift/getCalendar'] = 'shift/ajaxCalendar';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
-$route['shift/getCalendar'] = 'shift/getCalendar';
 
 
 /* End of file routes.php */
