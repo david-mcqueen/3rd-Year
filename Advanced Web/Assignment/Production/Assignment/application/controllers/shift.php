@@ -26,7 +26,6 @@ class shift extends CI_Controller{
 
     public function view($userID)
     {
-        //$data['shift_data'] = $this->shift_model->get_shift($userID);
         $data['shift'] = $this->shift_model->get_shift($userID);
         if (empty($data['shift']))
         {

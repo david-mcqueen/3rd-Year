@@ -259,13 +259,13 @@ DROP PROCEDURE IF EXISTS shift_getDate;
 DELIMITER //
 CREATE PROCEDURE shift_getDate
 (
-	IN shiftDateIN date,
-	IN shiftEndDateIN date
+	shiftDateIN date,
+	shiftEndDateIN date
 )
 BEGIN
 	SELECT	COUNT(*) AS shiftNumbers,
 			l.levelID,
-			shiftEndDateIN AS levelName,
+			l.levelName AS levelName,
 			s.shiftDate
 	FROM	shifts AS s
 	INNER JOIN users AS u on u.userID = s.userID
@@ -282,7 +282,7 @@ DELIMITER ;
 
 -- Add some data
 call level_add('admin');
-call level_add('Standard');
+call level_add('Nurse');
 call level_add('Senior');
 
 call user_add ('Apple', 'Amy', 'Ppl!eta123', 2, 4567);

@@ -43,6 +43,7 @@ $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
 $route['user'] = 'user';
 $route['user/(:any)'] = 'user/view/$1';
+$route['pages/login?(:any)'] = 'pages/login';
 $route['shift'] = 'shift';
 $route['shift/view/(:any)'] = 'shift/view/$1';
 $route['shift/calendar/functions'] = 'shift/getCalendar';

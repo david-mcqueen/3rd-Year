@@ -2,7 +2,7 @@
 /*
  *
  */
-echo '<h1>All shifts displayed on a calendar</h1>';
+echo '<h1>Welcome, *User Name*</h1>';
 ?>
 
 <meta charset='utf-8' />
