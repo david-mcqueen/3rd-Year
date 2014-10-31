@@ -1,10 +1,11 @@
+# David McQueen - 10153465
+
 class String
 
   def frequency
     letters = Hash.new(0)
-    self.gsub!(/\W+/, '')
+    self.gsub!(/\W+/, '') # Remove all non letters from the String (! used to update the original)
     self.split(" ").each  do |word|
-      word.gsub!(/\d\s?/, "")
       word.upcase.split("").each do |letter|
         letters[letter] += 1
       end
@@ -34,7 +35,6 @@ class String
 
     self.gsub!(/\W+/, '')
     self.split(" ").each  do |word|
-      word.gsub!(/\d\s?/, "")
       word.upcase.split("").each do |letter|
         letters[letter] += 1
       end
@@ -45,8 +45,7 @@ end
 
 
 puts "\nExercise 2"
-puts input.histogram
-    input.histogram.each do |key, value|
-      puts "#{key}: " + "*" * value
-    end
+input.histogram.each do |key, value|
+  puts "#{key}: " + "*" * value
+end
 
