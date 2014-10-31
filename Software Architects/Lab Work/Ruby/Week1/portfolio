@@ -1,0 +1,19 @@
+class String
+
+  def frequency
+    letters = Hash.new(0)
+    self.gsub!(/\W+/, '')
+    self.split(" ").each  do |word|
+      word.gsub!(/\d\s?/, "")
+      word.upcase.split("").each do |letter|
+        letters[letter] += 1
+      end
+    end
+    return letters
+  end
+end
+
+
+input = "Our deepest fear is not that we are inadequate. Our deepest fear is that we are powerful beyond measure. It is our light not our darkness that most frightens us. We ask ourselves, who am I to be brilliant, gorgeous, talented and fabulous?"
+
+puts input.frequency
