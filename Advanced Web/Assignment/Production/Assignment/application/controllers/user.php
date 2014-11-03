@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Dave
  * Date: 27/10/14
- * Time: 12:49
+ * Time: 13:10
  */
 
 class user extends CI_Controller{
@@ -14,29 +14,20 @@ class user extends CI_Controller{
         $this->load->model('user_model');
     }
 
-    public function index()
-    {
-        $data['user'] = $this->user_model->get_user();
-        $data['title'] = 'User Data';
+    public function calendar($date){
+        $data['events'] = $this->user_model->get_Data($date, $date);
+        $data['title'] = 'Calendar';
 
         $this->load->view('templates/header', $data);
-        $this->load->view('user/index', $data);
+        $this->load->view('user/calendar', $data);
         $this->load->view('templates/footer');
     }
 
-    public function view($userID)
-    {
-        $data['user_data'] = $this->user_model->get_user($userID);
-
-        if (empty($data['user_data']))
-        {
-            show_404();
-        }
-
-        $data['title'] = $data['user_data']['forename'];
+    public function login(){
+        $data['title'] = 'Login';
 
         $this->load->view('templates/header', $data);
-        $this->load->view('user/view', $data);
+        $this->load->view('user/login');
         $this->load->view('templates/footer');
     }
 

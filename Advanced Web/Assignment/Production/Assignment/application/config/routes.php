@@ -38,21 +38,14 @@
 |
 */
 
-$route['news/create'] = 'news/create';
-$route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news';
-$route['user'] = 'user';
-$route['user/(:any)'] = 'user/view/$1';
-$route['pages/login?(:any)'] = 'pages/login';
-$route['shift'] = 'shift';
-$route['shift/view/(:any)'] = 'shift/view/$1';
-$route['shift/calendar/functions'] = 'shift/getCalendar';
-$route['shift/calendar/(:any)'] = 'shift/calendar/$1';
-$route['shift/addShift?(:any)'] = 'shift/addShift';
-$route['shift/getCalendar?(:any)'] = 'shift/ajaxCalendar';
-$route['(:any)'] = 'pages/view/$1';
-$route['default_controller'] = 'pages/view';
+$route['user/login'] = 'user/login'; //Login
+$route['user/calendar/(:any)'] = 'user/calendar/1'; //Logged in main calendar view
 
+$route['shift/addShift?(:any)'] = 'shift/addShift'; //AJAX used to add a shift
+$route['shift/getCalendar?(:any)'] = 'shift/ajaxCalendar'; //AJAX used to get calendar events
+
+$route['404_override'] = 'errors/page_missing'; //Error page
+$route['default_controller'] = 'user/login'; //Default if no other route matches
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
