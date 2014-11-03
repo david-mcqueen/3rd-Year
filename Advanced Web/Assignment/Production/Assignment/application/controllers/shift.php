@@ -66,7 +66,8 @@ class shift extends CI_Controller{
             $coverAvailable = (int) $result['cover'];
         }
 
-        if ($coverAvailable > $coverNeeded){
+        //The $coverAvailable is what the level would be without the shift being removed
+        if ($coverAvailable >= $coverNeeded){
             //There is enough cover to let the user remove their shift
             $success = $this->shift_model->remove_shift($userID, $shiftID);
         }else{
@@ -76,7 +77,9 @@ class shift extends CI_Controller{
 
         $jsonevents[] = array(
             'success' => $success,
-            'errors' => $errors
+            'errors' => $errors,
+            'coverNeeded' => $coverNeeded,
+            'coverAvailable' => $coverAvailable
         );
 
         echo json_encode($jsonevents);
