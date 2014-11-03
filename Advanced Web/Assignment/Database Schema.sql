@@ -9,10 +9,12 @@ DROP TABLE IF EXISTS levels;
 CREATE TABLE IF NOT EXISTS levels (
 	levelID int NOT NULL AUTO_INCREMENT,
 	levelName varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-	neededOnShift int DEFAULT 0,
+	neededOnShift int,
 	PRIMARY KEY (levelID),
 	INDEX (levelID)
 );
+
+ALTER TABLE `levels` ADD UNIQUE(`levelID`);
 
 
 CREATE TABLE IF NOT EXISTS users (
@@ -228,6 +230,54 @@ BEGIN
 END //
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS shift_countCover;
+DELIMITER //
+CREATE PROCEDURE shift_countCover
+(
+	IN shiftIDIN int,
+	IN userIDIN int
+)
+BEGIN
+SELECT COUNT(*) as cover
+FROM shifts as s
+inner join users as u on s.userID = u.userID
+inner join users as u1 on u1.userID = userIDIN
+inner join shifts as s1 on s1.shiftID = shiftIDIN
+where s.shiftDate = s1.shiftDate
+and s.shiftID <> shiftIDIN
+and u.levelID = u1.levelID;
+
+call shift_coverNeeded(userIDIN);
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS shift_coverNeeded;
+DELIMITER //
+CREATE PROCEDURE shift_coverNeeded
+(
+	IN userIDIN int,
+	IN shiftIDIN int
+)
+BEGIN
+
+
+SELECT COUNT(*) as cover,
+(SELECT l.neededOnShift
+FROM levels as l
+LEFT join users as u on u.levelid = l.levelid
+WHERE u.userid = userIDIN) as coverNeeded
+FROM shifts as s
+inner join users as u on s.userID = u.userID
+inner join users as u1 on u1.userID = userIDIN
+inner join shifts as s1 on s1.shiftID = shiftIDIN
+where s.shiftDate = s1.shiftDate
+and s.shiftID <> shiftIDIN
+and u.levelID = u1.levelID;
+
+
+END //
+DELIMITER ;
+
 DROP PROCEDURE IF EXISTS shift_remove;
 DELIMITER //
 CREATE PROCEDURE shift_remove
@@ -237,25 +287,11 @@ CREATE PROCEDURE shift_remove
 )
 BEGIN
 
-SELECT @shifts := COUNT(*)
-FROM shifts as s
-inner join users as u on s.userID = u.userID
-inner join users as u1 on u1.userID = userIDIN
-inner join shifts as s1 on s1.shiftID = shiftIDIN
-where s.shiftDate = s1.shiftDate
-and s.shiftID <> 13
-and u.levelID = u1.levelID;
-
-SELECT @cover := l.neededOnShift
-FROM users as u
-inner join levels as l on u.levelid = l.levelid
-WHERE u.userid = userIDIN;
-
 DELETE
 FROM shifts
 WHERE	shiftID = shiftIDIN
-AND		userID = userIDIN
-AND @shifts > @cover;
+AND		userID = userIDIN;
+
 END //
 DELIMITER ;
 

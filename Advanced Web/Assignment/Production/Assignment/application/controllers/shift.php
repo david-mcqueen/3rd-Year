@@ -49,10 +49,38 @@ class shift extends CI_Controller{
         echo $this->shift_model->add_shift($start, $userID);
     }
 
-    public function removeShift(){
+    public function removeShift()
+    {
         $session_data = $this->session->userdata('logged_in');
         $userID = $session_data['userID'];
         $shiftID = $this->input->get('id', FALSE);
-        echo $this->shift_model->remove_shift($shiftID, $userID);
+        $results = $this->shift_model->countCoverNeeded($userID, $shiftID);
+        $jsonevents = array();
+        $coverNeeded = 0;
+        $coverAvailable = 0;
+        $errors = "";
+
+        foreach ($results as $result)
+        {
+            $coverNeeded = (int) $result['coverNeeded'];
+            $coverAvailable = (int) $result['cover'];
+        }
+
+        if ($coverAvailable > $coverNeeded){
+            //There is enough cover to let the user remove their shift
+            $success = $this->shift_model->remove_shift($userID, $shiftID);
+        }else{
+            $success = false;
+            $errors = "Unable to remove shift. Please see shift guidlines *LINK*";
+        }
+
+        $jsonevents[] = array(
+            'success' => $success,
+            'errors' => $errors
+        );
+
+        echo json_encode($jsonevents);
+
     }
+
 } 

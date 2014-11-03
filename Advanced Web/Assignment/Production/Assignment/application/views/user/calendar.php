@@ -67,7 +67,11 @@ echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
                                     id: calEvent.id
                                 },
                                 success: function (result) {
-                                    $('#calendar').fullCalendar('refetchEvents');
+                                    if (!result[0].success){
+                                        alert(result[0].errors);
+                                    }else{
+                                        $('#calendar').fullCalendar('refetchEvents');
+                                    }
                                 },
                                 error: function () {
                                     alert("Oops! Something didn't work");

@@ -40,7 +40,7 @@ class shift_model extends CI_Model{
 
     public function add_shift($start, $userID){
         $qry = ('call shift_add(' . $userID . ', \'' . $start .'\');');
-        $result = $this->db->query($qry);
+        $this->db->query($qry);
 
         $jsonevents = array();
 
@@ -53,21 +53,25 @@ class shift_model extends CI_Model{
         return json_encode($jsonevents);
     }
 
-    public function remove_shift($shiftID, $userID){
-        $qry = ('call shift_remove(' . $shiftID . ', \'' . $userID .'\');');
-        $result = $this->db->query($qry);
+    public function countCoverNeeded($userID, $shiftID){
 
-        $jsonevents = array();
+//     .$qryRemove = ('call shift_remove(' . $shiftID . ', \'' . $userID .'\');');
 
-        $jsonevents[] = array(
-            'id' => '123',
-            'title' =>  'New Shift',
-            'start' => '2014-10-10',
-            'editable' => false
-        );
-        return json_encode($jsonevents);
+        $qryCoverNeeded = ('call shift_coverNeeded(' . $userID . ', \'' . $shiftID .'\');');
+        $cover = $this->db->query($qryCoverNeeded);
+        $results = $cover->result_array();
+
+        $cover->next_result();
+        $cover->free_result();
+        return ($results);
     }
 
+    public function remove_shift($userID, $shiftID){
+        $qryRemove = ('call shift_remove(' . $shiftID . ', ' . $userID .');');
+        $this->db->query($qryRemove);
+
+        return true;
+    }
 
 }
 
