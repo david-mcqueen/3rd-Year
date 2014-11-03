@@ -44,13 +44,27 @@ class shift_model extends CI_Model{
 
         $jsonevents = array();
 
-
             $jsonevents[] = array(
                 'id' => '123',
                 'title' =>  'New Shift',
                 'start' => $start,
                 'editable' => false
             );
+        return json_encode($jsonevents);
+    }
+
+    public function remove_shift($shiftID, $userID){
+        $qry = ('call shift_remove(' . $shiftID . ', \'' . $userID .'\');');
+        $result = $this->db->query($qry);
+
+        $jsonevents = array();
+
+        $jsonevents[] = array(
+            'id' => '123',
+            'title' =>  'New Shift',
+            'start' => '2014-10-10',
+            'editable' => false
+        );
         return json_encode($jsonevents);
     }
 

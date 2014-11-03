@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS levels;
 CREATE TABLE IF NOT EXISTS levels (
 	levelID int NOT NULL AUTO_INCREMENT,
 	levelName varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+	neededOnShift int DEFAULT 0,
 	PRIMARY KEY (levelID),
 	INDEX (levelID)
 );
@@ -227,15 +228,34 @@ BEGIN
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS shift_delete;
+DROP PROCEDURE IF EXISTS shift_remove;
 DELIMITER //
-CREATE PROCEDURE shift_delete
+CREATE PROCEDURE shift_remove
 (
-	IN shiftIDIN int
+	IN shiftIDIN int,
+	IN userIDIN int
 )
 BEGIN
-	DELETE FROM shifts
-	WHERE	shiftID = shiftIDIN;
+
+SELECT @shifts := COUNT(*)
+FROM shifts as s
+inner join users as u on s.userID = u.userID
+inner join users as u1 on u1.userID = userIDIN
+inner join shifts as s1 on s1.shiftID = shiftIDIN
+where s.shiftDate = s1.shiftDate
+and s.shiftID <> 13
+and u.levelID = u1.levelID;
+
+SELECT @cover := l.neededOnShift
+FROM users as u
+inner join levels as l on u.levelid = l.levelid
+WHERE u.userid = userIDIN;
+
+DELETE
+FROM shifts
+WHERE	shiftID = shiftIDIN
+AND		userID = userIDIN
+AND @shifts > @cover;
 END //
 DELIMITER ;
 
@@ -264,14 +284,17 @@ CREATE PROCEDURE shift_getDate
 	userID int
 )
 BEGIN
-	SELECT	COUNT(*) AS shiftNumbers,
+	SELECT	COUNT(s.shiftID) AS shiftNumbers,
 			l.levelID,
 			l.levelName AS levelName,
 			s.shiftDate,
 			MAX(case
 				when s.userID = userID then 1
 				else 0
-			end) AS onShift
+			end) AS onShift,
+			MAX(CASE WHEN s.userID = userID then s.shiftID
+				else 0
+			end) as shiftID
 	FROM	shifts AS s
 	INNER JOIN users AS u on u.userID = s.userID
 	INNER JOIN levels AS l on l.levelID = u.levelID
@@ -355,3 +378,31 @@ call shift_add ('6', '20141128');
 call shift_add ('2', '20141128');
 call shift_add ('1', '20141128');
 
+
+
+SELECT @shifts := COUNT(*)
+FROM shifts as s
+inner join users as u on s.userID = u.userID
+inner join users as u1 on u1.userID = 1
+where s.shiftDate = '2014-10-27'
+and s.shiftID <> 13
+and u.levelID = u1.levelID;
+
+
+
+SELECT @shifts;
+
+SELECT 1
+FROM levels as l
+inner join users as u on u.levelid = l.levelid
+WHERE @Shifts > neededOnShift
+
+
+
+SET @valid = 0;
+
+SELECT @valid := 1
+from shifts
+where s.shiftDate = '2014-11-11'
+
+SELECT @valid;

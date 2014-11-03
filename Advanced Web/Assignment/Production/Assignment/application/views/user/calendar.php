@@ -15,7 +15,8 @@ echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
 
         $(document).ready(function() {
 
-            var maxDate = new Date();
+            var maxDate = new Date(),
+                deleteMessage;
             maxDate.setMonth(maxDate.getMonth() + 3); //Limit of 3 months in the future
             $('#calendar').fullCalendar({
                 header: {
@@ -54,13 +55,26 @@ echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
                     }
                 },
                 eventClick: function(calEvent, jsEvent, view) {
-                //Will be used to remove shifts
-                    alert('Event: ' + calEvent.title);
-                    alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-                    alert('View: ' + view.name);
+                    if (calEvent.onShift == 1){
+                        //Only process deletion if the user is on this shift
 
-                    // change the border color just for fun
-                    $(this).css('border-color', 'red');
+                        deleteMessage = "Are you sure you want to remove your shift from date " + calEvent.shiftDate + "?";
+                        if(confirm (deleteMessage)){
+                            $.ajax({
+                                url: "<?php echo base_url(); ?>index.php/shift/removeShift",
+                                dataType: 'json',
+                                data: {
+                                    id: calEvent.id
+                                },
+                                success: function (result) {
+                                    $('#calendar').fullCalendar('refetchEvents');
+                                },
+                                error: function () {
+                                    alert("Oops! Something didn't work");
+                                }
+                            });
+                        }
+                    }
 
                 },
                 dayClick: function(date, jsEvent, view) {
@@ -74,11 +88,12 @@ echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
                         },
                         success: function (result) {
                             console.log(result[0].title);
-                            $('#calendar').fullCalendar('renderEvent',
-                                {
-                                    title: result[0].title,
-                                    start: date
-                                }, true);
+//                            $('#calendar').fullCalendar('renderEvent',
+//                                {
+//                                    title: result[0].title,
+//                                    start: date
+//                                }, true);
+                            $('#calendar').fullCalendar('refetchEvents');
                         },
                         error: function () {
                             alert("Oops! Something didn't work");

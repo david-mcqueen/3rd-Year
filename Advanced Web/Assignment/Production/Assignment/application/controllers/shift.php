@@ -28,13 +28,15 @@ class shift extends CI_Controller{
         {
             $title = $entry['levelName'] . ' ' . $entry['shiftNumbers'];
             if ($entry['onShift'] == 1){
-                $title = $title . ' ' . $session_data['forename'];;
+                $title = $title . ' ' . $session_data['forename'];
             }
             $jsonevents[] = array(
-                'id' => $entry['levelID'],
+                'id' => $entry['shiftID'],
                 'title' =>  $title,
                 'start' => $entry['shiftDate'],
-                'editable' => false
+                'editable' => false,
+                'onShift' => $entry['onShift'],
+                'shiftDate' => $entry['shiftDate']
             );
         }
         echo json_encode($jsonevents);
@@ -45,5 +47,12 @@ class shift extends CI_Controller{
         $userID = $session_data['userID'];
         $start = $this->input->get('start', FALSE);
         echo $this->shift_model->add_shift($start, $userID);
+    }
+
+    public function removeShift(){
+        $session_data = $this->session->userdata('logged_in');
+        $userID = $session_data['userID'];
+        $shiftID = $this->input->get('id', FALSE);
+        echo $this->shift_model->remove_shift($shiftID, $userID);
     }
 } 
