@@ -23,6 +23,7 @@ echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
                     center: 'title',
                     right: 'month,basicWeek'
                 },
+                firstDay:1, //Week starts on Monday
                 defaultDate: Date(),
                 weekNumbers: true,
                 editable: true, //So users can click to add shifts

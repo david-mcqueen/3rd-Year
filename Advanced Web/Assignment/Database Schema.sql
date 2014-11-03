@@ -260,13 +260,18 @@ DELIMITER //
 CREATE PROCEDURE shift_getDate
 (
 	shiftDateIN date,
-	shiftEndDateIN date
+	shiftEndDateIN date,
+	userID int
 )
 BEGIN
 	SELECT	COUNT(*) AS shiftNumbers,
 			l.levelID,
 			l.levelName AS levelName,
-			s.shiftDate
+			s.shiftDate,
+			MAX(case
+				when s.userID = userID then 1
+				else 0
+			end) AS onShift
 	FROM	shifts AS s
 	INNER JOIN users AS u on u.userID = s.userID
 	INNER JOIN levels AS l on l.levelID = u.levelID

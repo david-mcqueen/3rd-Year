@@ -15,11 +15,29 @@ class shift extends CI_Controller{
     }
 
     public function ajaxCalendar(){
+        $session_data = $this->session->userdata('logged_in');
+        $userID = $session_data['userID'];
         $start = $this->input->get('start', FALSE);
         $end = $this->input->get('end', FALSE);
 
         header("Content-Type: application/json");
-        echo $this->shift_model->get_Data($start, $end);
+        $response = $this->shift_model->get_Data($start, $end, $userID);
+
+        $jsonevents = array();
+        foreach ($response as $entry)
+        {
+            $title = $entry['levelName'] . ' ' . $entry['shiftNumbers'];
+            if ($entry['onShift'] == 1){
+                $title = $title . ' ' . $session_data['forename'];;
+            }
+            $jsonevents[] = array(
+                'id' => $entry['levelID'],
+                'title' =>  $title,
+                'start' => $entry['shiftDate'],
+                'editable' => false
+            );
+        }
+        echo json_encode($jsonevents);
     }
     
     public function addShift(){

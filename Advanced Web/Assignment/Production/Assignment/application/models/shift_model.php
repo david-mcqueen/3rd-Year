@@ -30,23 +30,11 @@ class shift_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function get_Data($start, $end){
-       // $query = $this->db->query('call shift_getDate(\'' . $start .'\', \'' . $end . '\');');
-        //$query = $this->db->query('call shift_getDate(\''.$start.'\', \'2016-01-01\');');
-        $query = $this->db->query('call shift_getDate(\''.$start.'\', \'' . $end . '\');');
+    public function get_Data($start, $end, $userID){
+        $query = $this->db->query('call shift_getDate(\''.$start.'\', \'' . $end . '\', '. $userID .');');
         $events = $query->result_array();
 
-        $jsonevents = array();
-        foreach ($events as $entry)
-        {
-            $jsonevents[] = array(
-                'id' => $entry['levelID'],
-                'title' =>  $entry['levelName'] . ' ' . $entry['shiftNumbers'],
-                'start' => $entry['shiftDate'],
-                'editable' => false
-            );
-        }
-        return json_encode($jsonevents);
+        return $events;
 
     }
 
