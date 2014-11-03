@@ -47,5 +47,6 @@ $route['shift/getCalendar?(:any)'] = 'shift/ajaxCalendar'; //AJAX used to get ca
 $route['404_override'] = 'errors/page_missing'; //Error page
 $route['default_controller'] = 'user/login'; //Default if no other route matches
 
+$route['verifyLogin'] = 'verifylogin';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
