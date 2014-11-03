@@ -14,52 +14,18 @@ class shift extends CI_Controller{
         $this->load->model('shift_model');
     }
 
-    public function index()
-    {
-        $data['shift'] = $this->shift_model->get_shift();
-        $data['title'] = 'Shift Data';
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('shift/index', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function view($userID)
-    {
-        $data['shift'] = $this->shift_model->get_shift($userID);
-        if (empty($data['shift']))
-        {
-            show_404();
-        }
-
-        $data['title'] = 'Shift Data';
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('shift/view', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function calendar($date){
-        $data['events'] = $this->shift_model->get_Data($date, $date);
-        $data['title'] = 'Calendar';
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('user/calendar', $data);
-        $this->load->view('templates/footer');
-    }
-
     public function ajaxCalendar(){
         $start = $this->input->get('start', FALSE);
         $end = $this->input->get('end', FALSE);
 
         header("Content-Type: application/json");
-        echo $this->shift_model->get_Data($start, '2014-10-10');
+        echo $this->shift_model->get_Data($start, $end);
     }
     
     public function addShift(){
+        $session_data = $this->session->userdata('logged_in');
+        $userID = $session_data['userID'];
         $start = $this->input->get('start', FALSE);
-        echo $this->shift_model->add_shift($start);
-
+        echo $this->shift_model->add_shift($start, $userID);
     }
-
 } 

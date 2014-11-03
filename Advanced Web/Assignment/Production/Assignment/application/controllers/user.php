@@ -31,7 +31,8 @@ class user extends CI_Controller{
         if($this->session->userdata('logged_in'))
         {
             $session_data = $this->session->userdata('logged_in');
-            $data['forename'] = $session_data['username'];
+            $data['forename'] = $session_data['forename'];
+            $data['surname'] = $session_data['surname'];
             $data['title'] = 'Calendar';
 
             $this->load->view('templates/header', $data);

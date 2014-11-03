@@ -32,7 +32,8 @@ class shift_model extends CI_Model{
 
     public function get_Data($start, $end){
        // $query = $this->db->query('call shift_getDate(\'' . $start .'\', \'' . $end . '\');');
-        $query = $this->db->query('call shift_getDate(\''.$end.'\', \'2015-01-01\');');
+        //$query = $this->db->query('call shift_getDate(\''.$start.'\', \'2016-01-01\');');
+        $query = $this->db->query('call shift_getDate(\''.$start.'\', \'' . $end . '\');');
         $events = $query->result_array();
 
         $jsonevents = array();
@@ -49,8 +50,8 @@ class shift_model extends CI_Model{
 
     }
 
-    public function add_shift($start){
-        $qry = ('call shift_add(2, \'' . $start .'\');');
+    public function add_shift($start, $userID){
+        $qry = ('call shift_add(' . $userID . ', \'' . $start .'\');');
         $result = $this->db->query($qry);
 
         $jsonevents = array();

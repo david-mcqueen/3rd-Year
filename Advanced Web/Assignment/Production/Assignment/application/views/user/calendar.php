@@ -2,7 +2,7 @@
 /*
  *
  */
-echo '<h1>Welcome, ' .  $forename .'</h1>';
+echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
 ?>
 
 <meta charset='utf-8' />
@@ -13,20 +13,19 @@ echo '<h1>Welcome, ' .  $forename .'</h1>';
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.min.js'></script>
 <script>
 
-
-
         $(document).ready(function() {
 
             var maxDate = new Date();
-            maxDate.setDate(maxDate.getDate() + 90);
+            maxDate.setMonth(maxDate.getMonth() + 3); //Limit of 3 months in the future
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'month,agendaWeek'
+                    right: 'month,basicWeek'
                 },
                 defaultDate: Date(),
-                editable: true,
+                weekNumbers: true,
+                editable: true, //So users can click to add shifts
                 eventLimit: true, // allow "more" link when too many events
                 events: {
                     url: '<?php echo base_url(); ?>index.php/shift/getCalendar',
@@ -108,29 +107,15 @@ echo '<h1>Welcome, ' .  $forename .'</h1>';
         margin: 0 auto;
     }
 
-    #script-warning {
-        display: none;
-        background: #eee;
-        border-bottom: 1px solid #ddd;
-        padding: 0 10px;
-        line-height: 40px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 12px;
-        color: red;
-    }
     .disabled {
         background-color: #999999;
         color: #FFFFFF;
         cursor: default;
     }
 
-
 </style>
 <body>
 
-<div id='script-warning'>
-    <code>php/get-events.php</code> must be running.
-</div>
+
 <div id='calendar'></div>
 </body>

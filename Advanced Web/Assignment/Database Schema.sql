@@ -270,12 +270,31 @@ BEGIN
 	FROM	shifts AS s
 	INNER JOIN users AS u on u.userID = s.userID
 	INNER JOIN levels AS l on l.levelID = u.levelID
-	WHERE	s.shiftDate > shiftDateIN
-	AND		s.shiftDate <= '2015-11-26'
+	WHERE	s.shiftDate >= shiftDateIN
+	AND		s.shiftDate < shiftEndDateIN
 	GROUP BY 	l.levelID,
 				s.shiftDate Asc
     ORDER BY 	s.shiftDate,
     			l.levelID;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS login;
+DELIMITER //
+CREATE PROCEDURE login
+(
+	username int,
+	password varchar(100)
+)
+BEGIN
+	SELECT	u.forename,
+			u.surname,
+			u.userID,
+			u.staffID,
+			u.levelID
+	FROM	users AS u
+	WHERE	u.staffID = username
+	AND		u.password = password;
 END //
 DELIMITER ;
 
