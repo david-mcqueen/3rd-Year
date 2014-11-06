@@ -14,27 +14,10 @@ class user_model extends CI_Model{
         $this->load->database();
     }
 
-    public function get_Data($start, $end, $user){
-
-       // $query = $this->db->query('call shift_getDate(\'' . $start .'\', \'' . $end . '\');');
-        $query = $this->db->query('call shift_getDate(\'' . $end . '\', \' 2015-01-01 \');');
-        $events = $query->result_array();
-
-        $jsonevents = array();
-        foreach ($events as $entry)
-        {
-            $jsonevents[] = array(
-                'id' => $entry['levelID'],
-                'title' =>  $entry['levelName'] . ' ' . $entry['shiftNumbers'],
-                'start' => $entry['shiftDate'],
-                'editable' => false
-            );
-        }
-        return json_encode($jsonevents);
-    }
-
     public function login($username, $password){
-        $query = $this->db->query('call login(\''. $username . '\', \'' . $password .'\');');
+        $qry = 'call login(?,?);';
+        $parameters = array($username, $password);
+        $query = $this->db->query($qry, $parameters);
 
         if($query -> num_rows() == 1)
         {
@@ -45,6 +28,26 @@ class user_model extends CI_Model{
             return false;
         }
     }
+
+    public function userSettingsGET($userID){
+        //Function to get user settings / details
+        $sql = 'call user_get(?);';
+        $parameters = array($userID);
+        $query = $this->db->query($sql, $parameters);
+        return $query->result_array();
+
+    }
+
+    public function userSettingsUpdate($userID, $password, $forename, $surname, $email, $phone, $address1, $address2, $city, $postcode){
+
+        $sql = 'call user_edit(?,?,?,?,?,?,?,?,?,?)';
+        $parameters = array($userID, $password, $forename, $surname, $email, $phone, $address1, $address2, $city, $postcode);
+        $query = $this->db->query($sql, $parameters);
+
+        return $query->result();
+
+    }
+
 }
 
 

@@ -55,8 +55,6 @@ class shift_model extends CI_Model{
 
     public function countCoverNeeded($userID, $shiftID){
 
-//     .$qryRemove = ('call shift_remove(' . $shiftID . ', \'' . $userID .'\');');
-
         $qryCoverNeeded = ('call shift_coverNeeded(' . $userID . ', \'' . $shiftID .'\');');
         $cover = $this->db->query($qryCoverNeeded);
         $results = $cover->result_array();

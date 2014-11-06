@@ -24,6 +24,12 @@ CREATE TABLE IF NOT EXISTS users (
 	password varchar(100) COLLATE utf8_unicode_ci NOT NULL,
 	levelID int NOT NULL,
 	staffID int NOT NULL,
+	emailAddress varchar(100) COLLATE utf8_unicode_ci NULL,
+	phoneNumber varchar(14) COLLATE utf8_unicode_ci NULL,
+	address1 varchar(100) COLLATE utf8_unicode_ci NULL,
+	address2 varchar(100) COLLATE utf8_unicode_ci NULL,
+	city varchar(100) COLLATE utf8_unicode_ci NULL,
+	postcode varchar(9) COLLATE utf8_unicode_ci NULL,
 	PRIMARY KEY (userID),
 	INDEX (userID),
 	FOREIGN KEY (levelID) REFERENCES levels (levelID)
@@ -57,7 +63,13 @@ BEGIN
 			u.forename,
 			l.levelName,
 			u.levelID,
-			u.staffID
+			u.staffID,
+			u.emailAddress,
+			u.phoneNumber,
+			u.address1,
+			u.address2,
+			u.city,
+			u.postcode
 	FROM	users AS u
 			INNER JOIN levels AS l ON l.levelID = u.levelID
 	WHERE	u.userID = id;
@@ -127,19 +139,27 @@ DELIMITER //
 CREATE PROCEDURE user_edit
 (
 	IN id int,
-	IN surnameIN varchar(200),
-	IN forenameIN varchar(200),
 	IN passwordIN varchar(100),
-	IN levelIDIN int,
-	IN staffIDIN int
+	IN forenameIN varchar(100),
+	IN surnameIN varchar(100),
+	IN emailIN varchar(100),
+	IN phoneIN varchar(14),
+	IN address1IN varchar(100),
+	IN address2IN varchar(100),
+	IN cityIN varchar(100),
+	IN postcodeIN varchar(9)
 )
 BEGIN
-	UPDATE users
+	UPDATE users as u
 	SET 	surname = surnameIN,
-			forname = forenameIN,
-			password = passwordIN,
-			levelID = levelIDIN,
-			staffID = staffIDIN
+			forename = forenameIN,
+			password = IF(passwordIN = '', u.password,passwordIN),
+			emailAddress = emailIN,
+			phoneNumber = phoneIN,
+			address1 = address1IN,
+			address2 = address2IN,
+			city = cityIN,
+			postcode = postcodeIN
 	WHERE userID = id;
 END //
 DELIMITER ;
@@ -149,14 +169,17 @@ DROP PROCEDURE IF EXISTS level_add;
 DELIMITER //
 CREATE PROCEDURE level_add
 (
-	levelNameIN varchar(100)
+	levelNameIN varchar(100),
+	levelCoverNeeded int
 )
 BEGIN
 	INSERT INTO levels(
-			levelName
+			levelName,
+			neededOnShift
 		)
 	VALUES (
-			levelNameIN
+			levelNameIN,
+			levelCoverNeeded
 		);
 END //
 DELIMITER ;
@@ -364,17 +387,20 @@ DELIMITER ;
 
 
 -- Add some data
-call level_add('admin');
-call level_add('Nurse');
-call level_add('Senior');
+call level_add('admin', 0);
+call level_add('Nurse', 3);
+call level_add('Senior', 2);
 
 call user_add ('Apple', 'Amy', 'Ppl!eta123', 2, 4567);
 call user_add ('Berry', 'Bert', 'aSerty456a', 2, 5467);
 call user_add ('Carrot', 'Carl', 'asDghj1', 2, 1432);
 call user_add ('Donkey', 'Dave', 'sgGgdghj1', 2, 6743);
 call user_add ('Emu', 'Ernie', 'tyuIo124', 2, 2456);
+call user_add ('McQueen', 'David', 'dave', 2, 1234);
+
 call user_add ('Fur', 'Frank', '45frAnk67', 3, 8543);
 call user_add ('Goat', 'Graham', 'deDede1', 3, 7832);
+
 call user_add ('timetabler', 'admin', 'organ1sed', 1, 6189);
 
 call shift_add ('2', '20140927');
@@ -416,29 +442,3 @@ call shift_add ('1', '20141128');
 
 
 
-SELECT @shifts := COUNT(*)
-FROM shifts as s
-inner join users as u on s.userID = u.userID
-inner join users as u1 on u1.userID = 1
-where s.shiftDate = '2014-10-27'
-and s.shiftID <> 13
-and u.levelID = u1.levelID;
-
-
-
-SELECT @shifts;
-
-SELECT 1
-FROM levels as l
-inner join users as u on u.levelid = l.levelid
-WHERE @Shifts > neededOnShift
-
-
-
-SET @valid = 0;
-
-SELECT @valid := 1
-from shifts
-where s.shiftDate = '2014-11-11'
-
-SELECT @valid;

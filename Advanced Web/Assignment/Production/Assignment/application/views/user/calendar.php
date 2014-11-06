@@ -2,7 +2,7 @@
 /*
  *
  */
-echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
+
 ?>
 
 <meta charset='utf-8' />

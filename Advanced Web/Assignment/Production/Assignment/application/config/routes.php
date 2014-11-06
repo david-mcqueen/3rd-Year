@@ -39,7 +39,9 @@
 */
 
 $route['user/login'] = 'user/login'; //Login
-$route['user/calendar/(:any)'] = 'user/calendar/1'; //Logged in main calendar view
+$route['user/calendar/(:any)'] = 'user/calendar/$1'; //Logged in main calendar view
+$route['user/settings'] = 'user/settings'; //User settings
+$route['user/updateSettings'] = 'user/updateSettings';
 
 $route['shift/addShift?(:any)'] = 'shift/addShift'; //AJAX used to add a shift
 $route['shift/getCalendar?(:any)'] = 'shift/ajaxCalendar'; //AJAX used to get calendar events
