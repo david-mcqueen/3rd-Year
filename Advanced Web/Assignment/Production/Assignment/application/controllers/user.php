@@ -100,7 +100,9 @@ class user extends CI_Controller{
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/userBar', $data);
+            $this->load->view('templates/userSidebar', $data);
             $this->load->view('user/calendar', $data);
+
             $this->load->view('templates/footer');
         }
         else

@@ -7,5 +7,7 @@
  */
 
 echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
-echo '<a href="settings"> Settings</a>';
 ?>
+<a href="settings"> Settings</a>
+</br>
+<a href="calendar"> Calendar</a>
