@@ -48,13 +48,14 @@ class user extends CI_Controller{
                 $data['postcode'] = $setting['postcode'];
             }
 
+            $this->load->library('javascript');
             $this->load->view('templates/header', $data);
             $this->load->view('templates/userBar', $data);
             $this->load->view('user/settings', $data);
             $this->load->view('templates/footer');
         }else{
             //If no session, redirect to login page
-            //redirect('user/login', 'refresh');
+            redirect('user/login', 'refresh');
         }
 
     }
@@ -77,15 +78,18 @@ class user extends CI_Controller{
             $this->load->view('templates/header', $data);
             $this->load->view('templates/userBar', $data);
             $this->load->view('user/success', $data);
+
             $this->load->view('templates/footer');
         }
     }
 
     function logout()
     {
+        //Logs the user out and redirects them back to the login screen,
+
         $this->session->unset_userdata('logged_in');
         session_destroy();
-        redirect('home', 'refresh');
+        redirect('', 'refresh');
     }
 
     public function calendar(){
@@ -116,9 +120,7 @@ class user extends CI_Controller{
         $data['title'] = 'Login';
 
         $this->load->helper(array('form'));
-        $this->load->view('templates/header', $data);
         $this->load->view('user/login');
-        $this->load->view('templates/footer');
     }
 
 } 

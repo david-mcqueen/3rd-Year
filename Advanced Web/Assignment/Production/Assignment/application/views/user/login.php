@@ -1,39 +1,42 @@
-Home Page - Login
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link href='<?php echo base_url(); ?>application/views/css/user/login.css' rel="stylesheet">
 
-<!--<form action="index.php/pages/login">-->
-<!--    <label for="userName">User Name: </label>-->
-<!--    <input type="text" name=userName id="userName" placeholder="Username">-->
-<!--    </br>-->
-<!--    <label for="password">Password: </label>-->
-<!--    <input type="password" name="password" id="password">-->
-<!--    </br>-->
-<!--    <input type="submit" name="submit" value="Login!">-->
-<!--</form>-->
+<div class="container">
+    <div class="form">
 
-<?php echo validation_errors(); ?>
-<?php echo form_open('index.php/VerifyLogin'); ?>
-<label for="username">Username:</label>
-<input type="text"
-       size="20"
-       id="username"
-       name="username"
-       required
-       pattern="^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$"
-    />
-See popup for the correct format
-<br/>
-<label for="password">Password:</label>
-<input type="password"
-       size="20"
-       id="passowrd"
-       name="password"
-       required
-    />
-<br/>
-<input type="submit"
-       value="Login"
-    />
-</form>
+        <?php
+            echo '<div class="alert alert-danger" role="alert">' . validation_errors() . '</div>';
+            echo form_open('index.php/VerifyLogin');
+        ?>
+<!--        <form action="index.php/VerifyLogin" method="POST">-->
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text"
+               size="20"
+               id="username"
+               name="username"
+               placeholder="Username"
+               required
+               autofocus
+               class="form-control"
+               pattern="^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$"
+               title="staffID@nhs.org or initial.surname@nhs.org"
+            />
+        <input type="password"
+               size="20"
+               id="passowrd"
+               name="password"
+               required
+               placeholder="Password"
+               class="form-control"
+            />
+        <br/>
+        <input type="submit"
+               value="Login"
+               class="btn btn-lg btn-primary btn-block"
+            />
+        </form>
+    </div>
+</div>
 <?php
 /*
 Regex Explanation:

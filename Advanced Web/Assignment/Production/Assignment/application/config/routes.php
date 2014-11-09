@@ -39,6 +39,8 @@
 */
 
 $route['user/login'] = 'user/login'; //Login
+$route['user/logout'] = 'user/logout'; //Logout
+$route['VerifyLogin'] = 'verifyLogin/index'; //Logout
 $route['user/calendar/(:any)'] = 'user/calendar/$1'; //Logged in main calendar view
 $route['user/settings'] = 'user/settings'; //User settings
 $route['user/updateSettings'] = 'user/updateSettings';

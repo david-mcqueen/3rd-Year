@@ -383,9 +383,9 @@ BEGIN
 			u.levelID
 	FROM	users AS u
 	WHERE	(u.staffID = staffID
-				OR
-				(
-					initial = LEFT(forename, 1),
+			OR (
+					initial = LEFT(forename, 1)
+					AND
 					surname = surname
 				)
 			)
@@ -396,8 +396,8 @@ DELIMITER ;
 
 -- Add some data
 call level_add('admin', 0);
-call level_add('Nurse', 3);
-call level_add('Senior', 2);
+call level_add('Nurse', 2);
+call level_add('Senior', 1);
 
 call user_add ('Apple', 'Amy', 'Ppl!eta123', 2, 4567);
 call user_add ('Berry', 'Bert', 'aSerty456a', 2, 5467);

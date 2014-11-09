@@ -1,16 +1,12 @@
-<?php
-/*
- *
- */
-
-?>
-
 <meta charset='utf-8' />
+
+<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
 <link href='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.css' rel='stylesheet' />
 <link href='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.print.css' rel='stylesheet' media='print' />
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/moment.min.js'></script>
-<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
 
@@ -136,36 +132,111 @@ $(document).ready(function() {
                         }
                     });
                 }else{
-                    alert('You cant add a shift for this date. Please see the *GUIDELINES*');
+                    $("#warning").removeClass('hidden');
+                    //$("#warning").html("You cant add a shift for this date. Please see the <a href='#' class='alert-link'>guidlines</a>");
                 }
             }
         }
     });
+
+    $("#warning-close").click(function(){
+        $("#warning").addClass('hidden');
+    });
+
 });
+
+
+
 </script>
 <style>
 
     body {
-        margin: 40px 10px;
+        margin-left: 10px;
+        margin-right: 10px;
         padding: 0;
         font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
         font-size: 14px;
     }
 
-    #calendar {
+    #calendar, #messages {
         max-width: 900px;
         margin: 0 auto;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    #messages{
+
     }
 
     .disabled {
         background-color: #999999;
-        color: #FFFFFF;
+        color: #999999;
         cursor: default;
+    }
+    .warning.hidden{
+        display: none;
+    }
+    .modal-backdrop{
+        z-index:0;
     }
 
 </style>
 <body>
+<div class="well well-sm">Shift messages will go here</div>
+<div class="alert alert-warning" role="alert">use alert instead?</div>
 
+<!--User messages-->
+<div id="messages">
 
+    <!--Message: Can't add a shift due to breaking guidlines-->
+    <div class="alert alert-danger alert-dismissible warning hidden"
+         id="warning"
+         role="alert">
+        <button type="button"
+                class="close"
+                id="warning-close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        You can not add a shift for this date.
+        Please see the <a href=''
+                          class='alert-link'
+                          data-toggle="modal"
+                          data-target=".bs-example-modal-sm">guidlines</a>
+    </div>
+
+</div>
 <div id='calendar'></div>
+
+<!--Modal's-->
+
+<!--Modal explaining the shift guidelines-->
+<div class="modal fade bs-example-modal-sm"
+     tabindex="-1"
+     ole="dialog"
+     aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                Shift Guidlines
+            </div>
+            <div class="modal-body">
+                Nurse Guidelines
+                <ul>
+                    <li>
+                        There must be at least 2 nurses per shift
+                    </li>
+                </ul>
+                Senior Nurse Guidelines
+                <ul>
+                    <li>
+                        There must be at least 1 senior nurse per shift
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
