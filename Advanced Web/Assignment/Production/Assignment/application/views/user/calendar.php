@@ -77,7 +77,7 @@ $(document).ready(function() {
                             }
                         },
                         error: function () {
-                            alert("Oops! Something didn't work");
+                            alert("Oops! Something went wrong");
                         }
                     });
                 }
@@ -85,33 +85,38 @@ $(document).ready(function() {
 
         },
         dayClick: function(date, jsEvent, view) {
-            dayEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
-                return moment(event.start).isSame(date, 'day'); //Return all events for the clicked day
-            });
-            onShift = false;
-            dayEvents.forEach(function(entry){
-                //For each of the calendar events on clicked day, determine if the user is already working
-                if (entry.onShift == 1){
-                    onShift = true;
-                }
-            });
-            if (!onShift){
-                //If the user is not already working. Attempt to add a new shift
-                $.ajax({
-                    url: "<?php echo base_url(); ?>index.php/shift/addShift",
-                    dataType: 'json',
-                    data: {
-                        title: '',
-                        start: date.format()
-                    },
-                    success: function (result) {
-                        console.log(result[0].title);
-                        $('#calendar').fullCalendar('refetchEvents');
-                    },
-                    error: function () {
-                        alert("Oops! Something didn't work");
+            if(date > maxDate){
+                //If the user has clicked beyond 3 months, display an error and don't add the shift
+                alert("You can only add shifts for 3 months from the current date.");
+            }else{
+                dayEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
+                    return moment(event.start).isSame(date, 'day'); //Return all events for the clicked day
+                });
+                onShift = false;
+                dayEvents.forEach(function(entry){
+                    //For each of the calendar events on clicked day, determine if the user is already working
+                    if (entry.onShift == 1){
+                        onShift = true;
                     }
                 });
+                if (!onShift){
+                    //If the user is not already working. Attempt to add a new shift
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>index.php/shift/addShift",
+                        dataType: 'json',
+                        data: {
+                            title: '',
+                            start: date.format()
+                        },
+                        success: function (result) {
+                            console.log(result[0].title);
+                            $('#calendar').fullCalendar('refetchEvents');
+                        },
+                        error: function () {
+                            alert("Oops! Something went wrong.");
+                        }
+                    });
+                }
             }
         }
     });
