@@ -370,7 +370,9 @@ DROP PROCEDURE IF EXISTS login;
 DELIMITER //
 CREATE PROCEDURE login
 (
-	username int,
+	staffID int,
+	initial char(1),
+	surname varchar(100),
 	password varchar(100)
 )
 BEGIN
@@ -380,7 +382,13 @@ BEGIN
 			u.staffID,
 			u.levelID
 	FROM	users AS u
-	WHERE	u.staffID = username
+	WHERE	(u.staffID = staffID
+				OR
+				(
+					initial = LEFT(forename, 1),
+					surname = surname
+				)
+			)
 	AND		u.password = password;
 END //
 DELIMITER ;

@@ -38,10 +38,20 @@ class VerifyLogin extends CI_Controller {
     function check_database($password)
     {
         //Field validation succeeded.  Validate against database
-        $username = $this->input->post('username');
+        $input = explode('@', $this->input->post('username')); //Split on @
+
+        $username = $input[0]; //The part before @nhs.org
+        //If $username contains a period(.) then get the initial & surname
+        if (strpos($username, '.') !== false){
+            list($initial, $surname) = explode('.', $username); //Split on period(.)
+        }else{
+            $initial = '';
+            $surname = '';
+        }
+
 
         //query the database
-        $result = $this->user_model->login($username, $password);
+        $result = $this->user_model->login($username, $initial, $surname, $password);
 
         if($result)
         {

@@ -20,7 +20,7 @@ Home Page - Login
        required
        pattern="^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$"
     />
-
+See popup for the correct format
 <br/>
 <label for="password">Password:</label>
 <input type="password"

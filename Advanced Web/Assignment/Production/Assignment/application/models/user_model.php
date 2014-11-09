@@ -14,9 +14,9 @@ class user_model extends CI_Model{
         $this->load->database();
     }
 
-    public function login($username, $password){
-        $qry = 'call login(?,?);';
-        $parameters = array($username, $password);
+    public function login($username, $initial, $surname, $password){
+        $qry = 'call login(?,?,?,?);';
+        $parameters = array($username, $initial, $surname, $password);
         $query = $this->db->query($qry, $parameters);
 
         if($query -> num_rows() == 1)
