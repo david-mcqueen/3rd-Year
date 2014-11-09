@@ -12,13 +12,13 @@
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.min.js'></script>
 <script>
-
 $(document).ready(function() {
 
     var maxDate = new Date(),
         deleteMessage,
         dayEvents,
-        onShift;
+        onShift,
+        weekShiftCounter;
 
     maxDate.setMonth(maxDate.getMonth() + 3); //Limit of 3 months in the future
 
@@ -89,18 +89,37 @@ $(document).ready(function() {
                 //If the user has clicked beyond 3 months, display an error and don't add the shift
                 alert("You can only add shifts for 3 months from the current date.");
             }else{
+
+                //Return all events for the clicked day
                 dayEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
-                    return moment(event.start).isSame(date, 'day'); //Return all events for the clicked day
+                    return moment(event.start).isSame(date, 'day');
                 });
+
                 onShift = false;
-                dayEvents.forEach(function(entry){
+                dayEvents.forEach(function(event){
                     //For each of the calendar events on clicked day, determine if the user is already working
-                    if (entry.onShift == 1){
+                    if (event.onShift == 1){
                         onShift = true;
                     }
                 });
-                if (!onShift){
-                    //If the user is not already working. Attempt to add a new shift
+
+                //Return all events for the clicked week
+                weekEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
+                    return moment(event.start).isSame(date, 'week');
+                });
+
+                weekShiftCounter = 0;
+                weekEvents.forEach(function(event){
+                    //Count up all of the shifts the user is working for the clicked week
+                    if (event.onShift == 1){
+                        weekShiftCounter+=1;
+                    }
+                });
+
+                if (!onShift && weekShiftCounter < 5){
+                    // If the user is not already working that clicked day.
+                    // AND they don't already have 5 shifts for the current week
+                    // Attempt to add a new shift
                     $.ajax({
                         url: "<?php echo base_url(); ?>index.php/shift/addShift",
                         dataType: 'json',
@@ -116,6 +135,8 @@ $(document).ready(function() {
                             alert("Oops! Something went wrong.");
                         }
                     });
+                }else{
+                    alert('You cant add a shift for this date. Please see the *GUIDELINES*');
                 }
             }
         }
