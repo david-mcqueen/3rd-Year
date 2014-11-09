@@ -1,0 +1,44 @@
+
+body {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+}
+
+#calendar, #messages {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    position: relative;
+}
+#messages{
+    max-width: 1000px;
+}
+
+.disabled {
+    background-color: #999999;
+    color: #999999;
+    cursor: default;
+}
+.warning{
+    opacity: 0;
+    -webkit-transition: opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -o-transition: opacity 0.5s linear;
+    transition: opacity 0.5s linear;
+}
+.warning.hidden{
+    display:none;
+}
+.warning.in{
+    opacity: 1;
+}
+.warning.out{
+    opacity: 0;
+}
+.modal-backdrop{
+    z-index:0;
+}
+

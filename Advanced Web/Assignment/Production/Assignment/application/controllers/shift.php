@@ -72,7 +72,7 @@ class shift extends CI_Controller{
             $success = $this->shift_model->remove_shift($userID, $shiftID);
         }else{
             $success = false;
-            $errors = "Unable to remove shift. Please see shift guidlines *LINK*";
+            $errors = "There is not enough cover for this shift";
         }
 
         $jsonevents[] = array(
