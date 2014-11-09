@@ -1,11 +1,10 @@
 <meta charset='utf-8' />
-
-<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
 <link href='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.css' rel='stylesheet' />
 <link href='<?php echo base_url(); ?>application/views/css/user/calendar.css' rel='stylesheet' />
 <link href='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/moment.min.js'></script>
 
+<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/moment.min.js'></script>
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.min.js'></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script>
@@ -15,7 +14,8 @@ $(document).ready(function() {
         deleteMessage,
         dayEvents,
         onShift,
-        weekShiftCounter;
+        weekShiftCounter,
+        monthEvents;
 
     maxDate.setMonth(maxDate.getMonth() + 3); //Limit of 3 months in the future
 
@@ -47,6 +47,48 @@ $(document).ready(function() {
                 $('#calendar').fullCalendar('gotoDate', maxDate);
                 alert("Only 3 months forecast is available");
             }
+            //transitionPopup($("#missing-shift"), false);
+           // $( "#missing-shift").html("Missing Shifts:");
+
+        },
+        eventAfterAllRender: function(view){
+//            calculateMissingShifts(view);
+            transitionPopup($("#missing-shift"), false);
+            $( "#missing-shift").html("Missing Shifts:");
+            monthEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
+                //Get all events for the current month
+                return moment(event.start).isSame($('#calendar').fullCalendar('getDate'), 'month');
+            });
+
+            // var viewStartDate = $('#calendar').fullCalendar('getDate');
+            var nextWeek = view.start;
+            var weekEvents1;
+
+            while(moment(nextWeek).isBefore(moment(view.intervalEnd))){
+                weekEvents1 = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
+                    return moment(event.start).isSame(nextWeek, 'week');
+                });
+
+                weekShiftCounter = 0;
+                weekEvents1.forEach(function(event){
+                    //Count up all of the shifts the user is working for the clicked week
+                    if (event.onShift == 1){
+                        weekShiftCounter+=1;
+                    }
+                });
+                if(weekShiftCounter <5){
+                    //alert('You need to work more shifts' + nextWeek.date());
+//                    $( "#missing-shift" ).clone().appendTo( "#shifts" );
+                    var missingShifts = (5 - weekShiftCounter);
+                    setTimeout(function(){
+                        transitionPopup($("#missing-shift"), true);
+                    },800);
+
+                    var misingShiftMessage = "You are " + missingShifts + " shifts short for week commencing ";
+                    $( "#missing-shift").html($( "#missing-shift").html() + "</br>" + misingShiftMessage + nextWeek.format('DD-MM-YYYY'));
+                }
+                nextWeek = nextWeek.add(7, 'days');
+            }
         },
         dayRender: function(date, cell){
             //Disables cells that are out of range
@@ -58,7 +100,7 @@ $(document).ready(function() {
             if (calEvent.onShift == 1){
                 //Only process deletion if the user is on this shift
 
-                deleteMessage = "Are you sure you want to remove your shift from date " + calEvent.shiftDate + "?";
+                deleteMessage = "Are you sure you want to remove your shift for date " + calEvent.shiftDate + "?";
                 if(confirm (deleteMessage)){
                     $.ajax({
                         url: "<?php echo base_url(); ?>index.php/shift/removeShift",
@@ -156,41 +198,58 @@ $(document).ready(function() {
             element.removeClass('in');
             setTimeout(function(){
                 element.addClass('hidden');
-            },1000);
+            },800);
         }
     };
+
+    function calculateMissingShifts(view){
+
+    }
 });
 
 
 </script>
 
 <body>
-<div class="well well-sm">Shift messages will go here</div>
-<div class="alert alert-warning" role="alert">use alert instead?</div>
+<div class="container-fluid">
+    <div class="row-fluid">
 
-<!--User messages-->
-<div id="messages">
 
-    <!--Message: Can't add a shift due to breaking guidlines-->
-    <div class="alert alert-danger alert-dismissible warning hidden"
-         id="warning"
-         role="alert">
-        <button type="button"
-                class="close"
-                id="warning-close">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-        </button>
-        You can not add or remove a shift for this date.
-        Please see the <a href=''
-                          class='alert-link'
-                          data-toggle="modal"
-                          data-target=".bs-example-modal-lg">guidlines</a>
+        <div class="col-xs-3 col-md-3 col-lg-3">
+            <!--User messages-->
+            <div id="messages">
+
+                <!--Message: Can't add a shift due to breaking guidlines-->
+                <div class="alert alert-danger alert-dismissible warning hidden"
+                     id="warning"
+                     role="alert">
+                    <button type="button"
+                            class="close"
+                            id="warning-close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    You can not add or remove a shift for this date.
+                    Please see the <a href=''
+                                      class='alert-link'
+                                      data-toggle="modal"
+                                      data-target=".bs-example-modal-lg">guidlines</a>
+                </div>
+                <div class="shifts" id="shifts">
+                    <div class="alert alert-warning missing-shift"
+                         id="missing-shift"
+                         role="alert">Missing Shifts:</div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-xs-8 col-md-9 col-lg-9">
+        <div id='loading'>loading...</div>
+        <div id='calendar'></div>
+        </div>
     </div>
-
 </div>
-<div id='calendar'></div>
-
 <!--Modal's-->
 
 <!--Modal explaining the shift guidelines-->
