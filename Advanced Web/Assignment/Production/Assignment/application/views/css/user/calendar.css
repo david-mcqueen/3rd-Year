@@ -24,10 +24,10 @@ body {
 }
 .warning{
     opacity: 0;
-    -webkit-transition: opacity 0.5s linear;
-    -moz-transition: opacity 0.5s linear;
-    -o-transition: opacity 0.5s linear;
-    transition: opacity 0.5s linear;
+    -webkit-transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    -o-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
 }
 .warning.hidden{
     display:none;
@@ -41,10 +41,10 @@ body {
 
 .missing-shift{
     opacity: 0;
-    -webkit-transition: opacity 0.5s linear;
-    -moz-transition: opacity 0.5s linear;
-    -o-transition: opacity 0.5s linear;
-    transition: opacity 0.5s linear;
+    -webkit-transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    -o-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
 }
 .missing-shift.hidden{
     display:none;

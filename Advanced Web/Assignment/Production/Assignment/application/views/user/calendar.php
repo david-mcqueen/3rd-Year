@@ -15,7 +15,12 @@ $(document).ready(function() {
         dayEvents,
         onShift,
         weekShiftCounter,
-        monthEvents;
+        monthEvents,
+        nextWeek,
+        weekEventsCalculate,
+        weekShiftMissingCounter,
+        missingShifts,
+        dayLoopCounter;
 
     maxDate.setMonth(maxDate.getMonth() + 3); //Limit of 3 months in the future
 
@@ -42,53 +47,16 @@ $(document).ready(function() {
             $('#loading').toggle(bool);
         },
         viewRender: function(view){
+            transitionPopup($("#missing-shift"), false);
             //Stops the user going more than 3 months in the future.
             if (view.start > maxDate){
                 $('#calendar').fullCalendar('gotoDate', maxDate);
                 alert("Only 3 months forecast is available");
             }
-            //transitionPopup($("#missing-shift"), false);
-           // $( "#missing-shift").html("Missing Shifts:");
-
         },
         eventAfterAllRender: function(view){
-//            calculateMissingShifts(view);
-            transitionPopup($("#missing-shift"), false);
-            $( "#missing-shift").html("Missing Shifts:");
-            monthEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
-                //Get all events for the current month
-                return moment(event.start).isSame($('#calendar').fullCalendar('getDate'), 'month');
-            });
+            calculateMissingShifts(view);
 
-            // var viewStartDate = $('#calendar').fullCalendar('getDate');
-            var nextWeek = view.start;
-            var weekEvents1;
-
-            while(moment(nextWeek).isBefore(moment(view.intervalEnd))){
-                weekEvents1 = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
-                    return moment(event.start).isSame(nextWeek, 'week');
-                });
-
-                weekShiftCounter = 0;
-                weekEvents1.forEach(function(event){
-                    //Count up all of the shifts the user is working for the clicked week
-                    if (event.onShift == 1){
-                        weekShiftCounter+=1;
-                    }
-                });
-                if(weekShiftCounter <5){
-                    //alert('You need to work more shifts' + nextWeek.date());
-//                    $( "#missing-shift" ).clone().appendTo( "#shifts" );
-                    var missingShifts = (5 - weekShiftCounter);
-                    setTimeout(function(){
-                        transitionPopup($("#missing-shift"), true);
-                    },800);
-
-                    var misingShiftMessage = "You are " + missingShifts + " shifts short for week commencing ";
-                    $( "#missing-shift").html($( "#missing-shift").html() + "</br>" + misingShiftMessage + nextWeek.format('DD-MM-YYYY'));
-                }
-                nextWeek = nextWeek.add(7, 'days');
-            }
         },
         dayRender: function(date, cell){
             //Disables cells that are out of range
@@ -169,6 +137,7 @@ $(document).ready(function() {
                         },
                         success: function (result) {
                             console.log(result[0].title);
+                            console.log(result[0].start);
                             $('#calendar').fullCalendar('refetchEvents');
                         },
                         error: function () {
@@ -198,13 +167,50 @@ $(document).ready(function() {
             element.removeClass('in');
             setTimeout(function(){
                 element.addClass('hidden');
-            },800);
+            },300);
         }
     };
 
     function calculateMissingShifts(view){
+        transitionPopup($("#missing-shift"), false);
+        $( "#missing-shift").html("Missing Shifts:");
+        monthEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
+            //Get all events for the current month
+            return moment(event.start).isSame($('#calendar').fullCalendar('getDate'), 'month');
+        });
 
-    }
+        nextWeek = view.start;
+        dayLoopCounter = 0;
+
+        while(moment(nextWeek).isBefore(moment(view.intervalEnd))) {
+
+            weekEventsCalculate = $('#calendar').fullCalendar('clientEvents', function (event) {
+                return moment(event.start).isSame(nextWeek, 'week');
+            });
+
+            weekShiftMissingCounter = 0;
+            weekEventsCalculate.forEach(function (event) {
+                //Count up all of the shifts the user is working for the clicked week
+                if (event.onShift == 1) {
+                    weekShiftMissingCounter += 1;
+                }
+            });
+            if (weekShiftMissingCounter < 5) {
+                missingShifts = (5 - weekShiftMissingCounter);
+                setTimeout(function () {
+                    transitionPopup($("#missing-shift"), true);
+                }, 300);
+
+                var misingShiftMessage = "You are " + missingShifts + " shifts short for week commencing ";
+                $("#missing-shift").html($("#missing-shift").html() + "</br>" + misingShiftMessage + nextWeek.format('DD-MM-YYYY'));
+            }
+            nextWeek = nextWeek.add(7, 'days');
+            dayLoopCounter += 7; //7 days added
+        }
+        nextWeek = nextWeek.subtract(dayLoopCounter, 'days');
+        //Subtract the days added, so the calendar stays on the correct day
+        //Some sort of bug where the original value gets modified as well as the copy.
+    };
 });
 
 
