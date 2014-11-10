@@ -31,11 +31,21 @@ class shift_model extends CI_Model{
     }
 
     public function get_Data($start, $end, $userID){
+        // Return calendar events between $start and $end
+        // for the $user
         $query = $this->db->query('call shift_getDate(\''.$start.'\', \'' . $end . '\', '. $userID .');');
         $events = $query->result_array();
 
         return $events;
+    }
 
+    public function get_DataAll($start, $end){
+        // Return calendar events between $start and $end
+        // for all users
+        $qry = 'call shift_getDateAll(?,?);';
+        $parameters = array($start, $end);
+        $query = $this->db->query($qry, $parameters);
+        return $query->result_array();
     }
 
     public function add_shift($start, $userID){

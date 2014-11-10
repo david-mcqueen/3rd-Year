@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS levels (
 	levelID int NOT NULL AUTO_INCREMENT,
 	levelName varchar(100) COLLATE utf8_unicode_ci NOT NULL,
 	neededOnShift int,
+	isAdmin bit,
 	PRIMARY KEY (levelID),
 	INDEX (levelID)
 );
@@ -69,7 +70,8 @@ BEGIN
 			u.address1,
 			u.address2,
 			u.city,
-			u.postcode
+			u.postcode,
+			l.isAdmin
 	FROM	users AS u
 			INNER JOIN levels AS l ON l.levelID = u.levelID
 	WHERE	u.userID = id;
@@ -170,16 +172,19 @@ DELIMITER //
 CREATE PROCEDURE level_add
 (
 	levelNameIN varchar(100),
-	levelCoverNeeded int
+	levelCoverNeeded int,
+	isAdminIN bit
 )
 BEGIN
 	INSERT INTO levels(
 			levelName,
-			neededOnShift
+			neededOnShift,
+			isAdmin
 		)
 	VALUES (
 			levelNameIN,
-			levelCoverNeeded
+			levelCoverNeeded,
+			isAdminIN
 		);
 END //
 DELIMITER ;
@@ -189,11 +194,13 @@ DELIMITER //
 CREATE PROCEDURE level_edit
 (
 	IN levelIDIN int,
-	IN levelNameIN varchar(100)
+	IN levelNameIN varchar(100),
+	IN isAdminIN bit
 )
 BEGIN
 	UPDATE 	levels
-	SET 	levelName = levelNameIN
+	SET 	levelName = levelNameIN,
+			isAdmin = isAdminIN
 	WHERE	levelID = levelIDIN;
 END //
 DELIMITER ;
@@ -366,6 +373,31 @@ BEGIN
 END //
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS shift_getDateAll;
+DELIMITER //
+CREATE PROCEDURE shift_getDateAll
+(
+	shiftDateIN date,
+	shiftEndDateIN date
+)
+BEGIN
+	SELECT	u.forename,
+			l.levelID,
+			l.levelName AS levelName,
+			s.shiftDate,
+			1 AS onShift,
+			s.shiftID as shiftID
+	FROM	shifts AS s
+	INNER JOIN users AS u on u.userID = s.userID
+	INNER JOIN levels AS l on l.levelID = u.levelID
+	WHERE	s.shiftDate >= shiftDateIN
+	AND		s.shiftDate < shiftEndDateIN
+	AND 	
+    ORDER BY 	s.shiftDate,
+    			l.levelID;
+END //
+DELIMITER ;
+
 DROP PROCEDURE IF EXISTS login;
 DELIMITER //
 CREATE PROCEDURE login
@@ -380,8 +412,10 @@ BEGIN
 			u.surname,
 			u.userID,
 			u.staffID,
-			u.levelID
+			u.levelID,
+			l.isAdmin
 	FROM	users AS u
+	INNER JOIN levels AS l on l.levelID = u.levelID
 	WHERE	(u.staffID = staffID
 			OR (
 					initial = LEFT(forename, 1)
@@ -395,9 +429,9 @@ DELIMITER ;
 
 
 -- Add some data
-call level_add('admin', 0);
-call level_add('Nurse', 2);
-call level_add('Senior', 1);
+call level_add('admin', 0, 1);
+call level_add('Nurse', 2, 0);
+call level_add('Senior', 1, 0);
 
 call user_add ('Apple', 'Amy', 'Ppl!eta123', 2, 4567);
 call user_add ('Berry', 'Bert', 'aSerty456a', 2, 5467);

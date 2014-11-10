@@ -56,6 +56,23 @@ body {
     opacity: 0;
 }
 
+.warning-future{
+    opacity: 0;
+    -webkit-transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    -o-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+}
+.warning-future.hidden{
+    display:none;
+}
+.warning-future.in{
+    opacity: 1;
+}
+.warning-future.out{
+    opacity: 0;
+}
+
 .modal-backdrop{
     z-index:0;
 }

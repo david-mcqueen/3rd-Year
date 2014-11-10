@@ -48,6 +48,7 @@ $(document).ready(function() {
         viewRender: function(view){
             transitionPopup($("#missing-shift"), false);
             transitionPopup($("#warning"), false);
+            transitionPopup($("#warning-future"), false);
             //Stops the user going more than 3 months in the future.
             if (view.start > maxDate){
                 $('#calendar').fullCalendar('gotoDate', maxDate);
@@ -82,6 +83,7 @@ $(document).ready(function() {
                             }else{
                                 $('#calendar').fullCalendar('refetchEvents');
                                 transitionPopup($("#warning"), false);
+                                transitionPopup($("#warning-future"), false);
                             }
                         },
                         error: function () {
@@ -94,7 +96,7 @@ $(document).ready(function() {
         dayClick: function(date, jsEvent, view) {
             if(date > maxDate){
                 //If the user has clicked beyond 3 months, display an error and don't add the shift
-                alert("You can only add shifts for 3 months from the current date.");
+                transitionPopup($("#warning-future"), true);
             }else{
 
                 //Return all events for the clicked day
@@ -125,6 +127,7 @@ $(document).ready(function() {
 
                 if (!onShift && weekShiftCounter < 5){
                     transitionPopup($("#warning"), false);
+                    transitionPopup($("#warning-future"), false);
                     // If the user is not already working that clicked day.
                     // AND they don't already have 5 shifts for the current week
                     // Attempt to add a new shift
@@ -153,6 +156,10 @@ $(document).ready(function() {
 
     $("#warning-close").click(function(){
         transitionPopup($("#warning"), false);
+    });
+
+    $("#warning-future-close").click(function(){
+        transitionPopup($("#warning-future"), false);
     });
 
     function transitionPopup(element, display){
@@ -200,8 +207,8 @@ $(document).ready(function() {
                     transitionPopup($("#missing-shift"), true);
                 }, 300);
 
-                var misingShiftMessage = "You are " + missingShifts + " shifts short for week commencing ";
-                $("#missing-shift").html($("#missing-shift").html() + "</br>" + misingShiftMessage + nextWeek.format('DD-MM-YYYY'));
+                var misingShiftMessage = nextWeek.format('DD/MM') + ": You are " + missingShifts + " shift(s) short";
+                $("#missing-shift").html($("#missing-shift").html() +  "</br>" + misingShiftMessage);
             }
             nextWeek = nextWeek.add(7, 'days');
         }
@@ -230,19 +237,35 @@ $(document).ready(function() {
                         <span aria-hidden="true">&times;</span>
                         <span class="sr-only">Close</span>
                     </button>
-                    You can not add or remove a shift for this date.
+                    You can not peform this action for this shift and/or date.
                     Please see the <a href=''
                                       class='alert-link'
                                       data-toggle="modal"
                                       data-target=".bs-example-modal-lg">guidlines</a>
                 </div>
+
+                <!--Message: Can't add a shift due to far in advance-->
+                <div class="alert alert-danger alert-dismissible warning-future hidden"
+                     id="warning-future"
+                     role="alert">
+                    <button type="button"
+                            class="close"
+                            id="warning-future-close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    You can only book shifts upto 3 months in advance.
+                    Please see the <a href=''
+                                      class='alert-link'
+                                      data-toggle="modal"
+                                      data-target=".bs-example-modal-lg">guidlines</a>
+                </div>
+                <!--Message: Displays each week a shift is missing-->
                 <div class="shifts" id="shifts">
                     <div class="alert alert-warning missing-shift"
                          id="missing-shift"
                          role="alert">Missing Shifts:</div>
                 </div>
-
-
             </div>
         </div>
         <div class="col-xs-8 col-md-9 col-lg-9">
@@ -290,6 +313,7 @@ $(document).ready(function() {
                         Maximum of 1 shift per day
                     </li>
                 </ul>
+                Shifts can only be booked upto 3 months in advance.</br>
                 All rules are subject to management discression.
             </div>
         </div>

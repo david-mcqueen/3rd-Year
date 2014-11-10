@@ -100,6 +100,8 @@ class user extends CI_Controller{
             $data['forename'] = $session_data['forename'];
             $data['surname'] = $session_data['surname'];
             $data['userID'] = $session_data['userID'];
+            $data['levelID'] = $session_data['levelID'];
+            $data['isAdmin'] = $session_data['isAdmin'];
             $data['title'] = 'Calendar';
 
             $this->load->view('templates/header', $data);
