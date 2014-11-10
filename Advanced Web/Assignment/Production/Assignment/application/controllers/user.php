@@ -57,7 +57,6 @@ class user extends CI_Controller{
             //If no session, redirect to login page
             redirect('user/login', 'refresh');
         }
-
     }
 
     function updateSettings(){
@@ -92,21 +91,47 @@ class user extends CI_Controller{
         redirect('', 'refresh');
     }
 
+    public function login(){
+        $data['title'] = 'Login';
+
+        $this->load->helper(array('form'));
+        $this->load->view('user/login');
+    }
+
+    public function confirmMessages(){
+        if($this->session->userdata('logged_in')){
+
+        }
+    }
+
     public function calendar(){
 
-        if($this->session->userdata('logged_in'))
+        if($session_data = $this->session->userdata('logged_in'))
         {
-            $session_data = $this->session->userdata('logged_in');
+            $isAdmin = $session_data['isAdmin'];
+            $userID = $session_data['userID'];
             $data['forename'] = $session_data['forename'];
             $data['surname'] = $session_data['surname'];
-            $data['userID'] = $session_data['userID'];
+            $data['userID'] = $userID;
             $data['levelID'] = $session_data['levelID'];
-            $data['isAdmin'] = $session_data['isAdmin'];
+            $data['isAdmin'] = $isAdmin;
             $data['title'] = 'Calendar';
+
+            if($isAdmin == 0){
+                $userMessages = $this->user_model->userMessagesGet($userID);
+                $data['userMessages'] = $userMessages;
+            }else{
+                $data['userMessages'] = '';
+            }
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/userBar', $data);
-            $this->load->view('templates/userSidebar', $data);
+            if($isAdmin == 1){
+                $this->load->view('user/calendarAdmin', $data);
+            }else{
+                $this->load->view('user/calendarStandardUser', $data);
+            }
+
             $this->load->view('user/calendar', $data);
 
             $this->load->view('templates/footer');
@@ -116,13 +141,6 @@ class user extends CI_Controller{
             //If no session, redirect to login page
             redirect('index.php/user/login', 'refresh');
         }
-    }
-
-    public function login(){
-        $data['title'] = 'Login';
-
-        $this->load->helper(array('form'));
-        $this->load->view('user/login');
     }
 
 } 

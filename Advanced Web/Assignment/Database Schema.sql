@@ -41,6 +41,8 @@ CREATE TABLE IF NOT EXISTS shifts (
 	shiftID bigint NOT NULL AUTO_INCREMENT,
 	userID int NOT NULL,
 	shiftDate date NOT NULL,
+	deleted bit NOT NULL,
+	userInformed bit NOT NULL,
 	PRIMARY KEY (shiftID),
 	INDEX (shiftID),
 	FOREIGN KEY (userID) REFERENCES users (userID)
@@ -246,16 +248,21 @@ DELIMITER //
 CREATE PROCEDURE shift_add
 (
 	IN userIDIN int,
-	IN shiftDateIN date
+	IN shiftDateIN date,
+	IN userInformedIN bit
 )
 BEGIN
 	INSERT INTO shifts (
 				userID,
-				shiftDate
+				shiftDate,
+				deleted,
+				userInformed
 		)
 	VALUES (
 				userIDIN,
-				shiftDateIN
+				shiftDateIN,
+				0,
+				userInformedIN
 		);
 END //
 DELIMITER ;
@@ -274,6 +281,7 @@ inner join users as u on s.userID = u.userID
 inner join users as u1 on u1.userID = userIDIN
 inner join shifts as s1 on s1.shiftID = shiftIDIN
 where s.shiftDate = s1.shiftDate
+and s.deleted = 0
 and s.shiftID <> shiftIDIN
 and u.levelID = u1.levelID;
 
@@ -301,6 +309,7 @@ inner join users as u on s.userID = u.userID
 inner join users as u1 on u1.userID = userIDIN
 inner join shifts as s1 on s1.shiftID = shiftIDIN
 where s.shiftDate = s1.shiftDate
+and s.deleted = 0
 and s.shiftID <> shiftIDIN
 and u.levelID = u1.levelID;
 
@@ -313,14 +322,14 @@ DELIMITER //
 CREATE PROCEDURE shift_remove
 (
 	IN shiftIDIN int,
-	IN userIDIN int
+	IN userInformedIN bit
 )
 BEGIN
 
-DELETE
-FROM shifts
-WHERE	shiftID = shiftIDIN
-AND		userID = userIDIN;
+UPDATE shifts
+SET deleted = 1,
+	userInformed = userInformedIN
+WHERE	shiftID = shiftIDIN;
 
 END //
 DELIMITER ;
@@ -338,6 +347,21 @@ BEGIN
 	SET 	userID = userIDIN,
 			shiftDate = shiftDateIN
 	WHERE	shiftID = shiftIDIN;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS user_messages;
+DELIMITER //
+CREATE PROCEDURE user_messages
+(
+	IN userIDIN int
+)
+BEGIN
+	SELECT s.shiftDate,
+			s.deleted
+	FROM	shifts AS s
+	WHERE 	s.userID = userIDIN
+	AND 	s.userInformed = 0;
 END //
 DELIMITER ;
 
@@ -360,12 +384,14 @@ BEGIN
 			end) AS onShift,
 			MAX(CASE WHEN s.userID = userID then s.shiftID
 				else 0
-			end) as shiftID
+			end) as shiftID,
+			u.forename
 	FROM	shifts AS s
 	INNER JOIN users AS u on u.userID = s.userID
 	INNER JOIN levels AS l on l.levelID = u.levelID
 	WHERE	s.shiftDate >= shiftDateIN
 	AND		s.shiftDate < shiftEndDateIN
+	and s.deleted = 0
 	GROUP BY 	l.levelID,
 				s.shiftDate Asc
     ORDER BY 	s.shiftDate,
@@ -392,7 +418,7 @@ BEGIN
 	INNER JOIN levels AS l on l.levelID = u.levelID
 	WHERE	s.shiftDate >= shiftDateIN
 	AND		s.shiftDate < shiftEndDateIN
-	AND 	
+	AND 	s.deleted = 0
     ORDER BY 	s.shiftDate,
     			l.levelID;
 END //
@@ -445,42 +471,43 @@ call user_add ('Goat', 'Graham', 'deDede1', 3, 7832);
 
 call user_add ('timetabler', 'admin', 'organ1sed', 1, 6189);
 
-call shift_add ('2', '20140927');
-call shift_add ('1', '20140927');
-call shift_add ('3', '20140927');
-call shift_add ('4', '20140927');
-call shift_add ('7', '20140927');
-call shift_add ('6', '20140927');
-call shift_add ('5', '20140927');
-call shift_add ('7', '20140928');
-call shift_add ('6', '20140928');
-call shift_add ('2', '20140928');
-call shift_add ('1', '20140928');
 
-call shift_add ('2', '20141027');
-call shift_add ('1', '20141027');
-call shift_add ('3', '20141027');
-call shift_add ('4', '20141027');
-call shift_add ('7', '20141027');
-call shift_add ('6', '20141027');
-call shift_add ('5', '20141027');
-call shift_add ('7', '20141028');
-call shift_add ('6', '20141028');
-call shift_add ('2', '20141028');
-call shift_add ('1', '20141028');
+call shift_add ('2', '20140927', 1);
+call shift_add ('1', '20140927', 1);
+call shift_add ('3', '20140927', 1);
+call shift_add ('4', '20140927', 1);
+call shift_add ('7', '20140927', 1);
+call shift_add ('6', '20140927', 1);
+call shift_add ('5', '20140927', 1);
+call shift_add ('7', '20140928', 1);
+call shift_add ('6', '20140928', 1);
+call shift_add ('2', '20140928', 1);
+call shift_add ('1', '20140928', 1);
+
+call shift_add ('2', '20141027', 1);
+call shift_add ('1', '20141027', 1);
+call shift_add ('3', '20141027', 1);
+call shift_add ('4', '20141027', 1);
+call shift_add ('7', '20141027', 1);
+call shift_add ('6', '20141027', 1);
+call shift_add ('5', '20141027', 1);
+call shift_add ('7', '20141028', 1);
+call shift_add ('6', '20141028', 1);
+call shift_add ('2', '20141028', 1);
+call shift_add ('1', '20141028', 1);
 
 
-call shift_add ('2', '20141127');
-call shift_add ('1', '20141127');
-call shift_add ('3', '20141127');
-call shift_add ('4', '20141127');
-call shift_add ('7', '20141127');
-call shift_add ('6', '20141127');
-call shift_add ('5', '20141127');
-call shift_add ('7', '20141128');
-call shift_add ('6', '20141128');
-call shift_add ('2', '20141128');
-call shift_add ('1', '20141128');
+call shift_add ('2', '20141127', 1);
+call shift_add ('1', '20141127', 1);
+call shift_add ('3', '20141127', 1);
+call shift_add ('4', '20141127', 1);
+call shift_add ('7', '20141127', 1);
+call shift_add ('6', '20141127', 1);
+call shift_add ('5', '20141127', 1);
+call shift_add ('7', '20141128', 1);
+call shift_add ('6', '20141128', 1);
+call shift_add ('2', '20141128', 1);
+call shift_add ('1', '20141128', 1);
 
 
 

@@ -25,10 +25,11 @@ class shift extends CI_Controller{
 
         if($isAdmin == 1){
             $response = $this->shift_model->get_DataAll($start, $end);
+            $editable = true;
         }else{
             $response = $this->shift_model->get_Data($start, $end, $userID);
+            $editable = false;
         }
-
 
         $jsonevents = array();
         foreach ($response as $entry)
@@ -46,9 +47,10 @@ class shift extends CI_Controller{
                 'id' => $entry['shiftID'],
                 'title' =>  $title,
                 'start' => $entry['shiftDate'],
-                'editable' => false,
+                'editable' => $editable,
                 'onShift' => $entry['onShift'],
-                'shiftDate' => $entry['shiftDate']
+                'shiftDate' => $entry['shiftDate'],
+                'shiftUserName' =>$entry['forename']
             );
         }
         echo json_encode($jsonevents);
@@ -57,20 +59,22 @@ class shift extends CI_Controller{
     public function addShift(){
         $session_data = $this->session->userdata('logged_in');
         $userID = $session_data['userID'];
+        $isAdmin = $session_data['isAdmin'];
         $start = $this->input->get('start', FALSE);
-        echo $this->shift_model->add_shift($start, $userID);
+        echo $this->shift_model->add_shift($start, $userID, $isAdmin);
     }
 
     public function removeShift()
     {
         $session_data = $this->session->userdata('logged_in');
         $userID = $session_data['userID'];
+        $isAdmin = $session_data['isAdmin'];
         $shiftID = $this->input->get('id', FALSE);
-        $results = $this->shift_model->countCoverNeeded($userID, $shiftID);
         $jsonevents = array();
         $coverNeeded = 0;
         $coverAvailable = 0;
         $errors = "";
+        $results = $this->shift_model->countCoverNeeded($userID, $shiftID);
 
         foreach ($results as $result)
         {
@@ -79,9 +83,12 @@ class shift extends CI_Controller{
         }
 
         //The $coverAvailable is what the level would be without the shift being removed
-        if ($coverAvailable >= $coverNeeded){
+        if($isAdmin == 1){
+            $success = $this->shift_model->remove_shift($shiftID, $isAdmin);
+        }
+        else if($coverAvailable >= $coverNeeded){
             //There is enough cover to let the user remove their shift
-            $success = $this->shift_model->remove_shift($userID, $shiftID);
+            $success = $this->shift_model->remove_shift($shiftID, $isAdmin);
         }else{
             $success = false;
             $errors = "There is not enough cover for this shift";

@@ -48,6 +48,20 @@ class user_model extends CI_Model{
 
     }
 
+    public function userMessagesGet($userID){
+        $sql = ('call user_messages(?);');
+        $parameters = array($userID);
+        $query = $this->db->query($sql, $parameters);
+        return $query->result_array();
+    }
+
+    public function userMessageConfirm($userID){
+        $sql = ('call user_messagesConfirm(?);');
+        $parameters = array($userID);
+        $query = $this->db->query($sql, $parameters);
+        return $query->result_array();
+    }
+
 }
 
 

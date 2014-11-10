@@ -48,9 +48,10 @@ class shift_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function add_shift($start, $userID){
-        $qry = ('call shift_add(' . $userID . ', \'' . $start .'\');');
-        $this->db->query($qry);
+    public function add_shift($start, $userID, $isAdmin){
+        $qry = ('call shift_add(?,?,?);');
+        $parameters = array($userID, $start, !$isAdmin);
+        $this->db->query($qry, $parameters);
 
         $jsonevents = array();
 
@@ -74,11 +75,11 @@ class shift_model extends CI_Model{
         return ($results);
     }
 
-    public function remove_shift($userID, $shiftID){
-        $qryRemove = ('call shift_remove(' . $shiftID . ', ' . $userID .');');
-        $this->db->query($qryRemove);
+    public function remove_shift($shiftID, $isAdmin){
+        $qry = ('call shift_remove(?, ?);');
+        $parameters = array($shiftID, !$isAdmin);
+        return $this->db->query($qry, $parameters);
 
-        return true;
     }
 
 }
