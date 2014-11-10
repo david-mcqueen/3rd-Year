@@ -40,6 +40,8 @@ $(document).ready(function() {
         weekNumbers: true,
         editable: true, //So users can click to add shifts
         eventLimit: true, // allow "more" link when too many events
+        eventStartEditable: true, //The event can be dragged to a new day
+        eventDurationEditable: false, //Cant drag the event duration over multiple days
         events: {
             url: '<?php echo base_url(); ?>index.php/shift/getCalendar',
             error: function(textStatus, errorThrown) {
@@ -55,6 +57,23 @@ $(document).ready(function() {
             transitionPopup($("#missing-shift"), false);
             transitionPopup($("#warning"), false);
             transitionPopup($("#warning-future"), false);
+        },
+        eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ){
+            alert('Event dragged');
+//            $.ajax({
+//                url: "<?php //echo base_url(); ?>//index.php/shift/editShift",
+//                dataType: 'json',
+//                data: {
+//                    title: 'confirmMessages',
+//                    deleted: deleted
+//                },
+//                success: function (result) {
+//                    console.log('message confirm success');
+//                },
+//                error: function () {
+//                    console.log('message confirm failed');
+//                }
+//            });
         },
         eventClick: function(calEvent, jsEvent, view) {
             if (calEvent.onShift == 1){
