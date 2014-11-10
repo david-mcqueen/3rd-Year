@@ -5,7 +5,7 @@
 
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/moment.min.js'></script>
-<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.js'></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -47,6 +47,7 @@ $(document).ready(function() {
         },
         viewRender: function(view){
             transitionPopup($("#missing-shift"), false);
+            transitionPopup($("#warning"), false);
             //Stops the user going more than 3 months in the future.
             if (view.start > maxDate){
                 $('#calendar').fullCalendar('gotoDate', maxDate);
