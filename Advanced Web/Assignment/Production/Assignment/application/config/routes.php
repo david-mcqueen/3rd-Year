@@ -43,6 +43,7 @@ $route['user/logout'] = 'user/logout'; //Logout
 $route['VerifyLogin'] = 'verifyLogin/index'; //Logout
 $route['user/calendar/(:any)'] = 'user/calendar/$1'; //Logged in main calendar view
 $route['user/settings'] = 'user/settings'; //User settings
+$route['user/confirmMessages?(:any)'] = 'user/confirmMessages'; //AJAX used to confirm user messages have been read
 $route['user/updateSettings'] = 'user/updateSettings';
 
 $route['shift/addShift?(:any)'] = 'shift/addShift'; //AJAX used to add a shift

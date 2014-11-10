@@ -99,8 +99,17 @@ class user extends CI_Controller{
     }
 
     public function confirmMessages(){
-        if($this->session->userdata('logged_in')){
+        if($session_data = $this->session->userdata('logged_in')){
 
+            $userID = $session_data['userID'];
+            $deleted = $this->input->get('deleted', FALSE);
+            $onfirmResponse = $this->user_model->userMessagesConfirm($userID, $deleted);
+
+            $jsonevents[] = array(
+                'success' => $onfirmResponse,
+                'deleted' => $deleted
+            );
+            echo json_encode($jsonevents);
         }
     }
 

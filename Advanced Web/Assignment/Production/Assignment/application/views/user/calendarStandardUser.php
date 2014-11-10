@@ -216,26 +216,22 @@ $(document).ready(function() {
         }
     };
 
-    function confirmMessages(userID){
-
+    function confirmMessages(deleted){
         $.ajax({
             url: "<?php echo base_url(); ?>index.php/user/confirmMessages",
             dataType: 'json',
             data: {
-                title: '',
-                start: date.format()
+                title: 'confirmMessages',
+                deleted: deleted
             },
             success: function (result) {
-                console.log(result[0].title);
-                console.log(result[0].start);
-                $('#calendar').fullCalendar('refetchEvents');
+                console.log('message confirm success');
             },
             error: function () {
-                alert("Oops! Something went wrong.");
+                console.log('message confirm failed');
             }
         });
     }
-
 
 
     <?php
@@ -268,11 +264,13 @@ $(document).ready(function() {
 
     $("#warning-added-close").click(function(){
         transitionPopup($("#warning-added"), false);
+        confirmMessages(0);
         //Ajax to the DB so we know the messages have been read
     });
 
     $("#warning-deleted-close").click(function(){
         transitionPopup($("#warning-deleted"), false);
+        confirmMessages(1);
         //Ajax to the DB so we know the messages have been read
     });
 });

@@ -55,9 +55,9 @@ class user_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function userMessageConfirm($userID){
-        $sql = ('call user_messagesConfirm(?);');
-        $parameters = array($userID);
+    public function userMessagesConfirm($userID, $deleted){
+        $sql = ('call user_messagesConfirm(?, ?);');
+        $parameters = array($userID, $deleted);
         $query = $this->db->query($sql, $parameters);
         return $query->result_array();
     }

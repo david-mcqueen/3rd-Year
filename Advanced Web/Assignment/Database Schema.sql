@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS shifts;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS levels;
 
-
 -- Create the new tables
 CREATE TABLE IF NOT EXISTS levels (
 	levelID int NOT NULL AUTO_INCREMENT,
@@ -47,8 +46,6 @@ CREATE TABLE IF NOT EXISTS shifts (
 	INDEX (shiftID),
 	FOREIGN KEY (userID) REFERENCES users (userID)
 );
-
-
 
 
 -- Create the Stored Procedures
@@ -134,6 +131,22 @@ CREATE PROCEDURE user_delete
 BEGIN
 	DELETE FROM users
 	WHERE	userID = id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS user_messagesConfirm;
+DELIMITER //
+CREATE PROCEDURE user_messagesConfirm
+(
+	IN userIDIN int,
+	IN deletedIN bit
+)
+BEGIN
+	UPDATE shifts
+	SET userInformed = 1
+	WHERE	userID = userIDIN
+	AND userInformed = 0
+	AND deleted = deletedIN;
 END //
 DELIMITER ;
 
@@ -354,7 +367,7 @@ DROP PROCEDURE IF EXISTS user_messages;
 DELIMITER //
 CREATE PROCEDURE user_messages
 (
-	IN userIDIN int
+	IN userIDIN int,
 )
 BEGIN
 	SELECT s.shiftDate,
