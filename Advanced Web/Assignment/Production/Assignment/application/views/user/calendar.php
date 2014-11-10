@@ -19,8 +19,7 @@ $(document).ready(function() {
         nextWeek,
         weekEventsCalculate,
         weekShiftMissingCounter,
-        missingShifts,
-        dayLoopCounter;
+        missingShifts;
 
     maxDate.setMonth(maxDate.getMonth() + 3); //Limit of 3 months in the future
 
@@ -179,8 +178,7 @@ $(document).ready(function() {
             return moment(event.start).isSame($('#calendar').fullCalendar('getDate'), 'month');
         });
 
-        nextWeek = view.start;
-        dayLoopCounter = 0;
+        nextWeek = moment(view.start); //Clone the moment so that we don't affect the original
 
         while(moment(nextWeek).isBefore(moment(view.intervalEnd))) {
 
@@ -195,7 +193,7 @@ $(document).ready(function() {
                     weekShiftMissingCounter += 1;
                 }
             });
-            if (weekShiftMissingCounter < 5) {
+            if (weekShiftMissingCounter < 5 && moment(nextWeek).isBefore(maxDate, 'week')) {
                 missingShifts = (5 - weekShiftMissingCounter);
                 setTimeout(function () {
                     transitionPopup($("#missing-shift"), true);
@@ -205,11 +203,7 @@ $(document).ready(function() {
                 $("#missing-shift").html($("#missing-shift").html() + "</br>" + misingShiftMessage + nextWeek.format('DD-MM-YYYY'));
             }
             nextWeek = nextWeek.add(7, 'days');
-            dayLoopCounter += 7; //7 days added
         }
-        nextWeek = nextWeek.subtract(dayLoopCounter, 'days');
-        //Subtract the days added, so the calendar stays on the correct day
-        //Some sort of bug where the original value gets modified as well as the copy.
     };
 });
 
