@@ -35,7 +35,7 @@ var defaults = {
 	weekends: true,
 	weekNumbers: false,
 
-	weekNumberTitle: 'W',
+	weekNumberTitle: 'Date',
 	weekNumberCalculation: 'local',
 	
 	//editable: false,
@@ -504,6 +504,23 @@ function Calendar(element, instanceOptions) {
 			return mom.isoWeek();
 		}
 	};
+
+
+    // Calculates the week commencing date for a moment according to the calendar's
+    // `weekNumberCalculation` setting.
+    t.calculateWeekCommencing = function(mom) {
+        var calc = options.weekNumberCalculation;
+
+        if (typeof calc === 'function') {
+            return calc(mom);
+        }
+        else if (calc === 'local') {
+            return mom.format('DD/MM');
+        }
+        else if (calc.toUpperCase() === 'ISO') {
+            return mom.isoWeek();
+        }
+    };
 
 
 	// Get an event's normalized end date. If not present, calculate it from the defaults.
@@ -7520,7 +7537,8 @@ $.extend(BasicView.prototype, {
 			return '' +
 				'<td class="fc-week-number" ' + this.weekNumberStyleAttr() + '>' +
 					'<span>' + // needed for matchCellWidths
-						this.calendar.calculateWeekNumber(this.cellToDate(row, 0)) +
+						//this.calendar.calculateWeekNumber(this.cellToDate(row, 0)) +
+						this.calendar.calculateWeekCommencing(this.cellToDate(row, 0)) +
 					'</span>' +
 				'</td>';
 		}
@@ -8041,7 +8059,8 @@ $.extend(AgendaView.prototype, {
 
 		if (this.opt('weekNumbers')) {
 			date = this.cellToDate(0, 0);
-			weekNumber = this.calendar.calculateWeekNumber(date);
+			//weekNumber = this.calendar.calculateWeekNumber(date);
+			weekNumber = this.calendar.calculateWeekCommencing(date);
 			weekTitle = this.opt('weekNumberTitle');
 
 			if (this.opt('isRTL')) {
