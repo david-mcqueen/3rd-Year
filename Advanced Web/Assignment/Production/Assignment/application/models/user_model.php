@@ -34,18 +34,17 @@ class user_model extends CI_Model{
         $sql = 'call user_get(?);';
         $parameters = array($userID);
         $query = $this->db->query($sql, $parameters);
+
         return $query->result_array();
 
     }
 
     public function userSettingsUpdate($userID, $password, $forename, $surname, $email, $phone, $address1, $address2, $city, $postcode){
-
         $sql = 'call user_edit(?,?,?,?,?,?,?,?,?,?)';
         $parameters = array($userID, $password, $forename, $surname, $email, $phone, $address1, $address2, $city, $postcode);
         $query = $this->db->query($sql, $parameters);
 
         return $query->result();
-
     }
 
     public function userMessagesGet($userID){
@@ -59,8 +58,25 @@ class user_model extends CI_Model{
         $sql = ('call user_messagesConfirm(?, ?);');
         $parameters = array($userID, $deleted);
         $query = $this->db->query($sql, $parameters);
+
         return $query->result_array();
     }
+
+    public function countUsersShifts($startDate, $endDate){
+        $sql = ('call countUserShifts(?,?);');
+        $parameters = array($startDate, $endDate);
+        $query = $this->db->query($sql, $parameters);
+
+        return $query->results_array();
+    }
+
+    public function usersGetAll(){
+        $sql = ('call user_getAll();');
+        $query = $this->db->query($sql);
+
+        return $query->result_array();
+    }
+
 
 }
 

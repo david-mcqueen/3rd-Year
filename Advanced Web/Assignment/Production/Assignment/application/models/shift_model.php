@@ -81,6 +81,12 @@ class shift_model extends CI_Model{
         return $this->db->query($qry, $parameters);
 
     }
+    public function remove_shiftDate($shiftDate, $userID, $isAdmin){
+        $qry = ('call shift_removeDate(?,?,?);');
+        $parameters = array($shiftDate, $userID, !$isAdmin);
+
+        return $this->db->query($qry, $parameters);
+    }
 
 }
 

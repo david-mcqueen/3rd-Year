@@ -59,7 +59,10 @@ $(document).ready(function() {
             //Stops the user going more than 3 months in the future.
             if (view.start > maxDate){
                 $('#calendar').fullCalendar('gotoDate', maxDate);
-                transitionPopup($("#warning-future"), true)
+                setTimeout(function () {
+                    transitionPopup($("#warning-future"), true)
+                }, 300); //Add the display after a delay, so the earlier delete doesn't catch it.
+
             }
         },
         eventAfterAllRender: function(view){

@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS levels;
 -- Create the new tables
 CREATE TABLE IF NOT EXISTS levels (
 	levelID int NOT NULL AUTO_INCREMENT,
-	levelName varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+	levelName varchar(100) COLLATE utf8_general_ci NOT NULL,
 	neededOnShift int,
 	isAdmin bit,
 	PRIMARY KEY (levelID),
@@ -19,17 +19,17 @@ ALTER TABLE `levels` ADD UNIQUE(`levelID`);
 
 CREATE TABLE IF NOT EXISTS users (
 	userID int NOT NULL AUTO_INCREMENT,
-	surname varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-	forename varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-	password varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+	surname varchar(200) COLLATE utf8_general_ci NOT NULL,
+	forename varchar(200) COLLATE utf8_general_ci NOT NULL,
+	password varchar(100) COLLATE utf8_general_ci NOT NULL,
 	levelID int NOT NULL,
 	staffID int NOT NULL,
-	emailAddress varchar(100) COLLATE utf8_unicode_ci NULL,
-	phoneNumber varchar(14) COLLATE utf8_unicode_ci NULL,
-	address1 varchar(100) COLLATE utf8_unicode_ci NULL,
-	address2 varchar(100) COLLATE utf8_unicode_ci NULL,
-	city varchar(100) COLLATE utf8_unicode_ci NULL,
-	postcode varchar(9) COLLATE utf8_unicode_ci NULL,
+	emailAddress varchar(100) COLLATE utf8_general_ci NULL,
+	phoneNumber varchar(14) COLLATE utf8_general_ci NULL,
+	address1 varchar(100) COLLATE utf8_general_ci NULL,
+	address2 varchar(100) COLLATE utf8_general_ci NULL,
+	city varchar(100) COLLATE utf8_general_ci NULL,
+	postcode varchar(9) COLLATE utf8_general_ci NULL,
 	PRIMARY KEY (userID),
 	INDEX (userID),
 	FOREIGN KEY (levelID) REFERENCES levels (levelID)
@@ -88,7 +88,8 @@ BEGIN
 					u.levelID,
 					u.staffID
 	FROM	users AS u
-			INNER JOIN levels AS l ON l.levelID = u.levelID;
+			INNER JOIN levels AS l ON l.levelID = u.levelID
+	WHERE l.isAdmin = 0;
 END //
 DELIMITER ;
 
@@ -139,7 +140,7 @@ DELIMITER //
 CREATE PROCEDURE user_messagesConfirm
 (
 	IN userIDIN int,
-	IN deletedIN bit
+	IN deletedIN int
 )
 BEGIN
 	UPDATE shifts
@@ -147,6 +148,7 @@ BEGIN
 	WHERE	userID = userIDIN
 	AND userInformed = 0
 	AND deleted = deletedIN;
+
 END //
 DELIMITER ;
 
@@ -347,6 +349,25 @@ WHERE	shiftID = shiftIDIN;
 END //
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS shift_removeDate;
+DELIMITER //
+CREATE PROCEDURE shift_removeDate
+(
+	IN shiftDateIN date,
+	IN userIDIN int,
+	IN userInformedIN bit
+)
+BEGIN
+
+UPDATE shifts
+SET deleted = 1,
+	userInformed = userInformedIN
+WHERE	userID = userIDIN
+AND shiftDate = shiftDateIN;
+
+END //
+DELIMITER ;
+
 DROP PROCEDURE IF EXISTS shift_edit;
 DELIMITER //
 CREATE PROCEDURE shift_edit
@@ -367,7 +388,7 @@ DROP PROCEDURE IF EXISTS user_messages;
 DELIMITER //
 CREATE PROCEDURE user_messages
 (
-	IN userIDIN int,
+	IN userIDIN int
 )
 BEGIN
 	SELECT s.shiftDate,
@@ -398,7 +419,8 @@ BEGIN
 			MAX(CASE WHEN s.userID = userID then s.shiftID
 				else 0
 			end) as shiftID,
-			u.forename
+			u.forename,
+			u.userID
 	FROM	shifts AS s
 	INNER JOIN users AS u on u.userID = s.userID
 	INNER JOIN levels AS l on l.levelID = u.levelID
@@ -425,7 +447,8 @@ BEGIN
 			l.levelName AS levelName,
 			s.shiftDate,
 			1 AS onShift,
-			s.shiftID as shiftID
+			s.shiftID as shiftID,
+			u.userID
 	FROM	shifts AS s
 	INNER JOIN users AS u on u.userID = s.userID
 	INNER JOIN levels AS l on l.levelID = u.levelID
@@ -436,6 +459,25 @@ BEGIN
     			l.levelID;
 END //
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS countUserShifts;
+DELIMITER //
+CREATE PROCEDURE countUserShifts
+(
+	shiftDateIN date,
+	shiftEndDateIN date
+)
+BEGIN
+	SELECT COUNT(s.shiftID) as shiftsCount,
+			s.userID
+	FROM shifts as s
+	where s.shiftDate >= shiftDateIN
+	and s.shiftDate < shiftEndDateIN
+	group by userID;
+END //
+DELIMITER ;
+
+
 
 DROP PROCEDURE IF EXISTS login;
 DELIMITER //

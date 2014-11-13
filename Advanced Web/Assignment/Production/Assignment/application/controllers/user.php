@@ -113,6 +113,36 @@ class user extends CI_Controller{
         }
     }
 
+
+    public function countUsersShifts($startDate, $endDate)
+    {
+        if ($session_data = $this->session->userdata('logged_in')) {
+            $isAdmin = $session_data['isAdmin'];
+
+            if ($isAdmin == 1) {
+                $userShift = $this->user_model->userShiftsCount($startDate, $endDate);
+
+                $jsonevents[] = array();
+                foreach ($userShift as $user) {
+                    $jsonevents[] = array(
+                        'userID' => $user['userID'],
+                        'startDate' => $startDate,
+                        'endDate' => $endDate,
+                        'forename' => $user['forename'],
+                        'surname' => $user['surname'],
+                        'shifts' => $user['shiftsCount']
+                    );
+                    $data['userShifts'] = json_encode($jsonevents);
+                }
+            } else {
+                //If no session, redirect to login page
+                redirect('index.php/user/login', 'refresh');
+            }
+
+        }
+    }
+
+
     public function calendar(){
 
         if($session_data = $this->session->userdata('logged_in'))
@@ -125,24 +155,28 @@ class user extends CI_Controller{
             $data['levelID'] = $session_data['levelID'];
             $data['isAdmin'] = $isAdmin;
             $data['title'] = 'Calendar';
+            $data['users'] = 'Calendar';
 
             if($isAdmin == 0){
                 $userMessages = $this->user_model->userMessagesGet($userID);
                 $data['userMessages'] = $userMessages;
-            }else{
+            }
+            else{
+                $data['users'] = $this->user_model->usersGetAll();
                 $data['userMessages'] = '';
             }
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/userBar', $data);
             if($isAdmin == 1){
+                $this->load->view('user/calendarAdminScript', $data);
                 $this->load->view('user/calendarAdmin', $data);
+
             }else{
                 $this->load->view('user/calendarStandardUser', $data);
             }
 
             $this->load->view('user/calendar', $data);
-
             $this->load->view('templates/footer');
         }
         else
