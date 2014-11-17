@@ -391,7 +391,7 @@ CREATE PROCEDURE user_messages
 	IN userIDIN int
 )
 BEGIN
-	SELECT s.shiftDate,
+	SELECT DISTINCT s.shiftDate,
 			s.deleted
 	FROM	shifts AS s
 	WHERE 	s.userID = userIDIN
