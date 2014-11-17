@@ -16,7 +16,8 @@
 
 $(document).ready(function() {
 
-    var maxDate = new Date(),
+    var currentDate = new Date(),
+        maxDate = new Date(),
         deleteMessage,
         dayEvents,
         onShift,
@@ -206,14 +207,16 @@ $(document).ready(function() {
                     weekShiftMissingCounter += 1;
                 }
             });
-            if (weekShiftMissingCounter < 5 && moment(nextWeek).isBefore(maxDate, 'week')) {
-                missingShifts = (5 - weekShiftMissingCounter);
-                setTimeout(function () {
-                    transitionPopup($("#missing-shift"), true);
-                }, 300); //Add the display after a delay, so the earlier delete doesn't catch it.
+            if (weekShiftMissingCounter < 5
+                && moment(nextWeek).isBefore(maxDate, 'week')
+                && moment(nextWeek).isAfter(currentDate-7, 'week')) {
+                    missingShifts = (5 - weekShiftMissingCounter);
+                    setTimeout(function () {
+                        transitionPopup($("#missing-shift"), true);
+                    }, 300); //Add the display after a delay, so the earlier delete doesn't catch it.
 
-                var misingShiftMessage = nextWeek.format('DD/MM') + ": You are " + missingShifts + " shift(s) short";
-                $("#missing-shift").html($("#missing-shift").html() +  "</br>" + misingShiftMessage);
+                    var misingShiftMessage = nextWeek.format('DD/MM') + ": You are " + missingShifts + " shift(s) short";
+                    $("#missing-shift").html($("#missing-shift").html() +  "</br>" + misingShiftMessage);
             }
             nextWeek = nextWeek.add(7, 'days');
         }
@@ -242,10 +245,12 @@ $(document).ready(function() {
     $messageAdded = false;
         foreach ($userMessages as $message) {
             if($message['deleted'] == 1){
-                echo '$("#warning-deleted").html($("#warning-deleted").html() + "</br>" + "' . $message['shiftDate'] . '");';
+            $date = new DateTime($message['shiftDate']);
+            $formattedDate = date_format($date, 'D dS M Y');
+                echo '$("#warning-deleted").html($("#warning-deleted").html() + "</br>" + "' . $formattedDate . '");';
                 $messageDeleted = true;
             }else{
-                echo '$("#warning-added").html($("#warning-added").html() + "</br>" + "' . $message['shiftDate'] . '");';
+                echo '$("#warning-added").html($("#warning-added").html() + "</br>" + "' . $formattedDate . '");';
                 $messageAdded = true;
             }
         }

@@ -41,6 +41,19 @@
                                       data-target=".bs-example-modal-lg">guidlines</a>
                 </div>
 
+                <!--Message: Shift added by Admin-->
+                <div class="alert alert-success alert-dismissible warning-added hidden"
+                     id="warning-added"
+                     role="alert">
+                    <button type="button"
+                            class="close"
+                            id="warning-added-close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    Admin have added the following shifts:
+                </div>
+
                 <!--Message: Shift deleted by Admin-->
                 <div class="alert alert-info alert-dismissible warning-deleted hidden"
                      id="warning-deleted"
@@ -52,19 +65,6 @@
                         <span class="sr-only">Close</span>
                     </button>
                     Admin have deleted the following shifts:
-                </div>
-
-                <!--Message: Shift added by Admin-->
-                <div class="alert alert-info alert-dismissible warning-added hidden"
-                     id="warning-added"
-                     role="alert">
-                    <button type="button"
-                            class="close"
-                            id="warning-added-close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    Admin have added the following shifts:
                 </div>
 
                 <!--Message: Shift modified by Admin-->
