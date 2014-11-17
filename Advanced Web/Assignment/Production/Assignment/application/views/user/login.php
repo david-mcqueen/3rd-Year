@@ -5,10 +5,12 @@
     <div class="form">
 
         <?php
-            echo '<div class="alert alert-danger" role="alert">' . validation_errors() . '</div>';
-            echo form_open('index.php/VerifyLogin');
+        if(isset($errors)){
+            echo '<div class="alert alert-danger" role="alert">' . $errors . '</div>';
+        }
         ?>
-<!--        <form action="index.php/VerifyLogin" method="POST">-->
+
+        <form action="<?php echo base_url(); ?>index.php/VerifyLogin" method="POST">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text"
                size="20"

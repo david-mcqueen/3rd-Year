@@ -244,9 +244,10 @@ $(document).ready(function() {
     $messageDeleted = false;
     $messageAdded = false;
         foreach ($userMessages as $message) {
-            if($message['deleted'] == 1){
             $date = new DateTime($message['shiftDate']);
             $formattedDate = date_format($date, 'D dS M Y');
+
+            if($message['deleted'] == 1){
                 echo '$("#warning-deleted").html($("#warning-deleted").html() + "</br>" + "' . $formattedDate . '");';
                 $messageDeleted = true;
             }else{

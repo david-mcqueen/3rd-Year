@@ -16,31 +16,30 @@ class VerifyLogin extends CI_Controller {
 
     function index()
     {
-        //This method will have the credentials validation
-        $this->load->library('form_validation');
+        //Check if the credentials supplied match a user
 
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
+        $password = $this->input->POST('password', FALSE); //Get the supplied password
+        $success = $this->check_database($password);
 
-        if($this->form_validation->run() == FALSE)
+        if($success == FALSE)
         {
-            //Field validation failed.  User redirected to login page
-            $this->load->view('user/login');
+            //Password validation failed. User redirected to login page
+            $data['errors'] = 'Invalid username or password';
+            $this->load->view('user/login', $data);
         }
         else
         {
-            //Go to private area
+            //Logged in successfully. Proceed to calendar
             redirect('index.php/user/calendar', 'refresh');
         }
-
     }
 
     function check_database($password)
     {
-        //Field validation succeeded.  Validate against database
         $input = explode('@', $this->input->post('username')); //Split on @
 
         $username = $input[0]; //The part before @nhs.org
+
         //If $username contains a period(.) then get the initial & surname
         if (strpos($username, '.') !== false){
             list($initial, $surname) = explode('.', $username); //Split on period(.)
@@ -49,16 +48,15 @@ class VerifyLogin extends CI_Controller {
             $surname = '';
         }
 
-
         //query the database
         $result = $this->user_model->login($username, $initial, $surname, $password);
 
         if($result)
         {
-            $sess_array = array();
+            $session_array = array();
             foreach($result as $row)
             {
-                $sess_array = array(
+                $session_array = array(
                     'userID' => $row->userID,
                     'forename' => $row->forename,
                     'surname' => $row->surname,
@@ -66,13 +64,12 @@ class VerifyLogin extends CI_Controller {
                     'levelID' => $row->levelID,
                     'isAdmin' => $row->isAdmin
                 );
-                $this->session->set_userdata('logged_in', $sess_array);
+                $this->session->set_userdata('logged_in', $session_array);
             }
-            return TRUE;
+            return true;
         }
         else
         {
-            $this->form_validation->set_message('check_database', 'Invalid username or password');
             return false;
         }
     }

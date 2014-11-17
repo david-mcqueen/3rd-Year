@@ -504,7 +504,7 @@ BEGIN
 					surname = surname
 				)
 			)
-	AND		u.password = password;
+	AND		BINARY u.password = password;
 END //
 DELIMITER ;
 
