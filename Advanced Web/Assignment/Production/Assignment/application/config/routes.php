@@ -48,6 +48,7 @@ $route['user/updateSettings'] = 'user/updateSettings';
 
 $route['shift/addShift?(:any)'] = 'shift/addShift'; //AJAX used to add a shift
 $route['shift/getCalendar?(:any)'] = 'shift/ajaxCalendar'; //AJAX used to get calendar events
+$route['user/countUsersShifts?(:any)'] = 'user/countUsersShifts'; //AJAX used to get calendar events
 
 $route['404_override'] = 'errors/page_missing'; //Error page
 $route['default_controller'] = 'user/login'; //Default if no other route matches

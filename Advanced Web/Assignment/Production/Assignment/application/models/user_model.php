@@ -67,7 +67,7 @@ class user_model extends CI_Model{
         $parameters = array($startDate, $endDate);
         $query = $this->db->query($sql, $parameters);
 
-        return $query->results_array();
+        return $query->result_array();
     }
 
     public function usersGetAll(){

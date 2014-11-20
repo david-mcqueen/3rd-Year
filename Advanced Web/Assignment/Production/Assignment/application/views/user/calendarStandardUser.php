@@ -27,7 +27,8 @@ $(document).ready(function() {
         weekEventsCalculate,
         weekShiftMissingCounter,
         missingShifts,
-        isAdmin = <?php echo $isAdmin;?>;
+        isAdmin = <?php echo $isAdmin;?>,
+        displayInstructions = false;
 
     maxDate.setMonth(maxDate.getMonth() + 3); //Limit of 3 months in the future
 
@@ -63,15 +64,12 @@ $(document).ready(function() {
                 setTimeout(function () {
                     transitionPopup($("#warning-future"), true)
                 }, 300); //Add the display after a delay, so the earlier delete doesn't catch it.
-
             }
         },
         eventAfterAllRender: function(view){
             if(isAdmin !== 1){
                 calculateMissingShifts(view);
             }
-
-
         },
         dayRender: function(date, cell){
             //Disables cells that are out of range
@@ -263,6 +261,10 @@ $(document).ready(function() {
         }
 ?>
 
+    //Populate the instructions for the user
+    $('#instructionsBody').html(' <li>Click on a shift you are working to remove yourself from that shift.</li>' +
+    '<li>Click on a day you are not currently working to add a new shift.</li>');
+
     $("#warning-close").click(function(){
         transitionPopup($("#warning"), false);
     });
@@ -281,6 +283,11 @@ $(document).ready(function() {
         transitionPopup($("#warning-deleted"), false);
         confirmMessages(1);
         //Ajax to the DB so we know the messages have been read
+    });
+
+    $("#instructionsHeader").click(function(){
+        displayInstructions = !displayInstructions;
+        transitionPopup($("#instructionsBody"), displayInstructions);
     });
 });
 </script>

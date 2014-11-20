@@ -114,31 +114,30 @@ class user extends CI_Controller{
     }
 
 
-    public function countUsersShifts($startDate, $endDate)
+    public function countUsersShifts()
     {
         if ($session_data = $this->session->userdata('logged_in')) {
             $isAdmin = $session_data['isAdmin'];
 
-            if ($isAdmin == 1) {
-                $userShift = $this->user_model->userShiftsCount($startDate, $endDate);
+            if($isAdmin == 1){
 
-                $jsonevents[] = array();
-                foreach ($userShift as $user) {
-                    $jsonevents[] = array(
-                        'userID' => $user['userID'],
-                        'startDate' => $startDate,
-                        'endDate' => $endDate,
-                        'forename' => $user['forename'],
-                        'surname' => $user['surname'],
-                        'shifts' => $user['shiftsCount']
-                    );
-                    $data['userShifts'] = json_encode($jsonevents);
-                }
-            } else {
-                //If no session, redirect to login page
-                redirect('index.php/user/login', 'refresh');
+                $dates = $this->input->get(NULL, FALSE);
+                $results =  $this->user_model->countUsersShifts($dates['start'], $dates['finish']);
             }
 
+            //$jsonevents[] = array();
+            foreach ($results as $countShift) {
+                $jsonevents[] = array(
+                    'userID' => $countShift['userID'],
+                    'forename' => $countShift['forename'],
+                    'surname' => $countShift['surname'],
+                    'shiftsCount' => $countShift['shiftsCount']
+                );
+            }
+            echo json_encode($jsonevents);
+        } else {
+                //If no session, redirect to login page
+                redirect('index.php/user/login', 'refresh');
         }
     }
 

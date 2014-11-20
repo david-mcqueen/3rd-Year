@@ -7,6 +7,18 @@
             <!--User messages-->
             <div id="messages">
 
+                <!--Message: Display user instructions-->
+                <div class="panel panel-default" id="instructionsHeader">
+                    <div class="panel-heading"  >Instructions</div>
+                    <div class="panel-body hidden" id="instructionsBody"></div>
+                </div>
+
+                <!--Message: Display shiftCount-->
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="shiftBodyHeader">Shift Count</div>
+                    <div class="panel-body hidden" id="shiftCountBody"></div>
+                </div>
+
                 <!--Message: Can't add a shift due to breaking guidlines-->
                 <div class="alert alert-danger alert-dismissible warning hidden"
                      id="warning"

@@ -14,7 +14,7 @@
             <div class="modal-body">
                 <?php
                 foreach($users as $user){
-                    echo '<ul> <input id="' . $user['userID'] . '"  name="' . $user['userID'] . '" value="' . $user['userID'] . '" type="checkbox" onclick="modifyShift(' . $user['userID'] . ', this)"> ';
+                    echo '<ul> <input id="newShift' . $user['userID'] . '"  name="' . $user['userID'] . '" value="' . $user['userID'] . '" type="checkbox" onclick="modifyShift(' . $user['userID'] . ', this)"> ';
                     echo $user['levelName'] . ': ' .  $user['forename'] . ' ' . $user['surname'];
                     echo '</ul>';
                 }

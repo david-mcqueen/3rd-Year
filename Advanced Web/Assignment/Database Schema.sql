@@ -468,12 +468,19 @@ CREATE PROCEDURE countUserShifts
 	shiftEndDateIN date
 )
 BEGIN
-	SELECT COUNT(s.shiftID) as shiftsCount,
-			s.userID
-	FROM shifts as s
-	where s.shiftDate >= shiftDateIN
-	and s.shiftDate < shiftEndDateIN
-	group by userID;
+	SELECT 	u.userID,
+			u.forename,
+			u.surname,
+            COUNT(s.shiftID) as shiftsCount
+    FROM 	users as u
+    LEFT JOIN shifts as s on s.userID = u.userID
+		and s.shiftDate >= shiftDateIN
+		and s.shiftDate < shiftEndDateIN
+		and s.deleted = 0
+    inner join levels as l on u.levelID = l.levelID
+    where l.isAdmin = 0
+    GROUP BY u.userID
+    order by u.userID;
 END //
 DELIMITER ;
 
