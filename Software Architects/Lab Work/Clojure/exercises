@@ -1,0 +1,122 @@
+;; Anything you type in here will be executed
+;; immediately with the results shown on the
+;; right.
+
+( + 3 4)
+(* 2 6)
+(- 9 6)
+(- 2 6)
+(/ 10 2)
+(- 20 (+ 4 3))
+
+(+ 2 (* 10 3))
+(* 2 (+ 4 3))
+(* (+ 4 3) 2 )
+(+ (* 4 3) (/ 8 2))
+
+(defmacro infix[x]
+  (list (second x) (first x) (last x) ))
+
+(infix (2 * 8))
+(infix ((infix ( 4 * 3)) / 3))
+
+;; 2 * 8
+;; (4 * 3) / 3
+;; (3 - 2) * ((12 - 9) + (1 + 3))
+
+(* 4 2)
+(+ (+ 8 7) 3)
+(+ 4 (* 2 3 ))
+( / (+ 2 4) 2)
+(/ (+ 16 6) (* 2 2))
+
+(=	5	2)
+(=	2	2)
+(	=	10	(*	2	5))
+(<	10	20)
+(>=	10	20)
+(=	4	(	+	2	2))
+(=	"clojure"	"lisp")
+(=	"clojure"	"clojure")
+(identical?	5	5	)
+(identical?	(+	3	2)	(+2	3))
+(identical?	(+	3	2)	(+	2	3))
+(identical?	"clojure"	"clojure")
+(identical?	"clojure"	(str	"clo"	"jure"))
+(=	"clojure"	(str	"clo"	"jure"))
+(=	2	2.0)
+(==	2	2.0)
+(=	0.5	1/2)
+(==	0.5	1/2)
+(=	1	'1)
+(==	1	"1")
+(=	:red	:blue)
+(not=	:red	:blue)
+(=	:red	(keyword	“red”))
+(=		(str	:red)	":red")
+
+;;(println (mod 15 2))
+;;(println "hello, world!")
+
+;;(println ( + 8 4))
+
+(defn square [x]
+  (* x x))
+
+(square 2)
+(square 4)
+(square 5)
+(square 33)
+
+(defn factor5? [x]
+  (if (= (mod x 5) 0) "buzz" x))
+(factor5? 8)
+
+(defn factor3? [x]
+  (if (= (mod x 3) 0) "fizz" x))
+
+(factor3? 12)
+
+
+(= '(1 2 3 4 5) (list 1 2 3 4 5))
+
+(= 1 (first '(1 2 3 4 5)))
+
+(= '(2 3 4 5) (rest '(1 2 3 4 5)))
+
+(= 3 (count '(dracula dooku chocula)))
+
+(= 0 (count '()))
+
+(= () (rest '(100)))
+
+(= '(:a :b :c :d :e) (cons :a '(:b :c :d :e)))
+
+(= '(:e :a :b :c :d) (conj '(:a :b :c :d) :e))
+
+(= :a (peek '(:a :b :c :d :d)))
+
+(= '(:b :c :d :e) (pop '(:a :b :c :d :e)))
+
+(= "No dice!" (try
+     (pop '())
+     (catch IllegalStateException e
+       "No dice!")))
+
+(=	'()	(try
+				  (rest	'())
+				(catch	IllegalStateException	e
+				"No	dice!")))
+
+
+(= count(vector(range 0 43)) (count [42]))
+
+(= [1] (vec '(1)))
+
+(= [nil nil] (vector nil nil))
+
+(= [1 2] (vec '(1 2 )))
+
+
+
+
