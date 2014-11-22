@@ -267,6 +267,14 @@ CREATE PROCEDURE shift_add
 	IN userInformedIN bit
 )
 BEGIN
+ declare alreadyWorking int;
+ 
+	SELECT shiftID into alreadyWorking
+    FROM shifts
+    WHERE userID = userIDIN
+    and shiftDate = shiftDateIN;
+    
+    IF alreadyWorking is null then
 	INSERT INTO shifts (
 				userID,
 				shiftDate,
@@ -279,6 +287,10 @@ BEGIN
 				0,
 				userInformedIN
 		);
+	SELECT 1 as Success;
+    else
+    SELECT 0 as Success;
+	END IF;
 END //
 DELIMITER ;
 

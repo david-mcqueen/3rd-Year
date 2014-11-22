@@ -43,6 +43,7 @@ class VerifyLogin extends CI_Controller {
         //If $username contains a period(.) then get the initial & surname
         if (strpos($username, '.') !== false){
             list($initial, $surname) = explode('.', $username); //Split on period(.)
+            $username = -1;
         }else{
             $initial = '';
             $surname = '';

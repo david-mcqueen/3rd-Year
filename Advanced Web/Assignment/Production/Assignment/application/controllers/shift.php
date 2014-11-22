@@ -58,6 +58,7 @@ class shift extends CI_Controller{
     }
     
     public function addShift(){
+        header("Content-Type: application/json");
         $session_data = $this->session->userdata('logged_in');
         $userID = $session_data['userID'];
         $isAdmin = $session_data['isAdmin'];
@@ -65,7 +66,20 @@ class shift extends CI_Controller{
         if ($isAdmin == 1 ){
             $userID = $this->input->get('userID', FALSE);
         }
-        echo $this->shift_model->add_shift($start, $userID, $isAdmin);
+        $result =  $this->shift_model->add_shift($start, $userID, $isAdmin);
+        $jsonevents = array();
+
+        foreach($result as $newShift){
+            $jsonevents[] = array(
+                'success' => $newShift['Success'],
+                'id' => '123',
+                'title' =>  'New Shift',
+                'start' => $start,
+                'editable' => false
+        );
+        }
+
+        echo json_encode($jsonevents);
     }
 
 

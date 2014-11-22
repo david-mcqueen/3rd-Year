@@ -14,7 +14,7 @@
                 </div>
 
                 <!--Message: Display shiftCount-->
-                <div class="panel panel-default">
+                <div class="panel panel-default hidden" id="shiftCountContainer">
                     <div class="panel-heading" id="shiftBodyHeader">Shift Count</div>
                     <div class="panel-body hidden" id="shiftCountBody"></div>
                 </div>

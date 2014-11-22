@@ -151,9 +151,8 @@ $(document).ready(function() {
                             start: date.format()
                         },
                         success: function (result) {
-                            console.log(result[0].title);
-                            console.log(result[0].start);
-                            $('#calendar').fullCalendar('refetchEvents');
+                            console.log(result[0].success)
+                                $('#calendar').fullCalendar('refetchEvents');
                         },
                         error: function () {
                             alert("Oops! Something went wrong.");
@@ -289,5 +288,6 @@ $(document).ready(function() {
         displayInstructions = !displayInstructions;
         transitionPopup($("#instructionsBody"), displayInstructions);
     });
+
 });
 </script>

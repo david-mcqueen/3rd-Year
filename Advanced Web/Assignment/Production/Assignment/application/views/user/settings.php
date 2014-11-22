@@ -174,6 +174,6 @@
     function validateForm(){
 
         alert('Doesnt submit due to return false form validation');
-        return false;
+        return true;
     }
 </script>

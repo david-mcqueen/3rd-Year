@@ -49,7 +49,7 @@ $(document).ready(function() {
         weekNumbers: true,
         editable: true, //So users can click to add shifts
         eventLimit: true, // allow "more" link when too many events
-        eventStartEditable: true, //The event can be dragged to a new day
+        eventStartEditable: false, //The event can not be dragged to a new day
         eventDurationEditable: false, //Cant drag the event duration over multiple days
         events: {
             url: '<?php echo base_url(); ?>index.php/shift/getCalendar',
@@ -69,24 +69,6 @@ $(document).ready(function() {
             countStaffShifts(view);
         },eventAfterAllRender: function(view){
             highlighUnderstaffed(view);
-        },
-        eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ){
-            //Fires when an event is dragged and dropped onto a new day.
-            alert('Event dragged');
-//            $.ajax({
-//                url: "<?php //echo base_url(); ?>//index.php/shift/editShift",
-//                dataType: 'json',
-//                data: {
-//                    title: 'confirmMessages',
-//                    deleted: deleted
-//                },
-//                success: function (result) {
-//                    console.log('message confirm success');
-//                },
-//                error: function () {
-//                    console.log('message confirm failed');
-//                }
-//            });
         },
         eventClick: function(calEvent, jsEvent, view) {
             if (calEvent.onShift == 1){
@@ -168,6 +150,7 @@ $(document).ready(function() {
     '<li>To view the amount of shifts for each staff, enter week view</li>' +
     '<li>Understaffed days are highlighted</li>');
 
+    $('#shiftCountContainer').removeClass('hidden');
 });
 
 

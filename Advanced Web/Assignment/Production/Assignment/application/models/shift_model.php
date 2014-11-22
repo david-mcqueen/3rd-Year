@@ -51,17 +51,10 @@ class shift_model extends CI_Model{
     public function add_shift($start, $userID, $isAdmin){
         $qry = ('call shift_add(?,?,?);');
         $parameters = array($userID, $start, !$isAdmin);
-        $this->db->query($qry, $parameters);
+        $result = $this->db->query($qry, $parameters);
 
-        $jsonevents = array();
+        return $result->result_array();
 
-            $jsonevents[] = array(
-                'id' => '123',
-                'title' =>  'New Shift',
-                'start' => $start,
-                'editable' => false
-            );
-        return json_encode($jsonevents);
     }
 
     public function countCoverNeeded($userID, $shiftID){
