@@ -44,7 +44,7 @@ class user_model extends CI_Model{
         $parameters = array($userID, $password, $forename, $surname, $email, $phone, $address1, $address2, $city, $postcode);
         $query = $this->db->query($sql, $parameters);
 
-        return $query->result();
+        return $query->result_array();
     }
 
     public function userMessagesGet($userID){

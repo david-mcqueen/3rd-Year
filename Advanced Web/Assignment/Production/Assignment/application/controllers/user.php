@@ -16,15 +16,10 @@ class user extends CI_Controller{
 
     function index()
     {
-        if(!$this->session->userdata('logged_in'))
-        {
-            //If no session, redirect to login page
-            //redirect('user/login', 'refresh');
-        }
 
     }
 
-    function settings(){
+    function settings($messages = ''){
         if($session_data = $this->session->userdata('logged_in')){
 
             $userID = $session_data['userID'];
@@ -34,6 +29,7 @@ class user extends CI_Controller{
             $data['forename'] = $session_data['forename'];
             $data['surname'] = $session_data['surname'];
             $data['title'] = 'Settings';
+            $data['messages'] = $messages;
 
             foreach ($user as $setting){
                 $data['forename'] = $setting['forename'];
@@ -60,25 +56,33 @@ class user extends CI_Controller{
     }
 
     function updateSettings(){
-        if($session_data = $this->session->userdata('logged_in')){
+        if($session_data = $this->session->userdata('logged_in')) {
 
+            $passwordPattern = "/(?=^.{7,}$)((?=.*\d))(?=.*[A-Z])(?=.*[a-z]).*$/";
             $userID = $session_data['userID'];
+
             //Get all of the POST user settings into an array
             $newSettings = $this->input->post(NULL, FALSE);
+            $newPassword = $newSettings['password'];
+            $newPasswordConfirm = $newSettings['confirmPassword'];
 
-            $this->user_model->userSettingsUpdate($userID, $newSettings['password'], $newSettings['forename'], $newSettings['surname'], $newSettings['emailAddress'], $newSettings['phoneNumber'], $newSettings['address1'], $newSettings['address2'], $newSettings['city'], $newSettings['postcode']);
+            $validPassword = preg_match($passwordPattern, $newPassword);
+            $passwordsMatch = strcmp($newPassword, $newPasswordConfirm);
 
+            if(($validPassword == 1 && $passwordsMatch == 0)
+                || strcmp($newPassword, '') == 0)
+            {
+                $this->user_model->userSettingsUpdate($userID, $newSettings['password'], $newSettings['forename'], $newSettings['surname'], $newSettings['emailAddress'], $newSettings['phoneNumber'], $newSettings['address1'], $newSettings['address2'], $newSettings['city'], $newSettings['postcode']);
+                $result = 'Success';
+            }else{
+                $result = 'Validation Failed! Please check details and try again';
+            }
 
-            $data['userID'] = $userID;
-            $data['forename'] = $session_data['forename'];
-            $data['surname'] = $session_data['surname'];
-            $data['title'] = $newSettings['password'];
+            $this->settings($result);
 
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/userBar', $data);
-            $this->load->view('user/success', $data);
-
-            $this->load->view('templates/footer');
+        }else{
+            //If no session, redirect to login page
+            redirect('user/login', 'refresh');
         }
     }
 

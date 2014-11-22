@@ -151,7 +151,7 @@ $(document).ready(function() {
                             start: date.format()
                         },
                         success: function (result) {
-                            console.log(result[0].success)
+                            console.log(result[0].success);
                                 $('#calendar').fullCalendar('refetchEvents');
                         },
                         error: function () {

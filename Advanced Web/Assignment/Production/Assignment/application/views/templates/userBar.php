@@ -6,8 +6,12 @@
  * Time: 10:42
  */
 
+?>
+<div class="page-header">
+<?php
 echo '<h1>Welcome, ' .  $forename .' ' . $surname . '</h1>';
 ?>
+</div>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <link href='<?php echo base_url(); ?>application/views/css/templates/userBar.css' rel="stylesheet">
 
