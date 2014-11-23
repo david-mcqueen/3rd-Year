@@ -152,8 +152,14 @@ $(document).ready(function() {
                             start: date.format()
                         },
                         success: function (result) {
-                            console.log(result[0].success);
+                            if(!result[0].success){
+                                //Shift was not added. Display warning
+                                transitionPopup($("#warning"), true);
+                            }else{
+                                //Shift added successfully. Refresh events
                                 $('#calendar').fullCalendar('refetchEvents');
+                            }
+
                         },
                         error: function () {
                             alert("Oops! Something went wrong.");
