@@ -14,11 +14,6 @@ class user extends CI_Controller{
         $this->load->model('user_model');
     }
 
-    function index()
-    {
-
-    }
-
     function settings($messages = ''){
         if($session_data = $this->session->userdata('logged_in')){
 
@@ -51,7 +46,7 @@ class user extends CI_Controller{
             $this->load->view('templates/footer');
         }else{
             //If no session, redirect to login page
-            redirect('user/login', 'refresh');
+            redirect('', 'refresh');
         }
     }
 
@@ -82,7 +77,7 @@ class user extends CI_Controller{
 
         }else{
             //If no session, redirect to login page
-            redirect('user/login', 'refresh');
+            redirect('', 'refresh');
         }
     }
 
@@ -139,9 +134,6 @@ class user extends CI_Controller{
                 );
             }
             echo json_encode($jsonevents);
-        } else {
-                //If no session, redirect to login page
-                redirect('index.php/user/login', 'refresh');
         }
     }
 
@@ -185,7 +177,7 @@ class user extends CI_Controller{
         else
         {
             //If no session, redirect to login page
-            redirect('index.php/user/login', 'refresh');
+            redirect('', 'refresh');
         }
     }
 

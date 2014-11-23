@@ -14,37 +14,32 @@ class shift_model extends CI_Model{
         $this->load->database();
     }
 
-    public function get_shift($userID = 0){
-        if ($userID == 0){
-            $query = $this->db->get('shifts');
-            return $query->result_array();
-        }
-
-        $query = $this->db->get_where('shifts', array('userID' => $userID));
-        return $query->result_array();
-    }
-
     public function get_calendar(){
         $date = date('Y-m-j');
-        $query = $this->db->query('call shift_getDate('. $date .');');
+        $qry = 'call shift_getDate(?);';
+        $parameters = array($date);
+        $query = $this->db->query($qry, $parameters);
+
         return $query->result_array();
     }
 
     public function get_Data($start, $end, $userID){
         // Return calendar events between $start and $end
         // for the $user
-        $query = $this->db->query('call shift_getDate(\''.$start.'\', \'' . $end . '\', '. $userID .');');
-        $events = $query->result_array();
+        $qry = ('call shift_getDate(?,?,?);');
+        $parameters = array($start, $end, $userID);
+        $query = $this->db->query($qry, $parameters);
+        return $query->result_array();
 
-        return $events;
     }
 
     public function get_DataAll($start, $end){
         // Return calendar events between $start and $end
         // for all users
-        $qry = 'call shift_getDateAll(?,?);';
+        $qry = ('call shift_getDateAll(?,?);');
         $parameters = array($start, $end);
         $query = $this->db->query($qry, $parameters);
+
         return $query->result_array();
     }
 
@@ -58,19 +53,21 @@ class shift_model extends CI_Model{
     }
 
     public function countCoverNeeded($userID, $shiftID){
-
-        $qryCoverNeeded = ('call shift_coverNeeded(' . $userID . ', \'' . $shiftID .'\');');
-        $cover = $this->db->query($qryCoverNeeded);
+        $qry = ('call shift_coverNeeded(?,?);');
+        $parameters = array($userID, $shiftID);
+        $cover = $this->db->query($qry, $parameters);
         $results = $cover->result_array();
 
         $cover->next_result();
         $cover->free_result();
-        return ($results);
+
+        return $results;
     }
 
     public function remove_shift($shiftID, $isAdmin){
         $qry = ('call shift_remove(?, ?);');
         $parameters = array($shiftID, !$isAdmin);
+
         return $this->db->query($qry, $parameters);
 
     }
@@ -79,6 +76,20 @@ class shift_model extends CI_Model{
         $parameters = array($shiftDate, $userID, !$isAdmin);
 
         return $this->db->query($qry, $parameters);
+    }
+
+    public function countShiftsWeek($start, $end, $userID){
+        $qry = ('call shift_userCountWeek(?,?, ?);');
+        $parameters = array($start, $end, $userID);
+        $query = $this->db->query($qry, $parameters);
+
+        $results = $query->result_array();
+
+        $query->next_result();
+        $query->free_result();
+
+        return $results;
+
     }
 
 }

@@ -81,6 +81,7 @@ $(document).ready(function() {
             if (calEvent.onShift == 1){
                 //Only process deletion if the user is on this shift
 
+                console.log("confirm delete");
                 deleteMessage = "Are you sure you want to remove your shift for date " + calEvent.shiftDate + "?";
                 if(confirm (deleteMessage)){
                     $.ajax({

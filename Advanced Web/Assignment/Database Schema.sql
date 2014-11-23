@@ -272,7 +272,8 @@ BEGIN
 	SELECT shiftID into alreadyWorking
     FROM shifts
     WHERE userID = userIDIN
-    and shiftDate = shiftDateIN;
+    and shiftDate = shiftDateIN
+    and deleted = 0;
     
     IF alreadyWorking is null then
 	INSERT INTO shifts (
@@ -443,6 +444,26 @@ BEGIN
 				s.shiftDate Asc
     ORDER BY 	s.shiftDate,
     			l.levelID;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS shift_userCountWeek;
+DELIMITER //
+CREATE PROCEDURE shift_userCountWeek
+(
+	weekStartDateIN date,
+	weekEndDateIN date,
+	userIDIN int
+)
+BEGIN
+	SELECT COUNT(shiftID) as WeekShifts,
+    weekStartDateIN as start,
+    weekEndDateIN as end
+	FROM SHIFTS
+	WHERE userID = userIDIN
+	AND shiftDate >= weekStartDateIN
+	AND shiftDate <= weekEndDateIN
+    AND deleted = 0;
 END //
 DELIMITER ;
 
