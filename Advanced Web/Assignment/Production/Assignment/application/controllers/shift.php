@@ -50,7 +50,8 @@ class shift extends CI_Controller{
                     'onShift' => $entry['onShift'],
                     'shiftDate' => $entry['shiftDate'],
                     'shiftUserName' => $entry['forename'],
-                    'userID' => $entry['userID']
+                    'userID' => $entry['userID'],
+                    'color' => ($entry['onShift'] && $isAdmin == 0) ? 'green' : 'default'
                 );
             }
             echo json_encode($jsonevents);
