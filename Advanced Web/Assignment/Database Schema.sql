@@ -258,9 +258,9 @@ END //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS shift_add;
+DROP PROCEDURE IF EXISTS add_shift;
 DELIMITER //
-CREATE PROCEDURE shift_add
+CREATE PROCEDURE add_shift
 (
 	IN userIDIN int,
 	IN shiftDateIN date,
@@ -313,13 +313,13 @@ and s.deleted = 0
 and s.shiftID <> shiftIDIN
 and u.levelID = u1.levelID;
 
-call shift_coverNeeded(userIDIN);
+call countCoverNeeded(userIDIN);
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS shift_coverNeeded;
+DROP PROCEDURE IF EXISTS countCoverNeeded;
 DELIMITER //
-CREATE PROCEDURE shift_coverNeeded
+CREATE PROCEDURE countCoverNeeded
 (
 	IN userIDIN int,
 	IN shiftIDIN int
@@ -345,9 +345,9 @@ and u.levelID = u1.levelID;
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS shift_remove;
+DROP PROCEDURE IF EXISTS removeShift_shiftID;
 DELIMITER //
-CREATE PROCEDURE shift_remove
+CREATE PROCEDURE removeShift_shiftID
 (
 	IN shiftIDIN int,
 	IN userInformedIN bit
@@ -362,9 +362,9 @@ WHERE	shiftID = shiftIDIN;
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS shift_removeDate;
+DROP PROCEDURE IF EXISTS removeShift_userID;
 DELIMITER //
-CREATE PROCEDURE shift_removeDate
+CREATE PROCEDURE removeShift_userID
 (
 	IN shiftDateIN date,
 	IN userIDIN int,
@@ -412,9 +412,9 @@ BEGIN
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS shift_getDate;
+DROP PROCEDURE IF EXISTS getEvents_User;
 DELIMITER //
-CREATE PROCEDURE shift_getDate
+CREATE PROCEDURE getEvents_User
 (
 	shiftDateIN date,
 	shiftEndDateIN date,
@@ -447,9 +447,9 @@ BEGIN
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS shift_userCountWeek;
+DROP PROCEDURE IF EXISTS countUserShifts_Week;
 DELIMITER //
-CREATE PROCEDURE shift_userCountWeek
+CREATE PROCEDURE countUserShifts_Week
 (
 	weekStartDateIN date,
 	weekEndDateIN date,
@@ -467,9 +467,9 @@ BEGIN
 END //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS shift_getDateAll;
+DROP PROCEDURE IF EXISTS getEvents_AllUsers;
 DELIMITER //
-CREATE PROCEDURE shift_getDateAll
+CREATE PROCEDURE getEvents_AllUsers
 (
 	shiftDateIN date,
 	shiftEndDateIN date
@@ -564,45 +564,45 @@ call user_add ('McQueen', 'David', 'dave', 2, 1234);
 call user_add ('Fur', 'Frank', '45frAnk67', 3, 8543);
 call user_add ('Goat', 'Graham', 'deDede1', 3, 7832);
 
-call user_add ('timetabler', 'admin', 'organ1sed', 1, 6189);
+call user_add ('timetabler', 'admin', 'Organ1sed', 1, 6189);
 
 
-call shift_add ('2', '20140927', 1);
-call shift_add ('1', '20140927', 1);
-call shift_add ('3', '20140927', 1);
-call shift_add ('4', '20140927', 1);
-call shift_add ('7', '20140927', 1);
-call shift_add ('6', '20140927', 1);
-call shift_add ('5', '20140927', 1);
-call shift_add ('7', '20140928', 1);
-call shift_add ('6', '20140928', 1);
-call shift_add ('2', '20140928', 1);
-call shift_add ('1', '20140928', 1);
+call add_shift ('2', '20140927', 1);
+call add_shift ('1', '20140927', 1);
+call add_shift ('3', '20140927', 1);
+call add_shift ('4', '20140927', 1);
+call add_shift ('7', '20140927', 1);
+call add_shift ('6', '20140927', 1);
+call add_shift ('5', '20140927', 1);
+call add_shift ('7', '20140928', 1);
+call add_shift ('6', '20140928', 1);
+call add_shift ('2', '20140928', 1);
+call add_shift ('1', '20140928', 1);
 
-call shift_add ('2', '20141027', 1);
-call shift_add ('1', '20141027', 1);
-call shift_add ('3', '20141027', 1);
-call shift_add ('4', '20141027', 1);
-call shift_add ('7', '20141027', 1);
-call shift_add ('6', '20141027', 1);
-call shift_add ('5', '20141027', 1);
-call shift_add ('7', '20141028', 1);
-call shift_add ('6', '20141028', 1);
-call shift_add ('2', '20141028', 1);
-call shift_add ('1', '20141028', 1);
+call add_shift ('2', '20141027', 1);
+call add_shift ('1', '20141027', 1);
+call add_shift ('3', '20141027', 1);
+call add_shift ('4', '20141027', 1);
+call add_shift ('7', '20141027', 1);
+call add_shift ('6', '20141027', 1);
+call add_shift ('5', '20141027', 1);
+call add_shift ('7', '20141028', 1);
+call add_shift ('6', '20141028', 1);
+call add_shift ('2', '20141028', 1);
+call add_shift ('1', '20141028', 1);
 
 
-call shift_add ('2', '20141127', 1);
-call shift_add ('1', '20141127', 1);
-call shift_add ('3', '20141127', 1);
-call shift_add ('4', '20141127', 1);
-call shift_add ('7', '20141127', 1);
-call shift_add ('6', '20141127', 1);
-call shift_add ('5', '20141127', 1);
-call shift_add ('7', '20141128', 1);
-call shift_add ('6', '20141128', 1);
-call shift_add ('2', '20141128', 1);
-call shift_add ('1', '20141128', 1);
+call add_shift ('2', '20141127', 1);
+call add_shift ('1', '20141127', 1);
+call add_shift ('3', '20141127', 1);
+call add_shift ('4', '20141127', 1);
+call add_shift ('7', '20141127', 1);
+call add_shift ('6', '20141127', 1);
+call add_shift ('5', '20141127', 1);
+call add_shift ('7', '20141128', 1);
+call add_shift ('6', '20141128', 1);
+call add_shift ('2', '20141128', 1);
+call add_shift ('1', '20141128', 1);
 
 
 

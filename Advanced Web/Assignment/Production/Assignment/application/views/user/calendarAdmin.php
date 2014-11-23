@@ -1,4 +1,3 @@
-
 <div class="modal fade bs-userSelection-modal-lg"
      tabindex="-1"
      ole="dialog"

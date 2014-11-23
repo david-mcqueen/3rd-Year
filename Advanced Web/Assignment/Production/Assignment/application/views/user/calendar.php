@@ -1,8 +1,6 @@
 <body>
 <div class="container-fluid">
     <div class="row-fluid">
-
-
         <div class="col-xs-3 col-md-3 col-lg-3">
             <!--User messages-->
             <div id="messages">

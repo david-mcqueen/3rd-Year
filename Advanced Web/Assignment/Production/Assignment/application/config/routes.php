@@ -42,12 +42,12 @@ $route['user/login'] = 'user/login'; //Login
 $route['user/logout'] = 'user/logout'; //Logout
 $route['VerifyLogin'] = 'verifyLogin/index'; //Logout
 $route['user/calendar/(:any)'] = 'user/calendar/$1'; //Logged in main calendar view
-$route['user/settings'] = 'user/settings'; //User settings
+$route['user/settings'] = 'user/settingsDisplay'; //User settings
 $route['user/confirmMessages?(:any)'] = 'user/confirmMessages'; //AJAX used to confirm user messages have been read
-$route['user/updateSettings'] = 'user/updateSettings';
+$route['user/settingsUpdate'] = 'user/settingsUpdate';
 
 $route['shift/addShift?(:any)'] = 'shift/addShift'; //AJAX used to add a shift
-$route['shift/getCalendar?(:any)'] = 'shift/ajaxCalendar'; //AJAX used to get calendar events
+$route['shift/getCalendar?(:any)'] = 'shift/getCalendarEvents'; //AJAX used to get calendar events
 $route['user/countUsersShifts?(:any)'] = 'user/countUsersShifts'; //AJAX used to get calendar events
 
 $route['404_override'] = 'errors/page_missing'; //Error page

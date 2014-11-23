@@ -17,7 +17,7 @@
 
     <h3>Personal Details</h3>
 
-    <form action="updateSettings" method="POST" onsubmit="return validateForm();" class="form-horizontal" role="form">
+    <form action="settingsUpdate" method="POST" onsubmit="return validateForm();" class="form-horizontal" role="form">
 
         <div class="form-group">
         <label for="staffID" class="control-label col-sm-2">Staff ID: </label>

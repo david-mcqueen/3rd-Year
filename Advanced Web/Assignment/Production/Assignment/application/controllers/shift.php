@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Dave
- * Date: 27/10/14
- * Time: 13:10
+ * David McQueen
+ * 10153465
+ * December 2014
  */
 
 class shift extends CI_Controller{
@@ -14,7 +13,8 @@ class shift extends CI_Controller{
         $this->load->model('shift_model');
     }
 
-    public function ajaxCalendar(){
+    public function getCalendarEvents(){
+        //Get all events between 2 dates
         if($session_data = $this->session->userdata('logged_in')) {
             header("Content-Type: application/json");
 
@@ -22,20 +22,22 @@ class shift extends CI_Controller{
             $start = $this->input->get('start', FALSE);
             $end = $this->input->get('end', FALSE);
             $isAdmin = $session_data['isAdmin'];
+            $jsonevents = array();
 
             if ($isAdmin == 1) {
-                $response = $this->shift_model->get_DataAll($start, $end);
+                $response = $this->shift_model->getEvents_AllUsers($start, $end);
                 $editable = true;
             } else {
-                $response = $this->shift_model->get_Data($start, $end, $userID);
+                $response = $this->shift_model->getEvents_User($start, $end, $userID);
                 $editable = false;
             }
 
-            $jsonevents = array();
             foreach ($response as $entry) {
                 if ($isAdmin == 1) {
+                    //If Admin: Display user name next to shifts worked
                     $title = $entry['levelName'] . ' ' . $entry['forename'];
                 } else {
+                    //If not Admin: Display shift count & level, unless the user is working
                     $title = $entry['levelName'] . ' ' . $entry['shiftNumbers'];
                     if ($entry['onShift'] == 1) {
                         $title = $title . ' ' . $session_data['forename'];
@@ -59,8 +61,10 @@ class shift extends CI_Controller{
     }
     
     public function addShift(){
+        //Add a new shift
         if ($session_data = $this->session->userdata('logged_in')) {
             header("Content-Type: application/json");
+
             $userID = $session_data['userID'];
             $isAdmin = $session_data['isAdmin'];
             $start = $this->input->get('start', FALSE);
@@ -68,24 +72,26 @@ class shift extends CI_Controller{
             $shiftsWorking = 0;
 
             if ($isAdmin == 1) {
+                //Admin is adding shift. Dont do any checks
                 $userID = $this->input->get('userID', FALSE);
             }else{
-                //If the user is not admin. Check they are not already working too many shifts
+                //If the user is not admin. Check they are not already working too many shifts for the week
                 $time = strtotime($start);
 
                 //If the day clicked is a monday, then use that date. Else use the previous Monday (Start of week).
                 $weekStart = date('w', $time) == 1 ? date('Y-m-d', $time) : date('Y-m-d', strtotime('last Monday', $time));
-
                 $weekEnd = date('Y-m-d', strtotime('this Sunday', $time));
 
-                $shiftRules = $this->shift_model->countShiftsWeek($weekStart, $weekEnd, $userID);
+                //Count how many shifts user is working for the given week
+                $shiftRules = $this->shift_model->countUserShifts_Week($weekStart, $weekEnd, $userID);
 
-            }
-            foreach ($shiftRules as $count){
-                $shiftsWorking =  $count['WeekShifts'];
+                foreach ($shiftRules as $count){
+                    $shiftsWorking =  $count['WeekShifts'];
+                }
             }
 
             if($shiftsWorking < 5){
+                //The user is not working <5 shifts. Add the new shift
                 $result = $this->shift_model->add_shift($start, $userID, $isAdmin);
                 foreach ($result as $newShift) {
                     $jsonevents[] = array(
@@ -110,8 +116,8 @@ class shift extends CI_Controller{
     }
 
 
-    public function removeShift()
-    {
+    public function removeShift_shiftID(){
+        //Remove a shift by shiftID
         if($session_data = $this->session->userdata('logged_in')) {
             $userID = $session_data['userID'];
             $isAdmin = $session_data['isAdmin'];
@@ -120,6 +126,8 @@ class shift extends CI_Controller{
             $coverNeeded = 0;
             $coverAvailable = 0;
             $errors = "";
+
+            //Determine how much cover is needed for the users level
             $results = $this->shift_model->countCoverNeeded($userID, $shiftID);
 
             foreach ($results as $result) {
@@ -149,17 +157,19 @@ class shift extends CI_Controller{
         }
     }
 
-    public function remove_shiftDate(){
+    public function removeShift_userID(){
+        //Remove a shift for a specific user, on a specific date
         if($session_data = $this->session->userdata('logged_in')){
             $isAdmin = $session_data['isAdmin'];
             if($isAdmin == 1){
                 $shiftDetails = $this->input->GET(NULL, FALSE);
-                $success =  $this->shift_model->remove_shiftDate($shiftDetails['shiftDate'], $shiftDetails['userID'], $isAdmin);
+                $success =  $this->shift_model->remove_shiftUser($shiftDetails['shiftDate'], $shiftDetails['userID'], $isAdmin);
             }
 
             $jsonevents[] = array(
                 'success' => $success
             );
+
             echo json_encode($jsonevents);
         }
     }

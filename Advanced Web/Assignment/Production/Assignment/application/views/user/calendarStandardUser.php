@@ -59,7 +59,7 @@ $(document).ready(function() {
             transitionPopup($("#warning"), false);
             transitionPopup($("#warning-future"), false);
             //Stops the user going more than 3 months in the future.
-            if (view.start > maxDate){
+            if (view.intervalStart > maxDate){
                 $('#calendar').fullCalendar('gotoDate', maxDate);
                 setTimeout(function () {
                     transitionPopup($("#warning-future"), true)

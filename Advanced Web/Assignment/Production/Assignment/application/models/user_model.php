@@ -39,9 +39,9 @@ class user_model extends CI_Model{
 
     }
 
-    public function userSettingsUpdate($userID, $password, $forename, $surname, $email, $phone, $address1, $address2, $city, $postcode){
+    public function userSettingsUpdate($userSettings){
         $sql = 'call user_edit(?,?,?,?,?,?,?,?,?,?)';
-        $parameters = array($userID, $password, $forename, $surname, $email, $phone, $address1, $address2, $city, $postcode);
+        $parameters = array($userSettings['userID'], $userSettings['password'], $userSettings['forename'], $userSettings['surname'], $userSettings['email'], $userSettings['phone'], $userSettings['address1'], $userSettings['address2'],$userSettings['city'], $userSettings['postcode']);
         $query = $this->db->query($sql, $parameters);
 
         return $query->result_array();
@@ -71,6 +71,7 @@ class user_model extends CI_Model{
     }
 
     public function usersGetAll(){
+        //Get all users in the DB
         $sql = ('call user_getAll();');
         $query = $this->db->query($sql);
 

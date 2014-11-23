@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Dave
- * Date: 03/11/14
- * Time: 10:32
+ * David McQueen
+ * 10153465
+ * December 2014
  */
 
 class VerifyLogin extends CI_Controller {
@@ -17,13 +16,12 @@ class VerifyLogin extends CI_Controller {
     function index()
     {
         //Check if the credentials supplied match a user
-
         $password = $this->input->POST('password', FALSE); //Get the supplied password
         $success = $this->check_database($password);
 
         if($success == FALSE)
         {
-            //Password validation failed. User redirected to login page
+            //Login. User redirected to login page with error message
             $data['errors'] = 'Invalid username or password';
             $this->load->view('user/login', $data);
         }
@@ -36,14 +34,16 @@ class VerifyLogin extends CI_Controller {
 
     function check_database($password)
     {
-        $input = explode('@', $this->input->post('username')); //Split on @
+        //Check the database for a matching user
+
+        $input = explode('@', $this->input->post('username')); //Split the username on @
 
         $username = $input[0]; //The part before @nhs.org
 
         //If $username contains a period(.) then get the initial & surname
         if (strpos($username, '.') !== false){
             list($initial, $surname) = explode('.', $username); //Split on period(.)
-            $username = -1;
+            $username = -1; //So the DB knows not to look for a match on userID
         }else{
             $initial = '';
             $surname = '';
@@ -54,6 +54,7 @@ class VerifyLogin extends CI_Controller {
 
         if($result)
         {
+            //If successful, create a session to hold user data
             $session_array = array();
             foreach($result as $row)
             {
@@ -71,6 +72,7 @@ class VerifyLogin extends CI_Controller {
         }
         else
         {
+            //Unsuccessful login
             return false;
         }
     }

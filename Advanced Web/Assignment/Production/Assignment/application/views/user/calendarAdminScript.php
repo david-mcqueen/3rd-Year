@@ -177,7 +177,7 @@ function modifyShift(userID, element){
         });
     }else{
         $.ajax({
-            url: "<?php echo base_url(); ?>index.php/shift/remove_shiftDate",
+            url: "<?php echo base_url(); ?>index.php/shift/remove_shiftUser",
             dataType: 'json',
             data: {
                 userID: userID,
