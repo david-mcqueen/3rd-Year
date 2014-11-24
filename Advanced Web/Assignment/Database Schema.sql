@@ -115,7 +115,7 @@ BEGIN
 	VALUES	(
 				surnameIN,
 				forenameIN,
-				passwordIN,
+				SHA2(passwordIN, 256),
 				levelIDIN,
 				staffIDIN
 		);
@@ -544,7 +544,7 @@ BEGIN
 					surname = surname
 				)
 			)
-	AND		BINARY u.password = password;
+	AND		BINARY u.password = SHA2(password, 256);
 END //
 DELIMITER ;
 
