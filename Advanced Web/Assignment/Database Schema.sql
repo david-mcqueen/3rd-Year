@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS levels (
 
 ALTER TABLE `levels` ADD UNIQUE(`levelID`);
 
-
 CREATE TABLE IF NOT EXISTS users (
 	userID int NOT NULL AUTO_INCREMENT,
 	surname varchar(200) COLLATE utf8_general_ci NOT NULL,
@@ -46,6 +45,10 @@ CREATE TABLE IF NOT EXISTS shifts (
 	INDEX (shiftID),
 	FOREIGN KEY (userID) REFERENCES users (userID)
 );
+
+ALTER table levels DEFAULT COLLATE utf8_general_ci;
+ALTER table users DEFAULT COLLATE utf8_general_ci;
+ALTER table shifts DEFAULT COLLATE utf8_general_ci;
 
 
 -- Create the Stored Procedures
@@ -172,7 +175,7 @@ BEGIN
 	UPDATE users as u
 	SET 	surname = surnameIN,
 			forename = forenameIN,
-			password = IF(passwordIN = '', u.password,passwordIN),
+			password = IF(passwordIN = '', u.password, SHA2(passwordIN, 256),
 			emailAddress = emailIN,
 			phoneNumber = phoneIN,
 			address1 = address1IN,
@@ -544,7 +547,7 @@ BEGIN
 					surname = surname
 				)
 			)
-	AND		BINARY u.password = SHA2(password, 256);
+	AND		BINARY u.password COLLATE utf8_general_ci = BINARY SHA2(password, 256) COLLATE utf8_general_ci;
 END //
 DELIMITER ;
 

@@ -85,7 +85,7 @@ $(document).ready(function() {
                 deleteMessage = "Are you sure you want to remove your shift for date " + calEvent.shiftDate + "?";
                 if(confirm (deleteMessage)){
                     $.ajax({
-                        url: "<?php echo base_url(); ?>index.php/shift/removeShift",
+                        url: "<?php echo base_url(); ?>index.php/shift/removeShift_shiftID",
                         dataType: 'json',
                         data: {
                             id: calEvent.id

@@ -81,10 +81,10 @@ class user extends CI_Controller{
                 $userSettings = array(
                     'userID' => $userID,
                     'password' => $newSettings['password'],
-                    'forname' => $newSettings['forename'],
+                    'forename' => $newSettings['forename'],
                     'surname' => $newSettings['surname'],
                     'email' => $newSettings['emailAddress'],
-                    'phoneNumber' => $newSettings['phoneNumber'],
+                    'phone' => $newSettings['phoneNumber'],
                     'address1' => $newSettings['address1'],
                     'address2' => $newSettings['address2'],
                     'city' => $newSettings['city'],
@@ -97,7 +97,7 @@ class user extends CI_Controller{
             }
 
             //Load up the settings page, passing the success / failed message
-            $this->settings($result);
+            $this->settingsDisplay($result);
 
         }else{
             //If no session, redirect to login page

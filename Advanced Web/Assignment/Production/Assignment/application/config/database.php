@@ -48,14 +48,14 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-//$db['default']['hostname'] = 'localhost';
-//$db['default']['username'] = 'Dave';
-//$db['default']['password'] = 'Dave';
-//$db['default']['database'] = 'assignment3';
-$db['default']['hostname'] = 'mudfoot.doc.stu.mmu.ac.uk';
-$db['default']['username'] = 'mcqueend';
-$db['default']['password'] = 'creShgli5';
-$db['default']['database'] = 'mcqueend';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'Dave';
+$db['default']['password'] = 'Dave';
+$db['default']['database'] = 'assignment3';
+//$db['default']['hostname'] = 'mudfoot.doc.stu.mmu.ac.uk';
+//$db['default']['username'] = 'mcqueend';
+//$db['default']['password'] = 'creShgli5';
+//$db['default']['database'] = 'mcqueend';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = false;
