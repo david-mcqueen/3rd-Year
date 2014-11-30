@@ -1,4 +1,10 @@
-
+<?php
+/**
+* David McQueen
+* 10153465
+* December 2014
+*/
+?>
 <link href='<?php echo base_url(); ?>application/views/css/user/settings.css' rel="stylesheet">
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -11,13 +17,12 @@
         }else{
             echo '</br><div class="alert alert-danger" role="alert"><strong>' . $messages . '</strong></div>';
         }
-
     }
     ?>
 
     <h3>Personal Details</h3>
 
-    <form action="settingsUpdate" method="POST" onsubmit="return validateForm();" class="form-horizontal" role="form">
+    <form action="settingsUpdate" method="POST" class="form-horizontal" role="form">
 
         <div class="form-group">
         <label for="staffID" class="control-label col-sm-2">Staff ID: </label>
@@ -144,6 +149,7 @@
                     />
             </div>
         </div>
+
         <div class="form-group">
         <label for="postcode" class="control-label col-sm-2">Postcode:</label>
             <div class="col-sm-10">
@@ -161,14 +167,12 @@
         </br>
         <div class="alert alert-warning"
              id="passwordChangeMessage"
-             role="alert"
-            >
+             role="alert">
             <strong>Only enter a new password if you want to change your current one.</strong>
             <a href=''
                class='alert-link'
                data-toggle="modal"
                data-target=".bs-example-modal-lg">See the Password Requirements</a>
-
         </div>
 
         <div class="form-group">
@@ -197,7 +201,7 @@
             </div>
         </div>
         <?php
-        /*
+        /**
         Regex Explanation:
 
             (?=^.{7,}$)((?=.*\d))(?=.*[A-Z])(?=.*[a-z]).*$
@@ -217,6 +221,7 @@
     </form>
 </div>
 
+<!--Modal with password guidelines-->
 <div class="modal fade bs-example-modal-lg"
      tabindex="-1"
      ole="dialog"
@@ -265,7 +270,7 @@
     });
 
     function checkPasswords(){
-
+        //Check that the 2 passwords match
         if($("#password").val()== $("#confirmPassword").val()){
             console.log("passwords match");
             document.getElementById('confirmPassword').setCustomValidity('');
@@ -273,11 +278,6 @@
             console.log("passwords do not match");
             document.getElementById('confirmPassword').setCustomValidity('Passwords do not match');
         }
-    }
-
-    function validateForm(){
-
-        return true;
     }
 
 </script>

@@ -1,3 +1,17 @@
+<?php
+/**
+ * David McQueen
+ * 10153465
+ * December 2014
+ */
+
+/**
+ * Page containing visual displays which are only relevant for Admin users
+ */
+?>
+<!--Modal's-->
+
+<!--Modal displaying all staff members. Allowing for staff to be picked for shifts-->
 <div class="modal fade bs-userSelection-modal-lg"
      tabindex="-1"
      ole="dialog"

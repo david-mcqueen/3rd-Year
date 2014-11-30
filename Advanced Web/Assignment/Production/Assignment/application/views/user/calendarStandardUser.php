@@ -1,7 +1,12 @@
 <?php
-/*
- * php file which contains all functionality needed for the standard user
- *
+/**
+ * David McQueen
+ * 10153465
+ * December 2014
+ */
+
+/**
+ * Calendar controls, specific to standard users
  */
 ?>
 <link href='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.css' rel='stylesheet' />
@@ -44,6 +49,7 @@ $(document).ready(function() {
         editable: true, //So users can click to add shifts
         eventLimit: true, // allow "more" link when too many events
         events: {
+            //The location in which the event information is stored
             url: '<?php echo base_url(); ?>index.php/shift/getCalendar',
             error: function(textStatus, errorThrown) {
                 alert(errorThrown.responseText);
@@ -52,12 +58,15 @@ $(document).ready(function() {
         },
         fixedWeekCount: false,
         loading: function(bool) {
+            //Display a loading message
             $('#loading').toggle(bool);
         },
         viewRender: function(view){
+            //Moving to a new view, so remove all error messages
             transitionPopup($("#missing-shift"), false);
             transitionPopup($("#warning"), false);
             transitionPopup($("#warning-future"), false);
+
             //Stops the user going more than 3 months in the future.
             if (view.intervalStart > maxDate){
                 $('#calendar').fullCalendar('gotoDate', maxDate);
@@ -67,6 +76,7 @@ $(document).ready(function() {
             }
         },
         eventAfterAllRender: function(view){
+            //Calculate which weeks the user is missing shifts for
             if(isAdmin !== 1){
                 calculateMissingShifts(view);
             }
@@ -81,6 +91,7 @@ $(document).ready(function() {
             if (calEvent.onShift == 1){
                 //Only process deletion if the user is on this shift
 
+                //Confirm the user wants to delete the shift
                 console.log("confirm delete");
                 deleteMessage = "Are you sure you want to remove your shift for date " + calEvent.shiftDate + "?";
                 if(confirm (deleteMessage)){
@@ -139,11 +150,14 @@ $(document).ready(function() {
                 });
 
                 if (!onShift && weekShiftCounter < 5){
-                    transitionPopup($("#warning"), false);
-                    transitionPopup($("#warning-future"), false);
                     // If the user is not already working that clicked day.
                     // AND they don't already have 5 shifts for the current week
                     // Attempt to add a new shift
+
+                    //Remove the warning messages
+                    transitionPopup($("#warning"), false);
+                    transitionPopup($("#warning-future"), false);
+
                     $.ajax({
                         url: "<?php echo base_url(); ?>index.php/shift/addShift",
                         dataType: 'json',
@@ -173,6 +187,7 @@ $(document).ready(function() {
     });
 
     function transitionPopup(element, display){
+        //Apply / Remove the transition classes to the provided element
         if(display){
             element.removeClass('hidden');
             setTimeout(function(){
@@ -189,6 +204,7 @@ $(document).ready(function() {
     };
 
     function calculateMissingShifts(view){
+        //Calculate which shifts the user is missing, for the current view
         transitionPopup($("#missing-shift"), false);
         $( "#missing-shift").html("Missing Shifts:");
         monthEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
@@ -227,6 +243,7 @@ $(document).ready(function() {
     };
 
     function confirmMessages(deleted){
+        //The user has read the messages, update teh DB so they are not shown again
         $.ajax({
             url: "<?php echo base_url(); ?>index.php/user/confirmMessages",
             dataType: 'json',
@@ -243,8 +260,10 @@ $(document).ready(function() {
         });
     }
 
-
     <?php
+    /**
+    * Populate the relevant message box, with each message to the user
+    */
     $messageDeleted = false;
     $messageAdded = false;
         foreach ($userMessages as $message) {

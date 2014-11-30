@@ -20,6 +20,7 @@ body {
     color: #999999;
     cursor: default;
 }
+
 .warning, .missing-shift,
 .warning-deleted, .warning-future,
 .warning-added, .warning-modified, .panel-body{
@@ -29,16 +30,19 @@ body {
     -o-transition: opacity 0.3s linear;
     transition: opacity 0.3s linear;
 }
+
 .warning.hidden, .missing-shift.hidden,
 .warning-deleted.hidden, .warning-future.hidden,
 .warning-added.hidden, .warning-modified.hidden, .panel-body.hidden{
     display:none;
 }
+
 .warning.in, .missing-shift.in,
 .warning-deleted.in, .warning-future.in,
 .warning-added.in, .warning-modified.in, .panel-body.in{
     opacity: 1;
 }
+
 .warning.out, .missing-shift.out,
 .warning-deleted.out, .warning-future.out,
 .warning-added.out, .warning-modified.out, .panel-body.out{

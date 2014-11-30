@@ -1,7 +1,12 @@
 <?php
-/*
- * php file which contains all functionality needed for the Admin user
- *
+/**
+ * David McQueen
+ * 10153465
+ * December 2014
+ */
+
+/**
+ * Calendar controls, specific to Admin users
  */
 ?>
 <link href='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/fullcalendar.css' rel='stylesheet' />
@@ -36,8 +41,6 @@ var dayClicked,
 
 $(document).ready(function() {
 
-    maxDate.setMonth(maxDate.getMonth() + 3); //Limit of 3 months in the future
-
     $('#calendar').fullCalendar({
         header: { //Define the buttons
             left: 'prev,next today',
@@ -52,6 +55,7 @@ $(document).ready(function() {
         eventStartEditable: false, //The event can not be dragged to a new day
         eventDurationEditable: false, //Cant drag the event duration over multiple days
         events: {
+            //The location in which the event information is stored
             url: '<?php echo base_url(); ?>index.php/shift/getCalendar',
             error: function(textStatus, errorThrown) {
                 alert(errorThrown.responseText);
@@ -60,24 +64,31 @@ $(document).ready(function() {
         },
         fixedWeekCount: false,
         loading: function(bool) {
+            //Display a loading message
             $('#loading').toggle(bool);
         },
         viewRender: function(view){
+            //Moving to a new view, so remove all error messages
             transitionPopup($("#missing-shift"), false);
             transitionPopup($("#warning"), false);
             transitionPopup($("#warning-future"), false);
+
+            //Count shifts each user is working
             countStaffShifts(view);
-        },eventAfterAllRender: function(view){
+        },
+        eventAfterAllRender: function(view){
+            //After all events are on the calendar, determine which days are understaffed
             highlighUnderstaffed(view);
         },
         eventClick: function(calEvent, jsEvent, view) {
             if (calEvent.onShift == 1){
                 //Only process deletion if the user is on this shift
 
+                //Confirm the user wants to delete the shift
                 deleteMessage = "Are you sure you want to remove " + calEvent.shiftUserName+" from date " + calEvent.shiftDate + "?";
                 if(confirm (deleteMessage)){
                     $.ajax({
-                        url: "<?php echo base_url(); ?>index.php/shift/removeShift",
+                        url: "<?php echo base_url(); ?>index.php/shift/removeShift_shiftID",
                         dataType: 'json',
                         data: {
                             id: calEvent.id
@@ -99,8 +110,10 @@ $(document).ready(function() {
             }
         },
         dayClick: function(date, jsEvent, view) {
+            //Display a modal with all staff on.
 
             dayClicked = date;
+
             //Ensure that the modal display doesn't have incorrect (old) checked boxes
             if(newShifts.length > 0){
                 newShifts.forEach(function(tickbox){
@@ -109,12 +122,13 @@ $(document).ready(function() {
                 newShifts.length = 0;
             }
 
-            //Return all events for the clicked day
+            //Return all calendar events for the clicked day
             dayEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
                 return moment(event.start).isSame(date, 'day');
             });
+
             dayEvents.forEach(function(event){
-                //Populate the modal checkboxes, if a user is already working th selected day
+                //Populate the modal checkboxes, if a user is already working the selected day
                 $('#newShift' + event.userID).prop('checked', true);
                 newShifts.push(event.userID); //Keep a list of which checkboxes have been ticked
                 });
@@ -122,24 +136,27 @@ $(document).ready(function() {
             //Display the modal popup.
             $('#userSelection').modal('toggle');
             $('#userSelection').modal('show');
-
         }
     });
 
     $("#warning-close").click(function(){
+        //Close the warning popup
         transitionPopup($("#warning"), false);
     });
 
     $("#warning-future-close").click(function(){
+        //Close the warning (3 months in future) popup
         transitionPopup($("#warning-future"), false);
     });
 
     $("#instructionsHeader").click(function(){
+        //Toggle the instructions display
         displayInstructions = !displayInstructions;
         transitionPopup($("#instructionsBody"), displayInstructions);
     });
 
     $("#shiftBodyHeader").click(function(){
+        //Toggle the shift count display
         displayShiftCount = !displayShiftCount;
         transitionPopup($("#shiftCountBody"), displayShiftCount);
     });
@@ -156,6 +173,8 @@ $(document).ready(function() {
 
 function modifyShift(userID, element){
     //Add or remove a shift depending on if the check box is ticked or unticked.
+    //Called from $('#userSelection')
+
     if(element.checked){
         console.log('AddingShift');
         $.ajax({
@@ -176,8 +195,9 @@ function modifyShift(userID, element){
             }
         });
     }else{
+        //Remove the user from the shift
         $.ajax({
-            url: "<?php echo base_url(); ?>index.php/shift/remove_shiftUser",
+            url: "<?php echo base_url(); ?>index.php/shift/removeShift_userID",
             dataType: 'json',
             data: {
                 userID: userID,
@@ -203,6 +223,7 @@ function modifyShift(userID, element){
 };
 
 function transitionPopup(element, display){
+    //Apply / Remove the transition classes to the provided element
     if(display){
         element.removeClass('hidden');
         setTimeout(function(){
@@ -219,10 +240,13 @@ function transitionPopup(element, display){
 };
 
 function countStaffShifts(view){
+    //Construct the Date values
     startDate = (view.start.year()) + '-' + (view.start.month()+1) + '-' + (view.start.date());
     endDate = (view.end.year()) + '-' + (view.end.month()+1) + '-' + (view.end.date());
+
     $("#shiftCountBody").html('');
     if(view.name == 'basicWeek'){
+        //If in week view, display staff shift count
         $.ajax({
             url: "<?php echo base_url(); ?>index.php/user/countUsersShifts",
             dataType: 'json',
@@ -248,34 +272,33 @@ function countStaffShifts(view){
 }
 
 function highlighUnderstaffed(view){
+
+    //Remove previously highlighted days
     underStaffed.forEach(function(cell){
         $('.fc-day[data-date="' + cell + '"]').removeClass('activeDay');
-    });
-    monthEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
-        //Get all events for the current month
-        return moment(event.start).isSame($('#calendar').fullCalendar('getDate'), 'month');
     });
 
     nextDay = moment(view.start); //Clone the moment so that we don't affect the original
 
     while(moment(nextDay).isBefore(moment(view.end))) {
+        //Loop through each day in the view
 
+        //Get all events for the day
         dayEventsCalculate = $('#calendar').fullCalendar('clientEvents', function (event) {
             return moment(event.start).isSame(nextDay, 'day');
         });
 
         dayShiftMissingCounter = 0;
         dayEventsCalculate.forEach(function (event) {
-            //Count up all of the shifts the user is working for the clicked week
+            //Count up all of the shifts the user is working for the week
             if (event.onShift == 1) {
                 dayShiftMissingCounter += 1;
             }
         });
         if (dayShiftMissingCounter < 5){
-            console.log("missing shift");
             var day,
                 month;
-            if (nextDay.date() < 10){
+            if (nextDay.date() < 10){ //If the first 9 days of the month, append 0 - "03" instead of "3"
                 day = "0" + nextDay.date();
             }else {
                 day = nextDay.date();
@@ -287,7 +310,6 @@ function highlighUnderstaffed(view){
             }
 
             date = (nextDay.year()) + '-' + month + '-' + day;
-            console.log(date);
             $('.fc-day[data-date="' + date + '"]').addClass('activeDay');
             underStaffed.push(date);
         }

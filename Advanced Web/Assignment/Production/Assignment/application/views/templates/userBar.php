@@ -1,11 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Dave
- * Date: 06/11/14
- * Time: 10:42
+ * David McQueen
+ * 10153465
+ * December 2014
  */
-
 ?>
 <div class="page-header">
 <?php

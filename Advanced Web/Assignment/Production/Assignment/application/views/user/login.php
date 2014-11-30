@@ -1,3 +1,11 @@
+<?php
+/**
+ * David McQueen
+ * 10153465
+ * December 2014
+ */
+?>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <link href='<?php echo base_url(); ?>application/views/css/user/login.css' rel="stylesheet">
 
@@ -5,6 +13,7 @@
     <div class="form">
 
         <?php
+        //If errors are present, display them
         if(isset($errors)){
             echo '<div class="alert alert-danger" role="alert">' . $errors . '</div>';
         }
@@ -40,7 +49,7 @@
     </div>
 </div>
 <?php
-/*
+/**
 Regex Explanation:
     ^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$
 

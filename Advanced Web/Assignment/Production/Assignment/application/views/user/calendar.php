@@ -1,3 +1,14 @@
+<?php
+/**
+ * David McQueen
+ * 10153465
+ * December 2014
+ */
+
+/**
+ * The main calendar page. Contains all of the Modal popups and other visual alerts
+ */
+?>
 <body>
 <div class="container-fluid">
     <div class="row-fluid">
@@ -34,7 +45,7 @@
                                       data-target=".bs-example-modal-lg">guidlines</a>
                 </div>
 
-                <!--Message: Can't add a shift due to far in advance-->
+                <!--Message: Can't add a shift due to too far in advance-->
                 <div class="alert alert-danger alert-dismissible warning-future hidden"
                      id="warning-future"
                      role="alert">
@@ -77,20 +88,6 @@
                     Admin have deleted the following shifts:
                 </div>
 
-                <!--Message: Shift modified by Admin-->
-                <div class="alert alert-info alert-dismissible warning-modified hidden"
-                     id="warning-modified"
-                     role="alert">
-                    <button type="button"
-                            class="close"
-                            id="warning-modified-close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    Admin have modified the following shifts:
-                </div>
-
-
                 <!--Message: Displays each week a shift is missing-->
                 <div class="shifts" id="shifts">
                     <div class="alert alert-warning missing-shift"
@@ -100,7 +97,7 @@
             </div>
         </div>
         <div class="col-xs-8 col-md-9 col-lg-9">
-        <div id='loading'>loading...</div>
+        <div id='loading'>Loading Calendar...</div>
         <div id='calendar'></div>
         </div>
     </div>

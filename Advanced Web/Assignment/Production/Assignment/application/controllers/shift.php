@@ -65,6 +65,7 @@ class shift extends CI_Controller{
         if ($session_data = $this->session->userdata('logged_in')) {
             header("Content-Type: application/json");
 
+            //Use the logged in sessionID
             $userID = $session_data['userID'];
             $isAdmin = $session_data['isAdmin'];
             $start = $this->input->get('start', FALSE);
@@ -73,6 +74,7 @@ class shift extends CI_Controller{
 
             if ($isAdmin == 1) {
                 //Admin is adding shift. Dont do any checks
+                //Use the ID provided in the request
                 $userID = $this->input->get('userID', FALSE);
             }else{
                 //If the user is not admin. Check they are not already working too many shifts for the week
@@ -91,7 +93,7 @@ class shift extends CI_Controller{
             }
 
             if($shiftsWorking < 5){
-                //The user is not working <5 shifts. Add the new shift
+                //The user is not working 5 or more shifts. Add the new shift
                 $result = $this->shift_model->add_shift($start, $userID, $isAdmin);
                 foreach ($result as $newShift) {
                     $jsonevents[] = array(
@@ -127,18 +129,20 @@ class shift extends CI_Controller{
             $coverAvailable = 0;
             $errors = "";
 
-            //Determine how much cover is needed for the users level
-            $results = $this->shift_model->countCoverNeeded($userID, $shiftID);
+            if ($isAdmin == 0){
+                //Determine how much cover is needed for the users level
+                $results = $this->shift_model->countCoverNeeded($userID, $shiftID);
 
-            foreach ($results as $result) {
-                $coverNeeded = (int)$result['coverNeeded'];
-                $coverAvailable = (int)$result['cover'];
+                foreach ($results as $result) {
+                    $coverNeeded = (int)$result['coverNeeded'];
+                    $coverAvailable = (int)$result['cover'];
+                }
             }
 
             // $coverAvailable is what the level would be without the shift being removed
             if ($isAdmin == 1) {
                 $success = $this->shift_model->removeShift_shiftID($shiftID, $isAdmin);
-            } else if ($coverAvailable >= $coverNeeded) {
+            } else if ($coverAvailable > $coverNeeded) {
                 //There is enough cover to let the user remove their shift
                 $success = $this->shift_model->removeShift_shiftID($shiftID, $isAdmin);
             } else {
@@ -161,9 +165,10 @@ class shift extends CI_Controller{
         //Remove a shift for a specific user, on a specific date
         if($session_data = $this->session->userdata('logged_in')){
             $isAdmin = $session_data['isAdmin'];
+            //Only admin can remove shifts by userID
             if($isAdmin == 1){
                 $shiftDetails = $this->input->GET(NULL, FALSE);
-                $success =  $this->shift_model->remove_shiftUser($shiftDetails['shiftDate'], $shiftDetails['userID'], $isAdmin);
+                $success =  $this->shift_model->removeShift_userID($shiftDetails['shiftDate'], $shiftDetails['userID'], $isAdmin);
             }
 
             $jsonevents[] = array(

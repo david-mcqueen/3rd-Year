@@ -26,7 +26,7 @@ class user extends CI_Controller{
             $data['surname'] = $session_data['surname'];
             $data['title'] = 'Settings';
 
-            //Pass any messages to the view. Messages will be success or failure for Update
+            //Messages will be success or failure for Update, from $this->settingsUpdate
             $data['messages'] = $messages;
 
             foreach ($user as $setting){
@@ -67,13 +67,13 @@ class user extends CI_Controller{
             $newPassword = $newSettings['password'];
             $newPasswordConfirm = $newSettings['confirmPassword'];
 
-            //Check that the new password matches the refex
+            //Check that the new password matches the regex
             $validPassword = preg_match($passwordPattern, $newPassword);
 
             //Check that the new password matches the confirmPassword
             $passwordsMatch = strcmp($newPassword, $newPasswordConfirm);
 
-            //If the password passes validation, the passwords match
+            //If the password passes validation AND the passwords match
             //OR if a password is not being changed
             if(($validPassword == 1 && $passwordsMatch == 0)
                 || strcmp($newPassword, '') == 0)
@@ -121,8 +121,8 @@ class user extends CI_Controller{
     }
 
     public function confirmMessages(){
-        //The user has 'read' the messages.
-        //Flag as 'read' so they don't show again.
+        //The user has read the messages.
+        //Flag as read so they don't show again.
         if($session_data = $this->session->userdata('logged_in')){
 
             $userID = $session_data['userID'];
@@ -141,7 +141,6 @@ class user extends CI_Controller{
         //Count the shifts worked by each staff, between 2 dates (a week)
         if ($session_data = $this->session->userdata('logged_in')) {
             $isAdmin = $session_data['isAdmin'];
-            $jsonevents[] = array();
 
             if($isAdmin == 1){
 
@@ -188,6 +187,7 @@ class user extends CI_Controller{
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/userBar', $data);
+
             if($isAdmin == 1){
                 //Load the Admin functionality
                 $this->load->view('user/calendarAdminScript', $data);

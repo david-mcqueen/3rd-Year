@@ -175,7 +175,7 @@ BEGIN
 	UPDATE users as u
 	SET 	surname = surnameIN,
 			forename = forenameIN,
-			password = IF(passwordIN = '', u.password, SHA2(passwordIN, 256),
+			password = IF(passwordIN = '', u.password, SHA2(passwordIN, 256)),
 			emailAddress = emailIN,
 			phoneNumber = phoneIN,
 			address1 = address1IN,
