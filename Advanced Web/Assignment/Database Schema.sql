@@ -118,7 +118,7 @@ BEGIN
 	VALUES	(
 				surnameIN,
 				forenameIN,
-				SHA2(passwordIN, 256),
+				SHA2(CONCAT('zhjbfvh56^%&', CONCAT(passwordIN, staffIDIN)), 256),
 				levelIDIN,
 				staffIDIN
 		);
@@ -172,10 +172,18 @@ CREATE PROCEDURE user_edit
 	IN postcodeIN varchar(9)
 )
 BEGIN
+declare staffIDint int;
+ 
+	SELECT staffID into staffIDint
+    FROM users
+    WHERE userID = id;
+
+    IF staffIDint is not null
+    then
 	UPDATE users as u
 	SET 	surname = surnameIN,
 			forename = forenameIN,
-			password = IF(passwordIN = '', u.password, SHA2(passwordIN, 256)),
+			password = IF(passwordIN = '', u.password, SHA2(CONCAT('zhjbfvh56^%&' , CONCAT(passwordIN, staffIDint)), 256)),
 			emailAddress = emailIN,
 			phoneNumber = phoneIN,
 			address1 = address1IN,
@@ -183,6 +191,7 @@ BEGIN
 			city = cityIN,
 			postcode = postcodeIN
 	WHERE userID = id;
+	end if;
 END //
 DELIMITER ;
 
@@ -547,7 +556,7 @@ BEGIN
 					surname = surname
 				)
 			)
-	AND		BINARY u.password COLLATE utf8_general_ci = BINARY SHA2(password, 256) COLLATE utf8_general_ci;
+	AND		BINARY u.password COLLATE utf8_general_ci = BINARY SHA2(CONCAT('zhjbfvh56^%&' , CONCAT(password, u.staffID)),  256) COLLATE utf8_general_ci;
 END //
 DELIMITER ;
 
