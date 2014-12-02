@@ -310,7 +310,7 @@ function highlighUnderstaffed(view){
             }
 
             date = (nextDay.year()) + '-' + month + '-' + day;
-            $('.fc-day[data-date="' + date + '"]').addClass('activeDay');
+            $('.fc-day[data-date="' + date + '"]').addClass('underStaffedDay');
             underStaffed.push(date);
         }
         nextDay = nextDay.add(1, 'days');
