@@ -78,7 +78,7 @@ $(document).ready(function() {
         },
         eventAfterAllRender: function(view){
             //After all events are on the calendar, determine which days are understaffed
-            highlighUnderstaffed(view);
+            highlightUnderstaffed(view);
         },
         eventClick: function(calEvent, jsEvent, view) {
             if (calEvent.onShift == 1){
@@ -188,7 +188,9 @@ function modifyShift(userID, element){
                 newShifts.push(userID);
                 $('#calendar').fullCalendar('refetchEvents');
                 countStaffShifts($('#calendar').fullCalendar('getView'));
-                highlighUnderstaffed($('#calendar').fullCalendar('getView'));
+                setTimeout(function () {
+                    highlightUnderstaffed($('#calendar').fullCalendar('getView'));
+                }, 500);
             },
             error: function () {
                 alert("Oops! Something went wrong.");
@@ -211,7 +213,9 @@ function modifyShift(userID, element){
                     transitionPopup($("#warning"), false);
                     transitionPopup($("#warning-future"), false);
                     countStaffShifts($('#calendar').fullCalendar('getView'));
-                    highlighUnderstaffed($('#calendar').fullCalendar('getView'));
+                    setTimeout(function () {
+                        highlightUnderstaffed($('#calendar').fullCalendar('getView'));
+                    }, 300);
                 }
             },
             error: function () {
@@ -271,11 +275,11 @@ function countStaffShifts(view){
     }
 }
 
-function highlighUnderstaffed(view){
+function highlightUnderstaffed(view){
 
     //Remove previously highlighted days
     underStaffed.forEach(function(cell){
-        $('.fc-day[data-date="' + cell + '"]').removeClass('activeDay');
+        $('.fc-day[data-date="' + cell + '"]').removeClass('underStaffedDay');
     });
 
     nextDay = moment(view.start); //Clone the moment so that we don't affect the original
@@ -295,7 +299,7 @@ function highlighUnderstaffed(view){
                 dayShiftMissingCounter += 1;
             }
         });
-        if (dayShiftMissingCounter < 5){
+        if (dayShiftMissingCounter < 3){
             var day,
                 month;
             if (nextDay.date() < 10){ //If the first 9 days of the month, append 0 - "03" instead of "3"
