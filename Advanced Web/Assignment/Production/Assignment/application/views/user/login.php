@@ -19,7 +19,7 @@
         }
         ?>
 
-        <form action="<?php echo base_url(); ?>index.php/VerifyLogin" method="POST">
+        <form action="<?php echo base_url(); ?>index.php/VerifyLogin" method="POST" onsubmit="return validateForm()" name="loginForm" id="loginForm">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text"
                size="20"
@@ -48,6 +48,33 @@
         </form>
     </div>
 </div>
+<script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+<script type="text/javascript">
+    function validateForm() {
+        var usernameInput = document.forms["loginForm"]["username"].value,
+            passwordInput = document.forms["loginForm"]["password"].value,
+            usernameRegex = /^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$/,
+            success = true;
+
+        //Ensure data has been entered
+        if (usernameInput == null || usernameInput == "") {
+            success = false;
+        }else{
+            //Ensure that the username matches the required email
+            if (!usernameRegex.test(usernameInput)){
+                success = false;
+            }
+        }
+
+        //Ensure that the user has enetered a password
+        //Dont need to check regex here, as they might have an old password which doesn't meet the password policy
+        if (passwordInput == null || passwordInput == ""){
+            success = false;
+        }
+        return success;
+
+    }
+</script>
 <?php
 /**
 Regex Explanation:

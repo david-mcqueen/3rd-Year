@@ -66,13 +66,20 @@ $(document).ready(function() {
             transitionPopup($("#missing-shift"), false);
             transitionPopup($("#warning"), false);
             transitionPopup($("#warning-future"), false);
+            $('.fc-prev-button').removeClass('fc-state-disabled');
+            $('.fc-next-button').removeClass('fc-state-disabled');
 
             //Stops the user going more than 3 months in the future.
-            if (view.intervalStart > maxDate){
+            if (view.intervalEnd > maxDate) {
                 $('#calendar').fullCalendar('gotoDate', maxDate);
+                $('.fc-next-button').addClass('fc-state-disabled');
                 setTimeout(function () {
                     transitionPopup($("#warning-future"), true)
                 }, 300); //Add the display after a delay, so the earlier delete doesn't catch it.
+            }else if(view.intervalStart < currentDate){
+                //Stop the user going to previous months
+                $('#calendar').fullCalendar('gotoDate', currentDate);
+                $('.fc-prev-button').addClass('fc-state-disabled');
             }
         },
         eventAfterAllRender: function(view){

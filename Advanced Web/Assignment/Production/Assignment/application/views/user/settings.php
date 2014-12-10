@@ -22,7 +22,7 @@
 
     <h3>Personal Details</h3>
 
-    <form action="settingsUpdate" method="POST" class="form-horizontal" role="form">
+    <form action="settingsUpdate" method="POST" class="form-horizontal" role="form" onsubmit="return validateForm()" name="settingsForm" id="settingsForm">
 
         <div class="form-group">
         <label for="staffID" class="control-label col-sm-2">Staff ID: </label>
@@ -47,7 +47,8 @@
                        class="form-control"
                        name="forename"
                        placeholder="Forename"
-                       required value="<?php echo $forename ?>"
+                       required
+                       value="<?php echo $forename ?>"
                     />
             </div>
         </div>
@@ -61,7 +62,8 @@
                        class="form-control"
                        name="surname"
                        placeholder="Surname"
-                       required value="<?php echo $surname ?>"
+                       required
+                       value="<?php echo $surname ?>"
                     />
             </div>
         </div>
@@ -280,4 +282,30 @@
         }
     }
 
+    function validateForm() {
+        var forenameInput = document.forms["settingsForm"]["forename"].value,
+            surnameInput = document.forms["settingsForm"]["surname"].value,
+            passwordInput = document.forms["settingsForm"]["password"].value,
+            passwordRegex = /(?=^.{7,}$)((?=.*\d))(?=.*[A-Z])(?=.*[a-z]).*$/,
+            success = true;
+
+        //Ensure data has been entered
+        if (forenameInput == null || forenameInput == "") {
+            success = false;
+        }
+
+        //Ensure data has been entered
+        if (surnameInput == null || surnameInput == "") {
+            success = false;
+        }
+
+        if (passwordInput != null && passwordInput != ""){
+            //Ensure that the password matches the password policy
+            if (!passwordRegex.test(passwordInput)){
+                success = false;
+            }
+        }
+        return success;
+
+    }
 </script>
