@@ -45,7 +45,10 @@ $(document).ready(function() {
         header: { //Define the buttons
             left: 'prev,next today',
             center: 'title',
-            right: 'month, basicWeek'
+            right: 'month,basicWeek'
+        },
+        columnFormat: {
+            week: 'ddd D/M'
         },
         firstDay:1, //Week starts on Monday
         defaultDate: Date(),

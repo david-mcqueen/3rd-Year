@@ -41,8 +41,12 @@ $(document).ready(function() {
         header: { //Define the buttons
             left: 'prev,next today',
             center: 'title',
-            right: 'month'
+            right: ''
         },
+        columnFormat: {
+            week: 'ddd'
+        },
+        defaultView: 'FourWeek',
         firstDay:1, //Week starts on Monday
         defaultDate: Date(),
         weekNumbers: true,
