@@ -36,6 +36,8 @@ var dayClicked,
     nextDay,
     dayEventsCalculate,
     dayShiftMissingCounter,
+    seniorMissingCounter,
+    standardMissingCounter,
     date,
     underStaffed = [];
 
@@ -296,13 +298,20 @@ function highlightUnderstaffed(view){
         });
 
         dayShiftMissingCounter = 0;
+        seniorMissingCounter = 0;
+        standardMissingCounter = 0;
         dayEventsCalculate.forEach(function (event) {
             //Count up all of the shifts the user is working for the week
             if (event.onShift == 1) {
                 dayShiftMissingCounter += 1;
+                if (event.levelID == 2){
+                    standardMissingCounter += 1;
+                }else{
+                    seniorMissingCounter += 1;
+                }
             }
         });
-        if (dayShiftMissingCounter < 3){
+        if (dayShiftMissingCounter < 3 || standardMissingCounter < 2 || seniorMissingCounter < 1){
             var day,
                 month;
             if (nextDay.date() < 10){ //If the first 9 days of the month, append 0 - "03" instead of "3"
