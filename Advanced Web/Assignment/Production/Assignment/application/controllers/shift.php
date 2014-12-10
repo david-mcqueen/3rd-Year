@@ -143,7 +143,7 @@ class shift extends CI_Controller{
             // $coverAvailable is what the level would be without the shift being removed
             if ($isAdmin == 1) {
                 $success = $this->shift_model->removeShift_shiftID($shiftID, $isAdmin);
-            } else if ($coverAvailable > $coverNeeded) {
+            } else if ($coverAvailable >= $coverNeeded) {
                 //There is enough cover to let the user remove their shift
                 $success = $this->shift_model->removeShift_shiftID($shiftID, $isAdmin);
             } else {

@@ -306,7 +306,7 @@ function highlightUnderstaffed(view){
                 dayShiftMissingCounter += 1;
                 if (event.levelID == 2){
                     standardMissingCounter += 1;
-                }else{
+                }else if(event.levelID == 3){
                     seniorMissingCounter += 1;
                 }
             }
