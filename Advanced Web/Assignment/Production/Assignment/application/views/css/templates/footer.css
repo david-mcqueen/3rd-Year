@@ -1,7 +1,7 @@
 footer {
     clear: both;
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     height: 30px;
     font-size:10pt;
 }

@@ -72,7 +72,6 @@
             success = false;
         }
         return success;
-
     }
 </script>
 <?php
