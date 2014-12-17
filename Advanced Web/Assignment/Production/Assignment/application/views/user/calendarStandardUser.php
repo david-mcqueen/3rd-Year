@@ -75,7 +75,6 @@ $(document).ready(function() {
 
             //Stops the user going more than 3 months in the future.
             if (view.intervalEnd > maxDate) {
-                $('#calendar').fullCalendar('gotoDate', maxDate);
                 $('.fc-next-button').addClass('fc-state-disabled');
                 setTimeout(function () {
                     transitionPopup($("#warning-future"), true)
@@ -85,7 +84,7 @@ $(document).ready(function() {
                 $('#calendar').fullCalendar('gotoDate', currentDate);
                 $('.fc-prev-button').addClass('fc-state-disabled');
             }
-           
+
         },
         eventAfterAllRender: function(view){
             //Calculate which weeks the user is missing shifts for
