@@ -80,11 +80,12 @@ $(document).ready(function() {
                 setTimeout(function () {
                     transitionPopup($("#warning-future"), true)
                 }, 300); //Add the display after a delay, so the earlier delete doesn't catch it.
-            }else if(view.intervalStart < currentDate){
+            }else if(view.intervalStart < currentDate || view.intervalStart.add("-7", 'days') < currentDate){
                 //Stop the user going to previous months
                 $('#calendar').fullCalendar('gotoDate', currentDate);
                 $('.fc-prev-button').addClass('fc-state-disabled');
             }
+           
         },
         eventAfterAllRender: function(view){
             //Calculate which weeks the user is missing shifts for

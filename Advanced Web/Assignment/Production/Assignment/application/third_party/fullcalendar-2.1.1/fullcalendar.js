@@ -7826,7 +7826,8 @@ $.extend(MonthView.prototype, {
         name: 'FourWeek',
 
         incrementDate: function(date, delta) {
-            return date.clone().stripTime().add(delta, 'months').startOf('month');
+            //We want to only move forward or backwards 4 weeks
+            return date.clone().stripTime().add((delta * 4), 'weeks').startOf('week');
         },
 
         render: function(date) {

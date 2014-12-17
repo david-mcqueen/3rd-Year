@@ -198,7 +198,7 @@ function modifyShift(userID, element){
                 }, 500);
             },
             error: function () {
-                alert("Oops! Something went wrong.");
+                console.log("Something went wrong!");
             }
         });
     }else{
