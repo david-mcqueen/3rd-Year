@@ -25,6 +25,19 @@
                 Pick staff to work this shift
             </div>
             <div class="modal-body">
+                <input type="button"
+                       value="Copy Day"
+                       id="copyDay"
+                       name="copyDay"
+                    />
+                <input type="button"
+                       value="Paste Day"
+                       id="pasteDay"
+                       name="pasteDay"
+                       class="hidden"
+                    />
+                </br>
+                </br>
                 <?php
                 foreach($users as $user){
                     echo '<ul> <input id="newShift' . $user['userID'] . '"  name="' . $user['userID'] . '" value="' . $user['userID'] . '" type="checkbox" onclick="modifyShift(' . $user['userID'] . ', this)"> ';

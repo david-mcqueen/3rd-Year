@@ -420,7 +420,8 @@ BEGIN
 			s.deleted
 	FROM	shifts AS s
 	WHERE 	s.userID = userIDIN
-	AND 	s.userInformed = 0;
+	AND 	s.userInformed = 0
+	ORDER BY s.shiftDate Asc;
 END //
 DELIMITER ;
 

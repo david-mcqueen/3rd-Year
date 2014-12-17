@@ -39,7 +39,8 @@ var dayClicked,
     seniorMissingCounter,
     standardMissingCounter,
     date,
-    underStaffed = [];
+    underStaffed = [],
+    copyShifts = [];
 
 $(document).ready(function() {
 
@@ -169,18 +170,46 @@ $(document).ready(function() {
     //Populate the instructions for the user
     $('#instructionsBody').html('<li>Click on a users shift to remove that shift</li>' +
     '<li>Click on a day to add / remove shifts in bulk (for the specified day)</li>' +
+    '<li>Click on Copy to copy all of the shifts for that day</li>' +
+    '<li>Click on  Paste to paste the copied day onto a new day</li>' +
     '<li>To view the amount of shifts for each staff, enter week view</li>' +
     '<li>Understaffed days are highlighted</li>');
 
     $('#shiftCountContainer').removeClass('hidden');
+
+    $('#copyDay').click(function(){
+        console.log("Copy day");
+        //Clone the staff working the selected day
+        copyShifts = newShifts.slice(0);
+        $('#pasteDay').removeClass('hidden');
+    });
+
+    $('#pasteDay').click(function(){
+        console.log("Paste day");
+
+        dayEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
+            return moment(event.start).isSame(dayClicked, 'day');
+        });
+
+        dayEvents.forEach(function(event){
+            //Populate the modal checkboxes, if a user is already working the selected day
+            var element = $('#newShift' + event.userID)
+            element.prop('checked', false);
+            modifyShift(event.userID, element);
+        });
+
+        copyShifts.forEach(function(user){
+            modifyShift(user, null, true);
+        });
+    });
 });
 
 
-function modifyShift(userID, element){
+function modifyShift(userID, element, pasteShift){
     //Add or remove a shift depending on if the check box is ticked or unticked.
     //Called from $('#userSelection')
 
-    if(element.checked){
+    if(pasteShift || element.checked){
         console.log('AddingShift');
         $.ajax({
             url: "<?php echo base_url(); ?>index.php/shift/addShift",
@@ -196,6 +225,7 @@ function modifyShift(userID, element){
                 setTimeout(function () {
                     highlightUnderstaffed($('#calendar').fullCalendar('getView'));
                 }, 500);
+                $('#newShift' + userID).prop('checked', true);
             },
             error: function () {
                 console.log("Something went wrong!");
@@ -224,7 +254,7 @@ function modifyShift(userID, element){
                 }
             },
             error: function () {
-                alert("Oops! Something went wrong");
+                console.log("Something went wrong");
             }
         });
     }
@@ -253,7 +283,7 @@ function countStaffShifts(view){
     startDate = (view.start.year()) + '-' + (view.start.month()+1) + '-' + (view.start.date());
     endDate = (view.end.year()) + '-' + (view.end.month()+1) + '-' + (view.end.date());
 
-    $("#shiftCountBody").html('');
+
     if(view.name == 'basicWeek'){
         //If in week view, display staff shift count
         $.ajax({
@@ -265,6 +295,7 @@ function countStaffShifts(view){
             },
             success: function (result) {
                 console.log('success');
+                $("#shiftCountBody").html('');
                 result.forEach(function(user){
                     $("#shiftCountBody").html($("#shiftCountBody").html() + user['forename'] + ": " + (-1 * (5 - user['shiftsCount'])) + "</br>");
                 });
@@ -327,7 +358,7 @@ function highlightUnderstaffed(view){
 
             date = (nextDay.year()) + '-' + month + '-' + day;
             $('.fc-day[data-date="' + date + '"]').addClass('underStaffedDay');
-            underStaffed.push(date);
+            underStaffed.push(date); //Keep an array of understaffed days, so we can remove the element later
         }
         nextDay = nextDay.add(1, 'days');
     }
