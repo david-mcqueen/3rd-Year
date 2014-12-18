@@ -92,6 +92,7 @@ class user extends CI_Controller{
                 );
                 $this->user_model->userSettingsUpdate($userSettings);
                 $result = 'Success';
+                //Update the session data with the new forename & surname
                 $session_data['forename'] = $userSettings['forename'];
                 $session_data['surname'] = $userSettings['surname'];
                 $this->session->set_userdata('logged_in', $session_data);

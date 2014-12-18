@@ -29,7 +29,7 @@
                required
                autofocus
                class="form-control"
-               pattern="^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$"
+               pattern="^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$?i"
                title="staffID@nhs.org or initial.surname@nhs.org"
             />
         <input type="password"
@@ -53,7 +53,7 @@
     function validateForm() {
         var usernameInput = document.forms["loginForm"]["username"].value,
             passwordInput = document.forms["loginForm"]["password"].value,
-            usernameRegex = /^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$/,
+            usernameRegex = /^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$/i,
             success = true;
 
         //Ensure data has been entered
@@ -83,7 +83,7 @@ Regex Explanation:
     [0-9]{4}                Contain 4 digits
     |                       OR
     [a-zA-Z]\.[a-zA-Z]+     Single character . string of characters
-    @stu\.mmu\.ac\.uk$      End with the email address
+    @nhs\.org$/i            End with the email address (not case sensitive)
 
 */
 ?>

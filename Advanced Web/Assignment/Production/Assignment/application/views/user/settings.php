@@ -48,6 +48,7 @@
                        name="forename"
                        placeholder="Forename"
                        required
+                       maxlength="200"
                        value="<?php echo $forename ?>"
                     />
             </div>
@@ -63,6 +64,7 @@
                        name="surname"
                        placeholder="Surname"
                        required
+                       maxlength="200"
                        value="<?php echo $surname ?>"
                     />
             </div>
@@ -91,6 +93,7 @@
                        class="form-control"
                        name="emailAddress"
                        placeholder="Personal Email"
+                       maxlength="100"
                        value="<?php echo $emailAddress ?>"
                     />
             </div>
@@ -105,6 +108,7 @@
                        class="form-control"
                        name="phoneNumber"
                        placeholder="Phone Number"
+                       maxlength="14"
                        value="<?php echo $phoneNumber ?>"
                     />
             </div>
@@ -119,6 +123,7 @@
                        class="form-control"
                        name="address1"
                        placeholder="Address"
+                       maxlength="100"
                        value="<?php echo $address1 ?>"
                     />
             </div>
@@ -133,6 +138,7 @@
                        class="form-control"
                        name="address2"
                        placeholder="Address 2"
+                       maxlength="100"
                        value="<?php echo $address2 ?>"
                     />
             </div>
@@ -147,6 +153,7 @@
                        class="form-control"
                        name="city"
                        placeholder="City"
+                       maxlength="100"
                        value="<?php echo $city ?>"
                     />
             </div>
@@ -161,6 +168,7 @@
                        class="form-control"
                        name="postcode"
                        placeholder="Postcode"
+                       maxlength="9"
                        value="<?php echo $postcode ?>"
                     />
             </div>
@@ -305,6 +313,7 @@
                 success = false;
             }
         }
+
         return success;
 
     }

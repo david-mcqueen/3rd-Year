@@ -572,7 +572,6 @@ call user_add ('Berry', 'Bert', 'aSerty456a', 2, 5467);
 call user_add ('Carrot', 'Carl', 'asDghj1', 2, 1432);
 call user_add ('Donkey', 'Dave', 'sgGgdghj1', 2, 6743);
 call user_add ('Emu', 'Ernie', 'tyuIo124', 2, 2456);
-call user_add ('McQueen', 'David', 'dave', 2, 1234);
 
 call user_add ('Fur', 'Frank', '45frAnk67', 3, 8543);
 call user_add ('Goat', 'Graham', 'deDede1', 3, 7832);
