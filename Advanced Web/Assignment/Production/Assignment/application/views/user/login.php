@@ -29,7 +29,7 @@
                required
                autofocus
                class="form-control"
-               pattern="^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$?i"
+               pattern="^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$"
                title="staffID@nhs.org or initial.surname@nhs.org"
             />
         <input type="password"
@@ -50,6 +50,15 @@
 </div>
 <script src='<?php echo base_url(); ?>application/third_party/fullcalendar-2.1.1/lib/jquery.min.js'></script>
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        $('#username').change(function(){
+            //Ensure that the value entered is lowercase, so that the regex works correctly
+            $('#username').val($('#username').val().toLowerCase());
+        });
+    });
+
+
     function validateForm() {
         var usernameInput = document.forms["loginForm"]["username"].value,
             passwordInput = document.forms["loginForm"]["password"].value,
@@ -77,7 +86,7 @@
 <?php
 /**
 Regex Explanation:
-    ^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$
+    ^([0-9]{4}|[a-zA-Z]\.[a-zA-Z]+)@nhs\.org$/i
 
     ^                       Start of string
     [0-9]{4}                Contain 4 digits
