@@ -81,17 +81,20 @@ class user extends CI_Controller{
                 $userSettings = array(
                     'userID' => $userID,
                     'password' => $newSettings['password'],
-                    'forename' => $newSettings['forename'],
-                    'surname' => $newSettings['surname'],
-                    'email' => $newSettings['emailAddress'],
-                    'phone' => $newSettings['phoneNumber'],
-                    'address1' => $newSettings['address1'],
-                    'address2' => $newSettings['address2'],
-                    'city' => $newSettings['city'],
-                    'postcode' => $newSettings['postcode']
+                    'forename' => (strlen($newSettings['forename']) > 0 ? substr($newSettings['forename'], 0, 200) : ''),
+                    'surname' => (strlen($newSettings['surname']) > 0 ? substr($newSettings['surname'], 0, 200) : ''),
+                    'email' => (strlen($newSettings['emailAddress']) > 0 ? substr($newSettings['emailAddress'], 0, 100) : ''),
+                    'phone' => (strlen($newSettings['phoneNumber']) > 0 ? substr($newSettings['phoneNumber'], 0, 14) : ''),
+                    'address1' => (strlen($newSettings['address1']) > 0 ? substr($newSettings['address1'], 0, 100) : ''),
+                    'address2' => (strlen($newSettings['address2']) > 0 ? substr($newSettings['address2'], 0, 100) : ''),
+                    'city' => (strlen($newSettings['city']) > 0 ? substr($newSettings['city'], 0, 100) : ''),
+                    'postcode' => (strlen($newSettings['postcode']) > 0 ? substr($newSettings['postcode'], 0, 9) : '')
                 );
                 $this->user_model->userSettingsUpdate($userSettings);
                 $result = 'Success';
+                $session_data['forename'] = $userSettings['forename'];
+                $session_data['surname'] = $userSettings['surname'];
+                $this->session->set_userdata('logged_in', $session_data);
             }else{
                 $result = 'Validation Failed! Please check details and try again';
             }
