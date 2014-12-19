@@ -187,7 +187,7 @@ $(document).ready(function() {
 
                         },
                         error: function () {
-                            alert("Oops! Something went wrong.");
+                            console.log("Something went wrong.");
                         }
                     });
                 }else{

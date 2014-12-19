@@ -104,12 +104,13 @@ $(document).ready(function() {
                                 transitionPopup($("#warning"), true);
                             }else{
                                 $('#calendar').fullCalendar('refetchEvents');
+                                countStaffShifts(view);
                                 transitionPopup($("#warning"), false);
                                 transitionPopup($("#warning-future"), false);
                             }
                         },
                         error: function () {
-                            alert("Oops! Something went wrong");
+                            console.log("Something went wrong");
                         }
                     });
                 }
@@ -141,7 +142,6 @@ $(document).ready(function() {
 
             //Display the modal popup.
             $('#userSelection').modal('toggle');
-            $('#userSelection').modal('show');
         }
     });
 
